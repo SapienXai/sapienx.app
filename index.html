@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agents | Future of Intelligence</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <div class="logo">SAPIENX</div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="https://sapienx.app/assets/SapienX-WhitePaper-1.0.0.pdf" target="_blank" rel="noopener noreferrer">WhitePaper</a>
+
+            <div class="nav-item">
+                <a href="#">MarketPlace <span style="font-size:0.6rem; margin-left:4px;">▼</span></a>
+                <div class="dropdown-menu">
+                    <a href="https://opensea.io/collection/sapienxapp" target="_blank" rel="noopener noreferrer">OpenSea</a>
+                    <a href="https://app.coincollect.org/nfts/collections/mint/0x589C351d8836177BfD0F6d8A5f7Bd3aA9DfBB70C"
+                        target="_blank" rel="noopener noreferrer">CoinCollect</a>
+                    <a href="https://rarible.com/sapienx" target="_blank" rel="noopener noreferrer">Rarible</a>
+                    <a href="https://magiceden.io/collections/polygon/0x589c351d8836177bfd0f6d8a5f7bd3aa9dfbb70c"
+                        target="_blank" rel="noopener noreferrer">Magic Eden</a>
+                    <a href="https://element.market/collections/sapienx-ai-agents" target="_blank"
+                        rel="noopener noreferrer">Element Market</a>
+                    <a href="https://www.okx.com/web3/marketplace/nft/collection/polygon/sapienx-ai-agents"
+                        target="_blank" rel="noopener noreferrer">OKX</a>
+                </div>
+            </div>
+
+            <div class="nav-item">
+                <a href="#">Contracts <span style="font-size:0.6rem; margin-left:4px;">▼</span></a>
+                <div class="dropdown-menu">
+                    <a href="https://polygonscan.com/token/0x589C351d8836177BfD0F6d8A5f7Bd3aA9DfBB70C" target="_blank"
+                        rel="noopener noreferrer">SapienX NFT</a>
+                    <a href="#">$X Token (Soon)</a>
+                </div>
+            </div>
+
+            <a href="mailto:info@sapienx.app" target="_blank" rel="noopener noreferrer">Contact</a>
+            <a href="https://app.coincollect.org/nfts/collections/mint/0x589C351d8836177BfD0F6d8A5f7Bd3aA9DfBB70C"
+                class="nav-cta" target="_blank" rel="noopener noreferrer">Mint</a>
+        </div>
+    </nav>
+
+    <div id="loader">
+        <div class="loader-content">
+            <h1>SAPIENX AGENTS</h1>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <p id="loader-text">Initializing SapienX Ecosystem...</p>
+            <div class="terminal-loader">
+                <div id="terminal-logs"></div>
+            </div>
+        </div>
+    </div>
+
+    <canvas class="webgl"></canvas>
+
+    <div class="scroll-container">
+        <section class="hero">
+            <div class="content glass">
+                <h2>AI + Web3 Revolution</h2>
+                <p>Supercharge your business with decentralized AI tools and DAO governance.</p>
+            </div>
+        </section>
+
+        <section class="features section-right">
+            <div class="content glass">
+                <h2>DAO Governance</h2>
+                <p>Participate in decision-making. NFT holders shape the future and share in company profits.</p>
+            </div>
+        </section>
+
+        <section class="integration">
+            <div class="content glass">
+                <h2>AI AppStore</h2>
+                <p>Access ready-to-use agents for Automation, Fraud Detection, and Predictive Maintenance.</p>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="footer-brand">
+                <h2>SAPIENX</h2>
+                <p>Revolutionizing Business with AI, Web3, and DAO Technologies. Pioneering decentralized autonomous
+                    intelligence.</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="link-group">
+                    <h3>MarketPlace</h3>
+                    <ul>
+                        <li><a href="https://opensea.io/collection/sapienxapp" target="_blank"
+                                rel="noopener noreferrer">OpenSea</a></li>
+                        <li><a href="https://app.coincollect.org/nfts/collections/mint/0x589C351d8836177BfD0F6d8A5f7Bd3aA9DfBB70C"
+                                target="_blank" rel="noopener noreferrer">CoinCollect</a>
+                        </li>
+                        <li><a href="https://rarible.com/sapienx" target="_blank" rel="noopener noreferrer">Rarible</a>
+                        </li>
+                        <li><a href="https://magiceden.io/collections/polygon/0x589c351d8836177bfd0f6d8a5f7bd3aa9dfbb70c"
+                                target="_blank" rel="noopener noreferrer">Magic
+                                Eden</a></li>
+                        <li><a href="https://element.market/collections/sapienx-ai-agents" target="_blank"
+                                rel="noopener noreferrer">Element Market</a></li>
+                        <li><a href="https://www.okx.com/web3/marketplace/nft/collection/polygon/sapienx-ai-agents"
+                                target="_blank" rel="noopener noreferrer">OKX</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="link-group">
+                    <h3>Contracts</h3>
+                    <ul>
+                        <li><a href="https://polygonscan.com/token/0x589C351d8836177BfD0F6d8A5f7Bd3aA9DfBB70C"
+                                target="_blank" rel="noopener noreferrer">SapienX
+                                NFT</a></li>
+                        <li><a href="#">$X Token (Soon)</a></li>
+                    </ul>
+                </div>
+
+                <div class="link-group">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://sapienx.app/assets/SapienX-WhitePaper-1.0.0.pdf" target="_blank"
+                                rel="noopener noreferrer">WhitePaper</a></li>
+                        <li><a href="mailto:info@sapienx.app" target="_blank" rel="noopener noreferrer">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 SapienX. All rights reserved.</p>
+                <!-- Socials removed as they were not in the provided specific structure, 
+                     or can serve as placeholders if user didn't specify exact social links beyond the text dump -->
+            </div>
+        </footer>
+
+        <!-- Dynamic Modal/Panel Overlay -->
+        <div id="dynamic-overlay" class="pointer-events-none">
+            <div class="panel glass" id="panel-ecosystem">
+                <div class="close-btn">×</div>
+                <h2>DAO & NFT Ecosystem</h2>
+                <p>SapienX integrates a DAO structure with unique NFTs, granting owners governance participation and a
+                    share in company profits.</p>
+                <div class="stats">
+                    <div class="stat"><span>4.8/5</span>Rated</div>
+                    <div class="stat"><span>10k+</span>Reviews</div>
+                </div>
+            </div>
+
+            <div class="panel glass" id="panel-appstore">
+                <div class="close-btn">×</div>
+                <h2>AI Agent Marketplace</h2>
+                <p>Access tailored solutions: Business Process Automation, Data-Driven Decision Making, and Customer
+                    Experience Enhancement.</p>
+            </div>
+
+            <div class="panel glass" id="panel-token">
+                <div class="close-btn">×</div>
+                <h2>$X Token Utility</h2>
+                <p>Stake $X tokens to enhance NFT utility, access exclusive AI tools, and tap into community financial
+                    privileges.</p>
+            </div>
+
+            <div class="panel glass" id="panel-launchapp">
+                <div class="close-btn">×</div>
+                <h2>Start Building</h2>
+                <p>Mint your NFT, stake for rewards, and explore the AI AppStore to supercharge your business efficiency
+                    today.</p>
+                <button class="nav-cta" onclick="window.open('https://sapienx.app/', '_blank')">Open AppStore</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
