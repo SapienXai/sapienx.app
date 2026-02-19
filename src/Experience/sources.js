@@ -2,6 +2,6 @@ export default [
     {
         name: 'aiModel',
         type: 'gltfModel',
-        path: '/models/model.glb'
+        path: '/models/model-ultra-small.glb'
     }
 ]
