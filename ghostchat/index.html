@@ -136,6 +136,55 @@
       gap: .85rem;
     }
 
+    .download-row {
+      align-items: stretch;
+    }
+
+    .download-btn {
+      border-radius: .85rem;
+      padding: .62rem .92rem;
+      min-width: 220px;
+      gap: .7rem;
+      border: 1px solid #c4d1e2;
+      background: linear-gradient(180deg, #ffffff 0%, #f4f8fd 100%);
+      box-shadow: 0 3px 10px rgba(17, 40, 66, .1);
+      color: #172f4a;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      border-color: #9fb7cf;
+      box-shadow: 0 8px 18px rgba(15, 40, 66, .18);
+    }
+
+    .download-more {
+      display: inline-flex;
+    }
+
+    .hero .download-row .download-btn.alt-browser {
+      display: none;
+    }
+
+    .download-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .download-label {
+      font-size: .68rem;
+      font-weight: 700;
+      color: #4a617d;
+    }
+
+    .download-name {
+      margin-top: .2rem;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #1b2d45;
+      letter-spacing: -.01em;
+    }
+
     .btn {
       border: 1px solid transparent;
       border-radius: 999px;
@@ -202,6 +251,15 @@
       border-radius: 50%;
       background: #eaffff;
       opacity: .35;
+    }
+
+    .download-btn .chrome-icon,
+    .download-btn .firefox-icon,
+    .download-btn .edge-icon {
+      width: 1.6rem;
+      height: 1.6rem;
+      flex: 0 0 1.6rem;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, .4) inset, 0 1px 4px rgba(0, 0, 0, .2);
     }
 
     .btn:focus-visible {
@@ -312,6 +370,56 @@
       border-color: rgba(186, 214, 242, .35);
       padding: .58rem .92rem;
       font-size: .86rem;
+    }
+
+    .nav-install-btn {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .24), rgba(255, 255, 255, .08) 45%, rgba(130, 209, 255, .16)),
+        rgba(255, 255, 255, .08) !important;
+      border-color: rgba(192, 224, 255, .55) !important;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .45),
+        0 10px 22px rgba(8, 32, 58, .28);
+      animation: installGlassPulse 3.1s ease-in-out infinite;
+    }
+
+    .nav-install-btn::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .36), rgba(255, 255, 255, .02) 55%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .nav-install-btn::after {
+      content: "";
+      position: absolute;
+      top: -130%;
+      left: -42%;
+      width: 44%;
+      height: 330%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .82), transparent);
+      transform: rotate(20deg);
+      animation: installShineSweep 2.9s ease-in-out infinite;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes installShineSweep {
+      0% { transform: translateX(-165%) rotate(20deg); opacity: 0; }
+      18% { opacity: .95; }
+      48% { transform: translateX(430%) rotate(20deg); opacity: .05; }
+      100% { transform: translateX(430%) rotate(20deg); opacity: 0; }
+    }
+
+    @keyframes installGlassPulse {
+      0%, 100% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45), 0 10px 22px rgba(8, 32, 58, .28); }
+      50% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .58), 0 14px 28px rgba(12, 48, 82, .34); }
     }
 
     .hero {
@@ -1113,8 +1221,8 @@
       gap: .56rem;
       font-size: .86rem;
       color: #274565;
-      background: linear-gradient(160deg, #f6faff, #f0f7ff);
-      border: 1px solid #d5e6f8;
+      background: linear-gradient(160deg, #e8f1fb, #dceafb);
+      border: 1px solid #bdd4ec;
       border-radius: .88rem;
       padding: .58rem .64rem;
     }
@@ -1212,7 +1320,7 @@
         <a href="#safety">Safety</a>
         <a href="#faq">FAQ</a>
       </div>
-      <a class="btn ghost js-install-trigger" href="#"><span class="chrome-icon" aria-hidden="true"></span>Install Extension</a>
+      <a class="btn ghost js-install-trigger nav-install-btn" href="#"><span class="chrome-icon" aria-hidden="true"></span>Install Extension</a>
     </nav>
   </header>
 
@@ -1268,9 +1376,29 @@
             GhostChat lets you talk directly with other visitors on a project’s own website while showing audits,
             contracts, and risk data in one place — uncensored, independent, and in real time.
           </p>
-          <div class="btn-row" role="group" aria-label="Primary actions">
-            <a class="btn primary js-install-trigger" href="#"><span class="chrome-icon" aria-hidden="true"></span>Install Extension</a>
-            <a class="btn ghost is-disabled" href="#" aria-disabled="true" tabindex="-1">View Demo (Soon)</a>
+          <div class="btn-row download-row" role="group" aria-label="Download options">
+            <a class="btn download-btn" href="/ghostchat/extensions/ghost-chat-0.5.2-chrome.zip">
+              <span class="chrome-icon" aria-hidden="true"></span>
+              <span class="download-copy">
+                <span class="download-label">Download for</span>
+                <span class="download-name">Google Chrome</span>
+              </span>
+            </a>
+            <a class="btn download-btn alt-browser" href="/ghostchat/extensions/ghost-chat-0.5.2-firefox.zip">
+              <span class="firefox-icon" aria-hidden="true"></span>
+              <span class="download-copy">
+                <span class="download-label">Download for</span>
+                <span class="download-name">Mozilla Firefox</span>
+              </span>
+            </a>
+            <a class="btn download-btn alt-browser" href="/ghostchat/extensions/ghost-chat-0.5.2-edge.zip">
+              <span class="edge-icon" aria-hidden="true"></span>
+              <span class="download-copy">
+                <span class="download-label">Download for</span>
+                <span class="download-name">Microsoft Edge</span>
+              </span>
+            </a>
+            <a class="btn ghost download-more js-install-trigger" href="#">More browsers</a>
           </div>
           <div class="trust-row" aria-label="Trust highlights">
             <span class="chip">Uncensorable peer chat</span>
@@ -1554,9 +1682,15 @@
           <span class="eyebrow" style="color:#8ce9f1;">Ready to browse with context?</span>
           <h2>Install GhostChat and turn every Web3 page into a live, safer room.</h2>
           <p>Move faster with community awareness and built-in trust cues, without leaving the site.</p>
-          <div class="btn-row" role="group" aria-label="Final actions">
-            <a class="btn primary js-install-trigger" href="#"><span class="chrome-icon" aria-hidden="true"></span>Install Extension</a>
-            <a class="btn ghost is-disabled" href="#" aria-disabled="true" tabindex="-1">View Demo (Soon)</a>
+          <div class="btn-row download-row" role="group" aria-label="Final download options">
+            <a class="btn download-btn" href="/ghostchat/extensions/ghost-chat-0.5.2-chrome.zip">
+              <span class="chrome-icon" aria-hidden="true"></span>
+              <span class="download-copy">
+                <span class="download-label">Download for</span>
+                <span class="download-name">Google Chrome</span>
+              </span>
+            </a>
+            <a class="btn ghost download-more js-install-trigger" href="#">More browsers</a>
           </div>
         </div>
       </div>
@@ -1580,10 +1714,9 @@
         <li><b>3</b><span>Click <strong>Load unpacked</strong> and select the GhostChat folder.</span></li>
       </ul>
       <div class="install-modal__actions">
-        <a class="btn primary" href="/ghostchat/extensions/ghost-chat-0.5.2-chrome.zip"><span class="chrome-icon" aria-hidden="true"></span>Chrome ZIP</a>
-        <a class="btn ghost" href="/ghostchat/extensions/ghost-chat-0.5.2-firefox.zip"><span class="firefox-icon" aria-hidden="true"></span>Firefox ZIP</a>
-        <a class="btn ghost" href="/ghostchat/extensions/ghost-chat-0.5.2-edge.zip"><span class="edge-icon" aria-hidden="true"></span>Edge ZIP</a>
-        <button type="button" class="btn ghost" data-install-close>Close</button>
+        <a class="btn primary" href="/ghostchat/extensions/ghost-chat-0.5.2-chrome.zip"><span class="chrome-icon" aria-hidden="true"></span>Google Chrome ZIP</a>
+        <a class="btn ghost" href="/ghostchat/extensions/ghost-chat-0.5.2-firefox.zip"><span class="firefox-icon" aria-hidden="true"></span>Mozilla Firefox ZIP</a>
+        <a class="btn ghost" href="/ghostchat/extensions/ghost-chat-0.5.2-edge.zip"><span class="edge-icon" aria-hidden="true"></span>Microsoft Edge ZIP</a>
         <p class="install-modal__hint">Need help? Unzip first, then use “Load unpacked”.</p>
       </div>
     </div>
