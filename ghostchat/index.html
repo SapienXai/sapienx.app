@@ -7,15 +7,22 @@
   <meta name="description" content="GhostChat is a browser extension that adds live, site-context chat for Web3 browsing with community trends, safety signals, notifications, and profile controls." />
   <meta name="keywords" content="GhostChat, Web3 chat, browser extension, live chat widget, site safety score, danmaku" />
   <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#050a12" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GhostChat" />
   <meta property="og:title" content="GhostChat | Live Web3 Site Chat, Community & Safety Signals" />
   <meta property="og:description" content="Bring live community context and safety signals directly into Web3 sites with GhostChat." />
   <meta property="og:url" content="https://sapienx.app/ghostchat/" />
-  <meta property="og:image" content="https://sapienx.app/images/banner.jpg" />
+  <meta property="og:image" content="https://sapienx.app/ghostchat/banner.jpeg" />
+  <meta property="og:image:alt" content="GhostChat Web3 live context chat preview" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="GhostChat | Live Web3 Site Chat, Community & Safety Signals" />
   <meta name="twitter:description" content="Live peer chat, trending site activity, and risk-aware browsing for Web3." />
-  <meta name="twitter:image" content="https://sapienx.app/images/banner.jpg" />
+  <meta name="twitter:image" content="https://sapienx.app/ghostchat/banner.jpeg" />
+  <meta name="twitter:image:alt" content="GhostChat Web3 live context chat preview" />
+  <link rel="icon" type="image/png" href="/ghostchat/logo.png" />
+  <link rel="shortcut icon" href="/ghostchat/logo.png" />
+  <link rel="apple-touch-icon" href="/ghostchat/logo.png" />
   <link rel="canonical" href="https://sapienx.app/ghostchat/" />
   <style>
     :root {
@@ -214,26 +221,35 @@
     }
 
     .brand-mark {
-      width: 1.8rem;
-      height: 1.8rem;
-      border-radius: 50%;
-      background: conic-gradient(from 180deg, var(--primary), var(--primary-2), #26c3a9, var(--primary));
+      width: 1.85rem;
+      height: 1.95rem;
+      border-radius: 58% 58% 36% 36%;
+      background:
+        radial-gradient(circle at 36% 38%, #081323 0 9%, transparent 10%),
+        radial-gradient(circle at 64% 38%, #081323 0 9%, transparent 10%),
+        linear-gradient(165deg, #e9f8ff 0%, #9fd8ff 62%, #76beff 100%);
       position: relative;
-      box-shadow: 0 0 0 4px rgba(14, 165, 163, .12);
-      animation: spin 8s linear infinite;
+      box-shadow: 0 0 0 3px rgba(136, 205, 255, .2), 0 6px 14px rgba(10, 31, 52, .35);
+      clip-path: polygon(0 0, 100% 0, 100% 80%, 88% 100%, 73% 82%, 58% 100%, 43% 82%, 28% 100%, 13% 82%, 0 100%);
+      animation: ghostFloat 2.8s ease-in-out infinite;
     }
 
     .brand-mark::after {
       content: "";
       position: absolute;
-      inset: 22%;
-      border-radius: 50%;
-      background: #fff;
+      left: 50%;
+      top: 57%;
+      width: .44rem;
+      height: .2rem;
+      border-radius: 0 0 .24rem .24rem;
+      border: 1.6px solid #0a1d33;
+      border-top: 0;
+      transform: translateX(-50%);
     }
 
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    @keyframes ghostFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
     }
 
     .nav-links {
