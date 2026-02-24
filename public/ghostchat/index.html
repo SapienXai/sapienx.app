@@ -168,6 +168,42 @@
       box-shadow: 0 0 0 1px rgba(255, 255, 255, .38) inset;
     }
 
+    .firefox-icon,
+    .edge-icon {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      position: relative;
+      flex: 0 0 1rem;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, .12) inset;
+    }
+
+    .firefox-icon {
+      background: conic-gradient(from 220deg, #ff7a18 0 40%, #ff3d54 40% 70%, #7c4dff 70% 100%);
+    }
+
+    .firefox-icon::after {
+      content: "";
+      position: absolute;
+      inset: 30%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .9);
+      opacity: .35;
+    }
+
+    .edge-icon {
+      background: conic-gradient(from 180deg, #0ea5a3 0 45%, #0b7fd7 45% 80%, #22d3ee 80% 100%);
+    }
+
+    .edge-icon::after {
+      content: "";
+      position: absolute;
+      inset: 27%;
+      border-radius: 50%;
+      background: #eaffff;
+      opacity: .35;
+    }
+
     .btn:focus-visible {
       outline: 3px solid rgba(11, 127, 215, .35);
       outline-offset: 2px;
@@ -192,6 +228,15 @@
       transform: translateY(-2px);
       box-shadow: var(--shadow-soft);
       border-color: #bfd6eb;
+    }
+
+    .btn.is-disabled,
+    .btn[aria-disabled="true"] {
+      opacity: .52;
+      cursor: not-allowed;
+      pointer-events: none;
+      box-shadow: none;
+      transform: none;
     }
 
     header {
@@ -965,6 +1010,150 @@
       justify-content: space-between;
     }
 
+    .install-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .24s ease;
+    }
+
+    .install-modal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .install-modal__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(4, 9, 16, .6);
+      backdrop-filter: blur(6px);
+    }
+
+    .install-modal__card {
+      position: relative;
+      width: min(100%, 600px);
+      border-radius: 1.3rem;
+      border: 1px solid #d5e6f8;
+      background:
+        radial-gradient(circle at 88% -10%, rgba(11, 127, 215, .14), transparent 45%),
+        linear-gradient(170deg, #fcfeff, #eef5fd);
+      box-shadow: 0 24px 56px rgba(5, 22, 40, .34);
+      padding: 1.05rem 1.05rem 1rem;
+    }
+
+    .install-modal__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .8rem;
+      margin-bottom: .68rem;
+    }
+
+    .install-modal__title {
+      font-size: 1.14rem;
+      font-weight: 800;
+      color: #17324d;
+      margin: 0;
+    }
+
+    .install-modal__close {
+      border: 0;
+      background: #e7eef6;
+      color: #16324b;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .install-modal__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      border: 1px solid #b9d6f4;
+      background: #edf5ff;
+      border-radius: 999px;
+      padding: .35rem .6rem;
+      font-size: .75rem;
+      color: #2b4c6d;
+      font-weight: 700;
+      margin-bottom: .58rem;
+    }
+
+    .install-modal__badge::before {
+      content: "";
+      width: .45rem;
+      height: .45rem;
+      border-radius: 50%;
+      background: linear-gradient(120deg, #10b981, #0ea5e9);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, .16);
+    }
+
+    .install-modal__note {
+      color: #3a5676;
+      font-size: .9rem;
+      margin-bottom: .7rem;
+    }
+
+    .install-modal__steps {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: .55rem;
+      grid-template-columns: 1fr;
+    }
+
+    .install-modal__steps li {
+      display: flex;
+      align-items: center;
+      gap: .56rem;
+      font-size: .86rem;
+      color: #274565;
+      background: linear-gradient(160deg, #f6faff, #f0f7ff);
+      border: 1px solid #d5e6f8;
+      border-radius: .88rem;
+      padding: .58rem .64rem;
+    }
+
+    .install-modal__steps b {
+      width: 1.35rem;
+      height: 1.35rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #dceafe;
+      color: #274565;
+      font-size: .75rem;
+      margin-bottom: 0;
+    }
+
+    .install-modal__actions {
+      margin-top: .82rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .56rem;
+      justify-content: space-between;
+    }
+
+    .install-modal__actions .btn {
+      padding: .66rem .98rem;
+      font-size: .85rem;
+    }
+
+    .install-modal__hint {
+      width: 100%;
+      margin-top: .15rem;
+      color: #68809c;
+      font-size: .76rem;
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(18px);
@@ -996,6 +1185,8 @@
       .float-bubble { min-width: 136px; font-size: .7rem; }
       .gc-card { height: 570px; }
       .hero-panel { margin-top: 0; }
+      .install-modal__steps { grid-template-columns: 1fr; }
+      .install-modal__actions { justify-content: flex-start; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1019,7 +1210,7 @@
         <a href="#safety">Safety</a>
         <a href="#faq">FAQ</a>
       </div>
-      <a class="btn ghost" href="#final-cta"><span class="chrome-icon" aria-hidden="true"></span>Install Extension</a>
+      <a class="btn ghost js-install-trigger" href="#"><span class="chrome-icon" aria-hidden="true"></span>Install Extension</a>
     </nav>
   </header>
 
@@ -1076,8 +1267,8 @@
             catch trending activity, and spot safety signals before you click deeper.
           </p>
           <div class="btn-row" role="group" aria-label="Primary actions">
-            <a class="btn primary" href="#final-cta"><span class="chrome-icon" aria-hidden="true"></span>Install Extension</a>
-            <a class="btn ghost" href="#demo">View Demo</a>
+            <a class="btn primary js-install-trigger" href="#"><span class="chrome-icon" aria-hidden="true"></span>Install Extension</a>
+            <a class="btn ghost is-disabled" href="#" aria-disabled="true" tabindex="-1">View Demo (Soon)</a>
           </div>
           <div class="trust-row" aria-label="Trust highlights">
             <span class="chip">Real-time peer chat</span>
@@ -1362,13 +1553,39 @@
           <h2>Install GhostChat and turn every Web3 page into a live, safer room.</h2>
           <p>Move faster with community awareness and built-in trust cues, without leaving the site.</p>
           <div class="btn-row" role="group" aria-label="Final actions">
-            <a class="btn primary" href="#"><span class="chrome-icon" aria-hidden="true"></span>Install Extension</a>
-            <a class="btn ghost" href="#demo">View Demo</a>
+            <a class="btn primary js-install-trigger" href="#"><span class="chrome-icon" aria-hidden="true"></span>Install Extension</a>
+            <a class="btn ghost is-disabled" href="#" aria-disabled="true" tabindex="-1">View Demo (Soon)</a>
           </div>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="install-modal" id="installModal" aria-hidden="true" role="dialog" aria-labelledby="installModalTitle">
+    <div class="install-modal__backdrop" data-install-close></div>
+    <div class="install-modal__card">
+      <div class="install-modal__top">
+        <h3 class="install-modal__title" id="installModalTitle">Install GhostChat (Early Access)</h3>
+        <button type="button" class="install-modal__close" aria-label="Close popup" data-install-close>×</button>
+      </div>
+      <div class="install-modal__badge">Chrome Web Store is launching soon</div>
+      <p class="install-modal__note">
+        Quick manual install for now. Switch to one-click install as soon as the store listing goes live.
+      </p>
+      <ul class="install-modal__steps">
+        <li><b>1</b><span>Download ZIP and extract the folder.</span></li>
+        <li><b>2</b><span>Open <code>chrome://extensions</code> and enable <strong>Developer mode</strong>.</span></li>
+        <li><b>3</b><span>Click <strong>Load unpacked</strong> and select the GhostChat folder.</span></li>
+      </ul>
+      <div class="install-modal__actions">
+        <a class="btn primary" href="/ghostchat/extensions/ghost-chat-0.5.2-chrome.zip"><span class="chrome-icon" aria-hidden="true"></span>Chrome ZIP</a>
+        <a class="btn ghost" href="/ghostchat/extensions/ghost-chat-0.5.2-firefox.zip"><span class="firefox-icon" aria-hidden="true"></span>Firefox ZIP</a>
+        <a class="btn ghost" href="/ghostchat/extensions/ghost-chat-0.5.2-edge.zip"><span class="edge-icon" aria-hidden="true"></span>Edge ZIP</a>
+        <button type="button" class="btn ghost" data-install-close>Close</button>
+        <p class="install-modal__hint">Need help? Unzip first, then use “Load unpacked”.</p>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <div class="container footer-grid">
@@ -1401,6 +1618,37 @@
       var chatBox = document.getElementById('gcConversation');
       var typing = document.getElementById('gcTyping');
       var typingUser = document.getElementById('gcTypingUser');
+      var installModal = document.getElementById('installModal');
+      var installTriggers = document.querySelectorAll('.js-install-trigger');
+      var installClosers = document.querySelectorAll('[data-install-close]');
+
+      var openInstallModal = function () {
+        if (!installModal) return;
+        installModal.classList.add('is-open');
+        installModal.setAttribute('aria-hidden', 'false');
+      };
+
+      var closeInstallModal = function () {
+        if (!installModal) return;
+        installModal.classList.remove('is-open');
+        installModal.setAttribute('aria-hidden', 'true');
+      };
+
+      installTriggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function (event) {
+          event.preventDefault();
+          openInstallModal();
+        });
+      });
+
+      installClosers.forEach(function (closer) {
+        closer.addEventListener('click', closeInstallModal);
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeInstallModal();
+      });
+
       if (chatBox && typing) {
         var messages = [
           { user: "Oğuz", icon: "🚀", text: "How does GhostChat help in the Web3 world?", ring: "#2f4e8a", bg: "radial-gradient(circle at 30% 30%, #fbdabf, #dfb189 52%, #8a6146 100%)" },
