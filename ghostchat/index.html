@@ -316,6 +316,7 @@
       position: relative;
       max-width: 520px;
       margin-left: auto;
+      margin-top: -28px;
     }
 
     .gc-card {
@@ -324,7 +325,7 @@
       border: 1px solid #d7e2ef;
       overflow: hidden;
       color: #334962;
-      height: 690px;
+      height: 640px;
       display: flex;
       flex-direction: column;
     }
@@ -616,7 +617,7 @@
       background: #e2e9f2;
       border-radius: .85rem;
       border: 1px solid #cad7e7;
-      padding: .58rem .6rem .5rem;
+      padding: .5rem .56rem .42rem;
       flex: 0 0 auto;
     }
 
@@ -626,13 +627,13 @@
       resize: none;
       outline: none;
       background: transparent;
-      min-height: 54px;
+      min-height: 42px;
       color: #4e6480;
       font: 600 .72rem/1.4 inherit;
     }
 
     .gc-input textarea::placeholder {
-      color: #7188a3;
+      color: #9aacc1;
     }
 
     .gc-input-foot {
@@ -647,8 +648,75 @@
       display: inline-flex;
       gap: .45rem;
       color: #1f2940;
-      font-size: 1.06rem;
       line-height: 1;
+      align-items: center;
+    }
+
+    .gc-face-icon,
+    .gc-image-icon {
+      width: 1.05rem;
+      height: 1.05rem;
+      border: 1.7px solid #1f2940;
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+      opacity: .92;
+    }
+
+    .gc-face-icon::before,
+    .gc-face-icon::after {
+      content: "";
+      position: absolute;
+      top: .31rem;
+      width: .11rem;
+      height: .11rem;
+      border-radius: 50%;
+      background: #1f2940;
+    }
+
+    .gc-face-icon::before { left: .26rem; }
+    .gc-face-icon::after { right: .26rem; }
+
+    .gc-face-icon i {
+      position: absolute;
+      left: 50%;
+      bottom: .2rem;
+      width: .44rem;
+      height: .22rem;
+      border: 1.6px solid #1f2940;
+      border-top: 0;
+      border-radius: 0 0 .3rem .3rem;
+      transform: translateX(-50%);
+      display: block;
+    }
+
+    .gc-image-icon {
+      border-radius: .2rem;
+      height: .86rem;
+      top: .01rem;
+    }
+
+    .gc-image-icon::before {
+      content: "";
+      position: absolute;
+      width: .16rem;
+      height: .16rem;
+      border-radius: 50%;
+      border: 1.4px solid #1f2940;
+      right: .14rem;
+      top: .12rem;
+    }
+
+    .gc-image-icon::after {
+      content: "";
+      position: absolute;
+      left: .1rem;
+      right: .1rem;
+      bottom: .09rem;
+      height: .3rem;
+      border: 1.5px solid #1f2940;
+      border-top: 0;
+      clip-path: polygon(0 100%, 30% 44%, 48% 68%, 72% 26%, 100% 100%);
     }
 
     .gc-send {
@@ -840,7 +908,7 @@
     @media (min-width: 720px) {
       .nav-links { display: flex; }
       .hero-grid { grid-template-columns: 1.05fr .95fr; gap: 1.8rem; align-items: start; }
-      .hero-panel { max-width: 470px; }
+      .hero-panel { max-width: 440px; }
       .problem-grid,
       .steps,
       .safety-grid,
@@ -855,7 +923,8 @@
       .btn { width: 100%; justify-content: center; }
       .hero-floating { inset: 4.9rem 0 0; opacity: 0.78; }
       .float-bubble { min-width: 136px; font-size: .7rem; }
-      .gc-card { height: 620px; }
+      .gc-card { height: 570px; }
+      .hero-panel { margin-top: 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1012,7 +1081,7 @@
             <div class="gc-input">
               <textarea rows="2" aria-label="Type message" placeholder="Type your message here." disabled></textarea>
               <div class="gc-input-foot">
-                <div class="gc-input-icons" aria-hidden="true"><span>☺</span><span>🖼</span></div>
+                <div class="gc-input-icons" aria-hidden="true"><span class="gc-face-icon"><i></i></span><span class="gc-image-icon"></span></div>
                 <span class="gc-counter">0/500</span>
                 <button type="button" class="gc-send" disabled>Send ↵</button>
               </div>
