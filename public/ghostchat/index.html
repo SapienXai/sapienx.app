@@ -266,30 +266,27 @@
     }
 
     .brand-mark {
-      width: 1.85rem;
-      height: 1.95rem;
-      border-radius: 58% 58% 36% 36%;
-      background:
-        radial-gradient(circle at 36% 38%, #081323 0 9%, transparent 10%),
-        radial-gradient(circle at 64% 38%, #081323 0 9%, transparent 10%),
-        linear-gradient(165deg, #e9f8ff 0%, #9fd8ff 62%, #76beff 100%);
+      width: 3.45rem;
+      height: 3.45rem;
       position: relative;
-      box-shadow: 0 0 0 3px rgba(136, 205, 255, .2), 0 6px 14px rgba(10, 31, 52, .35);
-      clip-path: polygon(0 0, 100% 0, 100% 80%, 88% 100%, 73% 82%, 58% 100%, 43% 82%, 28% 100%, 13% 82%, 0 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       animation: ghostFloat 2.8s ease-in-out infinite;
     }
 
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 57%;
-      width: .44rem;
-      height: .2rem;
-      border-radius: 0 0 .24rem .24rem;
-      border: 1.6px solid #0a1d33;
-      border-top: 0;
-      transform: translateX(-50%);
+    .brand-mark-video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-mark-fallback {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: none;
     }
 
     @keyframes ghostFloat {
@@ -1202,7 +1199,12 @@
   <header>
     <nav class="container nav" aria-label="Primary">
       <a href="#top" class="brand" aria-label="GhostChat home">
-        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-mark" aria-hidden="true">
+          <video class="brand-mark-video" autoplay muted loop playsinline preload="metadata" poster="/ghostchat/logo.png" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+            <source src="/ghostchat/ghostchat_transparent.webm" type="video/webm" />
+          </video>
+          <img class="brand-mark-fallback" src="/ghostchat/logo.png" alt="" />
+        </span>
         <span>GhostChat</span>
       </a>
       <div class="nav-links">
