@@ -322,6 +322,7 @@
       letter-spacing: .02em;
       color: #e7f1ff;
       position: relative;
+      flex-shrink: 0;
     }
 
     .brand-wordmark-wrap {
@@ -442,6 +443,12 @@
         inset 0 1px 0 rgba(255, 255, 255, .45),
         0 10px 22px rgba(8, 32, 58, .28);
       animation: installGlassPulse 3.1s ease-in-out infinite;
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+
+    .nav-install-label--short {
+      display: none;
     }
 
     .nav-install-btn::before {
@@ -1533,6 +1540,45 @@
       .install-modal__actions { justify-content: flex-start; }
     }
 
+    @media (max-width: 719px) {
+      .nav {
+        gap: .5rem;
+      }
+
+      .brand {
+        gap: .4rem;
+      }
+
+      .brand-mark {
+        width: 3.15rem;
+        height: 3.15rem;
+      }
+
+      .brand-wordmark {
+        height: 1.88rem;
+      }
+
+      .nav-install-btn {
+        width: auto !important;
+        padding: .5rem .68rem !important;
+        font-size: .8rem !important;
+      }
+
+      .nav-install-btn .chrome-icon {
+        width: .9rem;
+        height: .9rem;
+        flex: 0 0 .9rem;
+      }
+
+      .nav-install-label--full {
+        display: none;
+      }
+
+      .nav-install-label--short {
+        display: inline;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation: none !important;
@@ -1561,7 +1607,11 @@
         <a href="#safety">Safety</a>
         <a href="#faq">FAQ</a>
       </div>
-      <a class="btn ghost js-install-trigger nav-install-btn" href="#"><span class="chrome-icon" aria-hidden="true"></span>Install Extension</a>
+      <a class="btn ghost js-install-trigger nav-install-btn" href="#">
+        <span class="chrome-icon" aria-hidden="true"></span>
+        <span class="nav-install-label nav-install-label--full">Install Extension</span>
+        <span class="nav-install-label nav-install-label--short">Install</span>
+      </a>
     </nav>
   </header>
 
