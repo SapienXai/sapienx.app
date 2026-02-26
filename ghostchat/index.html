@@ -336,7 +336,7 @@
     }
 
     .brand-wordmark {
-      height: 1.7rem;
+      height: 2.9rem;
       width: auto;
       display: block;
       object-fit: contain;
@@ -346,28 +346,9 @@
       transform-origin: center center;
     }
 
-    .brand-wordmark-wrap::after {
-      content: "";
-      position: absolute;
-      top: -170%;
-      left: -34%;
-      width: 36%;
-      height: 440%;
-      pointer-events: none;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .88), transparent);
-      transform: rotate(18deg) translateX(-260%);
-      mix-blend-mode: screen;
-      animation: wordmarkShine 3.1s ease-in-out infinite;
-    }
-
     .brand:hover .brand-wordmark {
       transform: translateY(-1px) scale(1.02);
       filter: drop-shadow(0 4px 10px rgba(81, 168, 255, .35));
-    }
-
-    .brand:hover .brand-wordmark-wrap::after {
-      animation-duration: 1.6s;
-      opacity: 1;
     }
 
     @keyframes wordmarkShine {
@@ -380,6 +361,10 @@
     @keyframes wordmarkBreathe {
       0%, 100% { opacity: .96; }
       50% { opacity: 1; }
+    }
+
+    .brand-wordmark-fallback {
+      display: none;
     }
 
     .brand-mark {
@@ -1176,7 +1161,7 @@
     .footer-grid {
       display: grid;
       justify-items: center;
-      gap: .5rem;
+      gap: .12rem;
       text-align: center;
     }
 
@@ -1189,7 +1174,7 @@
     }
 
     .footer-brand-image {
-      height: 2.35rem;
+      height: 9.4rem;
       width: auto;
       display: block;
       object-fit: contain;
@@ -1197,6 +1182,10 @@
       transition: transform .25s ease, filter .25s ease;
       animation: wordmarkBreathe 3.8s ease-in-out infinite;
       transform-origin: center center;
+    }
+
+    .footer-brand-fallback {
+      display: none;
     }
 
     .footer-brand-wrap {
@@ -1209,35 +1198,15 @@
       isolation: isolate;
     }
 
-    .footer-brand-wrap::after {
-      content: "";
-      position: absolute;
-      top: -170%;
-      left: -34%;
-      width: 36%;
-      height: 440%;
-      pointer-events: none;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .82), transparent);
-      transform: rotate(18deg) translateX(-260%);
-      mix-blend-mode: screen;
-      animation: wordmarkShine 3.5s ease-in-out infinite;
-      opacity: .86;
-    }
-
     .footer-brand-wrap:hover .footer-brand-image {
       transform: translateY(-1px) scale(1.03);
       filter: drop-shadow(0 5px 12px rgba(82, 170, 255, .36));
     }
 
-    .footer-brand-wrap:hover::after {
-      animation-duration: 1.8s;
-      opacity: 1;
-    }
-
     .footer-logo {
       width: 128px;
       height: 128px;
-      margin-bottom: .15rem;
+      margin-bottom: 0;
       opacity: .95;
       position: relative;
       isolation: isolate;
@@ -1526,7 +1495,7 @@
       .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .shots-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .footer-grid { gap: .58rem; }
+      .footer-grid { gap: .16rem; }
     }
 
     @media (max-width: 430px) {
@@ -1555,7 +1524,7 @@
       }
 
       .brand-wordmark {
-        height: 1.88rem;
+        height: 3.2rem;
       }
 
       .nav-install-btn {
@@ -1599,7 +1568,10 @@
           <img class="brand-mark-fallback" src="/ghostchat/logo.png" alt="" />
         </span>
         <span class="brand-wordmark-wrap" aria-hidden="true">
-          <img class="brand-wordmark" src="/ghostchat/logot.png" alt="" />
+          <video class="brand-wordmark brand-wordmark-video" autoplay muted loop playsinline preload="metadata" poster="/ghostchat/logot.png" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+            <source src="/ghostchat/logo/logot.webm" type="video/webm" />
+          </video>
+          <img class="brand-wordmark brand-wordmark-fallback" src="/ghostchat/logot.png" alt="" />
         </span>
       </a>
       <div class="nav-links">
@@ -2032,7 +2004,10 @@
         <span class="footer-splash" style="--size: 9px; --dx: -36px; --rise: -50px; --fall: 112px; --speed: 3.6s; --delay: -3.4s; --start-x: 0px; --start-y: -2px;"></span>
       </div>
       <span class="footer-brand-wrap">
-        <img class="footer-brand-image" src="/ghostchat/logot.png" alt="GhostChat" />
+        <video class="footer-brand-image" autoplay muted loop playsinline preload="metadata" poster="/ghostchat/logot.png" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+          <source src="/ghostchat/logo/logof.webm" type="video/webm" />
+        </video>
+        <img class="footer-brand-image footer-brand-fallback" src="/ghostchat/logot.png" alt="GhostChat" />
       </span>
       <p class="footer-tagline">Community + Safety + Live Context for Web3 sites.</p>
       <div class="footer-links" aria-label="Footer links">
