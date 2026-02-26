@@ -57,6 +57,8 @@
       color: var(--text);
       font-family: "Inter", "Segoe UI", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
       scroll-behavior: smooth;
+      width: 100%;
+      overflow-x: hidden;
     }
 
     body::before {
@@ -1340,6 +1342,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity .24s ease;
+      overflow-x: hidden;
     }
 
     .install-modal.is-open {
@@ -1357,6 +1360,8 @@
     .install-modal__card {
       position: relative;
       width: min(100%, 600px);
+      max-width: calc(100vw - 1rem);
+      max-height: calc(100dvh - 1rem);
       border-radius: 1.3rem;
       border: 1px solid #d5e6f8;
       background:
@@ -1364,6 +1369,8 @@
         linear-gradient(170deg, #fcfeff, #eef5fd);
       box-shadow: 0 24px 56px rgba(5, 22, 40, .34);
       padding: 1.05rem 1.05rem 1rem;
+      overflow: auto;
+      overscroll-behavior: contain;
     }
 
     .install-modal__top {
@@ -1442,6 +1449,11 @@
       padding: .58rem .64rem;
     }
 
+    .install-modal__steps li span {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
     .install-modal__steps b {
       width: 1.35rem;
       height: 1.35rem;
@@ -1507,6 +1519,21 @@
       .hero-panel { margin-top: 0; }
       .install-modal__steps { grid-template-columns: 1fr; }
       .install-modal__actions { justify-content: flex-start; }
+      .install-modal {
+        padding: .55rem;
+      }
+      .install-modal__card {
+        max-width: calc(100vw - .55rem);
+        max-height: calc(100dvh - .55rem);
+        padding: .82rem .78rem .8rem;
+      }
+      .install-modal__title {
+        font-size: 1rem;
+      }
+      .install-modal__actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
 
     @media (max-width: 719px) {
