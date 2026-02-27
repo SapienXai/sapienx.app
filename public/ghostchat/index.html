@@ -1667,21 +1667,21 @@
             contracts, and risk data in one place — uncensored, independent, and in real time.
           </p>
           <div class="btn-row download-row" role="group" aria-label="Download options">
-            <a class="btn download-btn" href="/ghostchat/extensions/ghost-chat-0.5.9-chrome.zip">
+            <a class="btn download-btn" data-release-link data-browser="chrome" href="/ghostchat/extensions/ghost-chat-0.5.9-chrome.zip">
               <span class="chrome-icon" aria-hidden="true"></span>
               <span class="download-copy">
                 <span class="download-label">Download for</span>
                 <span class="download-name">Google Chrome</span>
               </span>
             </a>
-            <a class="btn download-btn alt-browser" href="/ghostchat/extensions/ghost-chat-0.5.9-firefox.zip">
+            <a class="btn download-btn alt-browser" data-release-link data-browser="firefox" href="/ghostchat/extensions/ghost-chat-0.5.9-firefox.zip">
               <span class="firefox-icon" aria-hidden="true"></span>
               <span class="download-copy">
                 <span class="download-label">Download for</span>
                 <span class="download-name">Mozilla Firefox</span>
               </span>
             </a>
-            <a class="btn download-btn alt-browser" href="/ghostchat/extensions/ghost-chat-0.5.9-edge.zip">
+            <a class="btn download-btn alt-browser" data-release-link data-browser="edge" href="/ghostchat/extensions/ghost-chat-0.5.9-edge.zip">
               <span class="edge-icon" aria-hidden="true"></span>
               <span class="download-copy">
                 <span class="download-label">Download for</span>
@@ -1973,7 +1973,7 @@
           <h2>Install GhostChat and turn every Web3 page into a live, safer room.</h2>
           <p>Move faster with community awareness and built-in trust cues, without leaving the site.</p>
           <div class="btn-row download-row" role="group" aria-label="Final download options">
-            <a class="btn download-btn" href="/ghostchat/extensions/ghost-chat-0.5.9-chrome.zip">
+            <a class="btn download-btn" data-release-link data-browser="chrome" href="/ghostchat/extensions/ghost-chat-0.5.9-chrome.zip">
               <span class="chrome-icon" aria-hidden="true"></span>
               <span class="download-copy">
                 <span class="download-label">Download for</span>
@@ -2004,9 +2004,9 @@
         <li><b>3</b><span>Click <strong>Load unpacked</strong> and select the GhostChat folder.</span></li>
       </ul>
       <div class="install-modal__actions">
-        <a class="btn primary" href="/ghostchat/extensions/ghost-chat-0.5.9-chrome.zip"><span class="chrome-icon" aria-hidden="true"></span>Google Chrome ZIP</a>
-        <a class="btn ghost" href="/ghostchat/extensions/ghost-chat-0.5.9-firefox.zip"><span class="firefox-icon" aria-hidden="true"></span>Mozilla Firefox ZIP</a>
-        <a class="btn ghost" href="/ghostchat/extensions/ghost-chat-0.5.9-edge.zip"><span class="edge-icon" aria-hidden="true"></span>Microsoft Edge ZIP</a>
+        <a class="btn primary" data-release-link data-browser="chrome" href="/ghostchat/extensions/ghost-chat-0.5.9-chrome.zip"><span class="chrome-icon" aria-hidden="true"></span>Google Chrome ZIP</a>
+        <a class="btn ghost" data-release-link data-browser="firefox" href="/ghostchat/extensions/ghost-chat-0.5.9-firefox.zip"><span class="firefox-icon" aria-hidden="true"></span>Mozilla Firefox ZIP</a>
+        <a class="btn ghost" data-release-link data-browser="edge" href="/ghostchat/extensions/ghost-chat-0.5.9-edge.zip"><span class="edge-icon" aria-hidden="true"></span>Microsoft Edge ZIP</a>
         <p class="install-modal__hint">Need help? Unzip first, then use “Load unpacked”.</p>
       </div>
     </div>
@@ -2073,6 +2073,72 @@
       var installModal = document.getElementById('installModal');
       var installTriggers = document.querySelectorAll('.js-install-trigger');
       var installClosers = document.querySelectorAll('[data-install-close]');
+      var releaseLinks = document.querySelectorAll('[data-release-link]');
+
+      var UPDATE_JSON_URLS = [
+        '/ghostchat/update.json',
+        'https://raw.githubusercontent.com/SapienXai/GhostChat/master/public/update.json',
+        '/ghostchat/latest.json'
+      ];
+
+      var normalizeUpdateConfig = function (payload) {
+        if (!payload || typeof payload !== 'object') return null;
+
+        var downloads = {};
+        var fallbackUrl = typeof payload.downloadUrl === 'string' ? payload.downloadUrl.trim() : '';
+
+        if (payload.browserDownloads && typeof payload.browserDownloads === 'object') {
+          ['chrome', 'firefox', 'edge'].forEach(function (browser) {
+            var candidate = payload.browserDownloads[browser];
+            if (typeof candidate === 'string' && candidate.trim()) {
+              downloads[browser] = candidate.trim();
+            }
+          });
+        }
+
+        if (fallbackUrl) {
+          if (!downloads.chrome) downloads.chrome = fallbackUrl;
+          if (!downloads.firefox) downloads.firefox = fallbackUrl;
+          if (!downloads.edge) downloads.edge = fallbackUrl;
+        }
+
+        if (!downloads.chrome && !downloads.firefox && !downloads.edge) return null;
+        return { downloads: downloads };
+      };
+
+      var applyUpdateConfig = function (config) {
+        if (!config || !config.downloads) return;
+        releaseLinks.forEach(function (link) {
+          var browser = (link.getAttribute('data-browser') || 'chrome').toLowerCase();
+          var href = config.downloads[browser] || config.downloads.chrome;
+          if (href) link.setAttribute('href', href);
+        });
+      };
+
+      var hydrateReleaseLinks = function () {
+        if (!('fetch' in window) || !releaseLinks.length) return;
+
+        var tryIndex = function (idx) {
+          if (idx >= UPDATE_JSON_URLS.length) return;
+          fetch(UPDATE_JSON_URLS[idx], { cache: 'no-store' })
+            .then(function (res) {
+              if (!res.ok) throw new Error('bad response');
+              return res.json();
+            })
+            .then(function (payload) {
+              var config = normalizeUpdateConfig(payload);
+              if (!config) throw new Error('invalid payload');
+              applyUpdateConfig(config);
+            })
+            .catch(function () {
+              tryIndex(idx + 1);
+            });
+        };
+
+        tryIndex(0);
+      };
+
+      hydrateReleaseLinks();
 
       var openInstallModal = function () {
         if (!installModal) return;
