@@ -2075,10 +2075,10 @@
       var installClosers = document.querySelectorAll('[data-install-close]');
       var releaseLinks = document.querySelectorAll('[data-release-link]');
 
+      var updateNoCache = Date.now();
       var UPDATE_JSON_URLS = [
-        'https://raw.githubusercontent.com/SapienXai/GhostChat/refs/heads/master/public/update.json',
-        '/ghostchat/update.json',
-        '/ghostchat/latest.json'
+        'https://raw.githubusercontent.com/SapienXai/GhostChat/refs/heads/master/public/update.json?ts=' + updateNoCache,
+        '/ghostchat/update.json?ts=' + updateNoCache
       ];
 
       var normalizeUpdateConfig = function (payload) {
