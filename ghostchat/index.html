@@ -2096,11 +2096,7 @@
           });
         }
 
-        if (fallbackUrl) {
-          if (!downloads.chrome) downloads.chrome = fallbackUrl;
-          if (!downloads.firefox) downloads.firefox = fallbackUrl;
-          if (!downloads.edge) downloads.edge = fallbackUrl;
-        }
+        if (fallbackUrl && !downloads.chrome) downloads.chrome = fallbackUrl;
 
         if (!downloads.chrome && !downloads.firefox && !downloads.edge) return null;
         return { downloads: downloads };
@@ -2110,7 +2106,7 @@
         if (!config || !config.downloads) return;
         releaseLinks.forEach(function (link) {
           var browser = (link.getAttribute('data-browser') || 'chrome').toLowerCase();
-          var href = config.downloads[browser] || config.downloads.chrome;
+          var href = config.downloads[browser];
           if (href) link.setAttribute('href', href);
         });
       };
