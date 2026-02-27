@@ -2076,8 +2076,8 @@
       var releaseLinks = document.querySelectorAll('[data-release-link]');
 
       var UPDATE_JSON_URLS = [
-        '/ghostchat/update.json',
         'https://raw.githubusercontent.com/SapienXai/GhostChat/master/public/update.json',
+        '/ghostchat/update.json',
         '/ghostchat/latest.json'
       ];
 
@@ -2087,9 +2087,14 @@
         var downloads = {};
         var fallbackUrl = typeof payload.downloadUrl === 'string' ? payload.downloadUrl.trim() : '';
 
-        if (payload.browserDownloads && typeof payload.browserDownloads === 'object') {
+        var browserMap = null;
+        if (payload.downloads && typeof payload.downloads === 'object') {
+          browserMap = payload.downloads;
+        }
+
+        if (browserMap) {
           ['chrome', 'firefox', 'edge'].forEach(function (browser) {
-            var candidate = payload.browserDownloads[browser];
+            var candidate = browserMap[browser];
             if (typeof candidate === 'string' && candidate.trim()) {
               downloads[browser] = candidate.trim();
             }
