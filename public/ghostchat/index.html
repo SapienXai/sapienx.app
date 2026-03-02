@@ -319,7 +319,8 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: .6rem;
+      gap: .28rem;
+      --brand-cross-distance: clamp(10.5rem, 18vw, 14rem);
       font-weight: 800;
       letter-spacing: .02em;
       color: #e7f1ff;
@@ -331,6 +332,8 @@
       position: relative;
       display: inline-flex;
       align-items: center;
+      margin-left: -.42rem;
+      z-index: 1;
       padding: 0 .22rem;
       border-radius: .4rem;
       overflow: hidden;
@@ -376,7 +379,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      animation: ghostFloat 2.8s ease-in-out infinite;
+      z-index: 2;
+      animation: brandMarkTraverse 7s cubic-bezier(.42, 0, .2, 1) infinite;
     }
 
     .brand-mark-video {
@@ -393,9 +397,20 @@
       display: none;
     }
 
-    @keyframes ghostFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-2px); }
+    @keyframes brandMarkTraverse {
+      0%, 12% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+      34% { transform: translate3d(var(--brand-cross-distance), -2px, 0) rotate(30deg) scale(1.02); }
+      38%, 66% { transform: translate3d(var(--brand-cross-distance), 0, 0) rotate(0deg) scale(1.02); }
+      86% { transform: translate3d(calc(var(--brand-cross-distance) * .42), -1px, 0) rotate(-30deg) scale(1.01); }
+      100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+    }
+
+    @keyframes brandMarkTraverseMobile {
+      0%, 12% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+      34% { transform: translate3d(var(--brand-cross-distance), -2px, 0) rotate(30deg) scale(1.02); }
+      38%, 63% { transform: translate3d(var(--brand-cross-distance), 0, 0) rotate(0deg) scale(1.02); }
+      86% { transform: translate3d(calc(var(--brand-cross-distance) * .42), -1px, 0) rotate(-30deg) scale(1.01); }
+      100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
     }
 
     .nav-links {
@@ -1542,12 +1557,14 @@
       }
 
       .brand {
-        gap: .4rem;
+        gap: .18rem;
+        --brand-cross-distance: clamp(12.8rem, 38vw, 16.4rem);
       }
 
       .brand-mark {
         width: 3.15rem;
         height: 3.15rem;
+        animation: brandMarkTraverseMobile 8s cubic-bezier(.42, 0, .2, 1) infinite;
       }
 
       .brand-wordmark {
