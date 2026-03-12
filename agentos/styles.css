@@ -1559,21 +1559,9 @@ pre {
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(10px);
-  transition:
-    opacity 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
-    transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
-
-.reveal--delay { transition-delay: 0.02s; }
-.reveal--delay-2 { transition-delay: 0.04s; }
-.reveal--delay-3 { transition-delay: 0.06s; }
 
 @keyframes floatAura {
   from {
