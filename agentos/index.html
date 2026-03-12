@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>AgentOS | Human Operating Layer for AI Agents</title>
+  <meta
+    name="description"
+    content="AgentOS is the human operating layer for AI agents. Run agents, projects, and operations from one local-first control surface built on OpenClaw."
+  />
+  <meta
+    name="keywords"
+    content="AgentOS, OpenClaw, AI agents, AI operations, mission control, local-first control plane, agent orchestration, SapienX"
+  />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="SapienX" />
+  <meta name="application-name" content="AgentOS" />
+  <meta name="theme-color" content="#09111d" />
+  <link rel="canonical" href="https://sapienx.app/agentos/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="AgentOS" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="AgentOS | Human Operating Layer for AI Agents" />
+  <meta
+    property="og:description"
+    content="Run agents, projects, and operations from one local-first control surface built on OpenClaw."
+  />
+  <meta property="og:url" content="https://sapienx.app/agentos/" />
+  <meta property="og:image" content="https://sapienx.app/agentos/banner.jpeg" />
+  <meta property="og:image:secure_url" content="https://sapienx.app/agentos/banner.jpeg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1536" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:image:alt" content="AgentOS mission control interface banner" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@sapienapp" />
+  <meta name="twitter:creator" content="@sapienapp" />
+  <meta name="twitter:title" content="AgentOS | Human Operating Layer for AI Agents" />
+  <meta
+    name="twitter:description"
+    content="Run agents, projects, and operations from one local-first control surface built on OpenClaw."
+  />
+  <meta name="twitter:image" content="https://sapienx.app/agentos/banner.jpeg" />
+  <meta name="twitter:image:alt" content="AgentOS mission control interface banner" />
+  <link rel="icon" type="image/webp" href="./logo.webp" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <div class="page-aura page-aura--left" aria-hidden="true"></div>
+    <div class="page-aura page-aura--right" aria-hidden="true"></div>
+    <div class="mouse-glow" id="mouse-glow"></div>
+    <div class="page-grid" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="announcement-bar">
+        <div class="container announcement-bar__inner">
+          <span class="announcement-bar__tag">New</span>
+
+          <div class="announcement-bar__marquee" aria-label="Latest announcement">
+              <div class="announcement-bar__track">
+                <div class="announcement-bar__items">
+                  <span>Workspace-based operations</span>
+                  <span>Mission control for agents</span>
+                  <span>Live execution visibility</span>
+                  <span>Human approvals and oversight</span>
+                  <span>OpenClaw-powered foundation</span>
+                </div>
+                <div class="announcement-bar__items" aria-hidden="true">
+                  <span>Workspace-based operations</span>
+                  <span>Mission control for agents</span>
+                  <span>Live execution visibility</span>
+                  <span>Human approvals and oversight</span>
+                  <span>OpenClaw-powered foundation</span>
+                </div>
+              </div>
+          </div>
+
+          <a class="announcement-bar__cta" href="https://github.com/SapienXai/AgentOS-MissionControl" target="_blank" rel="noreferrer">
+            Repo
+          </a>
+        </div>
+      </div>
+
+      <div class="container site-header__inner">
+        <a class="brand" href="#top" aria-label="AgentOS home">
+          <span class="brand__mark" aria-hidden="true">
+            <img class="brand__logo" src="./logo.webp" alt="" />
+          </span>
+          <span class="brand__copy">
+            <strong>AgentOS</strong>
+            <small>by SapienX</small>
+          </span>
+        </a>
+
+        <nav class="site-nav" id="site-navigation" aria-label="Primary navigation">
+          <a href="#quickstart">Quickstart</a>
+          <a href="#what-it-does">What It Does</a>
+          <a href="#works-with">Works With Everything</a>
+          <a href="#cta">Start</a>
+        </nav>
+
+        <button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="site-navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="site-actions">
+          <a class="button button--ghost" href="https://youtu.be/KKX52CFtZrI" target="_blank" rel="noreferrer">Watch demo</a>
+          <a class="button button--primary" href="#quickstart">Quickstart</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container">
+          <div class="hero-stage reveal reveal--delay">
+            <div class="hero-content">
+              <article class="hero-panel hero-panel--intro">
+                <p class="hero-panel__kicker">The human layer for OpenClaw</p>
+                <h1>The one-person company era begins.</h1>
+                <p>
+                  Run agents, projects, and operations from one control surface built for real operators.
+                </p>
+              </article>
+
+              <article class="hero-panel hero-panel--actions">
+                <div class="button-row">
+                  <a class="button button--primary" href="#quickstart">Install AgentOS</a>
+                  <a class="button button--secondary" href="#what-it-does">Explore the system</a>
+                </div>
+                <p class="hero-note" aria-label="Built on OpenClaw. Designed for real operators.">
+                  <span>Built on</span>
+                  <a
+                    class="hero-note__logo-link"
+                    href="https://openclaw.ai/"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="OpenClaw"
+                  >
+                    <img class="hero-note__logo" src="./openclaw.png" alt="" />
+                  </a>
+                  <span>. Designed for real operators.</span>
+                </p>
+              </article>
+            </div>
+
+            <div class="hero-video-shell">
+              <div class="hero-video-shell__chrome">
+                <div class="window-dots" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="hero-video-shell__label">Mission Control Walkthrough</div>
+              </div>
+
+              <iframe
+                class="hero-video-frame"
+                src="https://www.youtube.com/embed/KKX52CFtZrI?start=19&rel=0&playsinline=1"
+                data-base-src="https://www.youtube.com/embed/KKX52CFtZrI?start=19&rel=0&playsinline=1"
+                title="AgentOS Mission Control walkthrough"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <div class="hero-footer">
+              <article class="hero-panel hero-panel--proof">
+                <span class="hero-list__label">Why this lands</span>
+                <div class="hero-list">
+                  <div>
+                    <strong>See the system</strong>
+                    <p>Workspaces, agents, runtimes, and health stay visible.</p>
+                  </div>
+                  <div>
+                    <strong>Dispatch real work</strong>
+                    <p>Missions map to actual folders, files, and operating policies.</p>
+                  </div>
+                  <div>
+                    <strong>Inspect what happened</strong>
+                    <p>Transcript history and created files keep output reviewable.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="hero-panel hero-panel--metrics">
+                <div class="metric-grid">
+                  <div class="metric-card">
+                    <small>Control plane</small>
+                    <strong>Sidebar + canvas + inspector</strong>
+                  </div>
+                  <div class="metric-card">
+                    <small>Deploy flow</small>
+                    <strong>Plan -> scaffold -> run</strong>
+                  </div>
+                  <div class="metric-card">
+                    <small>Runtime truth</small>
+                    <strong>OpenClaw-backed state</strong>
+                  </div>
+                  <div class="metric-card">
+                    <small>Operating style</small>
+                    <strong>Local-first</strong>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="hero-strip reveal reveal--delay-2">
+            <div class="hero-strip__rail">
+              <div class="hero-strip__track">
+                <span>Live topology canvas</span>
+                <span>Mission dispatch</span>
+                <span>Transcript-backed inspector</span>
+                <span>Workspace bootstrap</span>
+                <span>Planner deploy flows</span>
+                <span>Onboarding and fallback</span>
+              </div>
+              <div class="hero-strip__track hero-strip__track--clone" aria-hidden="true">
+                <span>Live topology canvas</span>
+                <span>Mission dispatch</span>
+                <span>Transcript-backed inspector</span>
+                <span>Workspace bootstrap</span>
+                <span>Planner deploy flows</span>
+                <span>Onboarding and fallback</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--quickstart" id="quickstart">
+        <div class="container">
+          <div class="section-heading section-heading--quickstart reveal">
+            <span class="section-heading__pointer" aria-hidden="true"></span>
+            <div class="section-heading__copy">
+              <div class="eyebrow">QuickStart</div>
+              <h2>Install AgentOS and open Mission Control.</h2>
+              <p>
+                Pick an install path, run one command, and verify the local runtime.
+              </p>
+            </div>
+          </div>
+
+          <div class="quickstart-shell reveal reveal--delay">
+            <div class="quickstart-shell__header">
+              <div class="quickstart-shell__lights" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="quickstart-tabs" role="tablist" aria-label="AgentOS quickstart methods">
+                <button class="quickstart-tab is-active" type="button" role="tab" aria-selected="true" data-tab-target="release">
+                  One-liner
+                </button>
+                <button class="quickstart-tab" type="button" role="tab" aria-selected="false" data-tab-target="package">
+                  pnpm
+                </button>
+                <button class="quickstart-tab" type="button" role="tab" aria-selected="false" data-tab-target="source">
+                  Source
+                </button>
+              </div>
+
+              <div class="quickstart-shell__status" aria-hidden="true">
+                <span class="quickstart-shell__status-main">local-first</span>
+                <span class="quickstart-shell__status-accent">recommended</span>
+              </div>
+
+              <span class="quickstart-shell__beta">CLI beta</span>
+            </div>
+
+            <div class="quickstart-panels">
+              <section class="quickstart-panel is-active" role="tabpanel" data-tab-panel="release">
+                <p class="quickstart-panel__lede">
+                  # Fastest path. Install the published AgentOS release and open Mission Control locally.
+                </p>
+
+                <div class="quickstart-command">
+                  <span class="quickstart-command__sigil">$</span>
+                  <pre id="release-snippet"><code>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS-MissionControl/main/install.sh | bash</code></pre>
+                  <button class="copy-button" type="button" data-copy-target="release-snippet">Copy</button>
+                </div>
+
+                <div class="quickstart-panel__meta">
+                  <span>Packaged CLI install</span>
+                  <span>Launch with <code>agentos start --open</code></span>
+                  <span>Verify with <code>agentos doctor</code></span>
+                </div>
+              </section>
+
+              <section class="quickstart-panel" role="tabpanel" data-tab-panel="package" hidden>
+                <p class="quickstart-panel__lede">
+                  # Best for repeat installs. Same control surface, cleaner upgrades through pnpm.
+                </p>
+
+                <div class="quickstart-command">
+                  <span class="quickstart-command__sigil">$</span>
+                  <pre id="package-snippet"><code>pnpm add -g @sapienx/agentos</code></pre>
+                  <button class="copy-button" type="button" data-copy-target="package-snippet">Copy</button>
+                </div>
+
+                <div class="quickstart-panel__meta">
+                  <span>Global package workflow</span>
+                  <span>Launch with <code>agentos start --open</code></span>
+                  <span>Fast refreshes through pnpm</span>
+                </div>
+              </section>
+
+              <section class="quickstart-panel" role="tabpanel" data-tab-panel="source" hidden>
+                <p class="quickstart-panel__lede">
+                  # Best for builders. Clone the repo, boot locally, and customize the control surface directly.
+                </p>
+
+                <div class="quickstart-command">
+                  <span class="quickstart-command__sigil">$</span>
+                  <pre id="source-snippet"><code>git clone https://github.com/SapienXai/AgentOS-MissionControl.git && cd AgentOS-MissionControl && pnpm install && pnpm dev</code></pre>
+                  <button class="copy-button" type="button" data-copy-target="source-snippet">Copy</button>
+                </div>
+
+                <div class="quickstart-panel__meta">
+                  <span>Ideal for forks and product teams</span>
+                  <span>Customize UI, flows, and branding</span>
+                  <span>Check <code>openclaw gateway status --json</code></span>
+                </div>
+              </section>
+            </div>
+
+            <p class="quickstart-shell__caption">
+              Start with the one-liner unless your setup already depends on <code>pnpm</code> or a source checkout.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="what-it-does">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div class="eyebrow">What It Does</div>
+            <h2>Everything the operator needs above the runtime.</h2>
+            <p>
+              This section mirrors the technical role of the reference site, but the cards are specific to AgentOS. These are the core operating surfaces already present in the product.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card reveal">
+              <span class="feature-card__badge">01</span>
+              <h3>Live topology canvas</h3>
+              <p>Visualize workspace, agent, runtime, and model relationships from one operator-facing map.</p>
+            </article>
+            <article class="feature-card reveal reveal--delay">
+              <span class="feature-card__badge">02</span>
+              <h3>Mission dispatch</h3>
+              <p>Route structured work to real OpenClaw agents with thinking levels and clear operational intent.</p>
+            </article>
+            <article class="feature-card reveal reveal--delay-2">
+              <span class="feature-card__badge">03</span>
+              <h3>Transcript-backed inspection</h3>
+              <p>Inspect runtime output, warnings, token usage, and created files after execution.</p>
+            </article>
+            <article class="feature-card reveal">
+              <span class="feature-card__badge">04</span>
+              <h3>Workspace bootstrap wizard</h3>
+              <p>Create a new workspace with templates, presets, memory, docs, and kickoff missions.</p>
+            </article>
+            <article class="feature-card reveal reveal--delay">
+              <span class="feature-card__badge">05</span>
+              <h3>Planner deploy flows</h3>
+              <p>Turn company context into a live workspace, agent team, automations, and first missions.</p>
+            </article>
+            <article class="feature-card reveal reveal--delay-2">
+              <span class="feature-card__badge">06</span>
+              <h3>Agent presets and policies</h3>
+              <p>Configure workers, browsers, setup agents, network rules, install scope, and heartbeat policies.</p>
+            </article>
+            <article class="feature-card reveal">
+              <span class="feature-card__badge">07</span>
+              <h3>OpenClaw onboarding</h3>
+              <p>Detect missing runtime state, install or start OpenClaw, and verify readiness directly from the UI.</p>
+            </article>
+            <article class="feature-card reveal reveal--delay">
+              <span class="feature-card__badge">08</span>
+              <h3>Honest fallback mode</h3>
+              <p>If the runtime is unavailable, the product says so clearly instead of pretending the system is live.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--works-with" id="works-with">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div class="eyebrow">Works With Everything</div>
+            <h2>Built to sit above the whole operating stack.</h2>
+            <p>
+              AgentOS does not replace the runtime. It rides above it. That means the control plane can unify models, files, sessions, automations, planner assets, and the real project workspace beneath.
+            </p>
+          </div>
+
+          <div class="integration-stage reveal reveal--delay">
+            <div class="marquee-row">
+              <div class="marquee-track">
+                <span>OpenClaw</span>
+                <span>GPT-5</span>
+                <span>Claude</span>
+                <span>Local models</span>
+                <span>Terminal</span>
+                <span>Filesystem</span>
+                <span>Git repos</span>
+                <span>Workspaces</span>
+                <span>Agents</span>
+                <span>Runtimes</span>
+                <span>Transcripts</span>
+                <span>SSE snapshots</span>
+                <span>OpenClaw</span>
+                <span>GPT-5</span>
+                <span>Claude</span>
+                <span>Local models</span>
+                <span>Terminal</span>
+                <span>Filesystem</span>
+                <span>Git repos</span>
+                <span>Workspaces</span>
+                <span>Agents</span>
+                <span>Runtimes</span>
+                <span>Transcripts</span>
+                <span>SSE snapshots</span>
+              </div>
+            </div>
+
+            <div class="marquee-row marquee-row--reverse">
+              <div class="marquee-track">
+                <span>Planner</span>
+                <span>Automations</span>
+                <span>Gateway</span>
+                <span>Policies</span>
+                <span>AGENTS.md</span>
+                <span>MEMORY.md</span>
+                <span>Browser tasks</span>
+                <span>Channels</span>
+                <span>Team presets</span>
+                <span>Docs</span>
+                <span>Deliverables</span>
+                <span>Local machine</span>
+                <span>Planner</span>
+                <span>Automations</span>
+                <span>Gateway</span>
+                <span>Policies</span>
+                <span>AGENTS.md</span>
+                <span>MEMORY.md</span>
+                <span>Browser tasks</span>
+                <span>Channels</span>
+                <span>Team presets</span>
+                <span>Docs</span>
+                <span>Deliverables</span>
+                <span>Local machine</span>
+              </div>
+            </div>
+
+            <div class="integration-grid">
+              <article class="integration-card">
+                <small>Runtime truth</small>
+                <strong>Sessions, presence, gateway state, models, and transcript files</strong>
+                <p>The live state stays grounded in OpenClaw instead of being duplicated into a fake SaaS abstraction.</p>
+              </article>
+              <article class="integration-card">
+                <small>Workspace reality</small>
+                <strong>Real project folders, docs, memory, deliverables, and scaffolds</strong>
+                <p>Missions tie directly to the filesystem, which is where the work actually lives.</p>
+              </article>
+              <article class="integration-card">
+                <small>Operator actions</small>
+                <strong>Planning, deploy, inspection, onboarding, and policy-aware control</strong>
+                <p>The human stays above the system with one coherent operating picture and real review loops.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--cta" id="cta">
+        <div class="container">
+          <div class="cta-shell reveal">
+            <div class="cta-copy">
+              <div class="eyebrow">Start with AgentOS</div>
+              <h2>You are not just using AI. You are operating AI labor.</h2>
+              <p>
+                That is the frame this site should sell. AgentOS gives SapienX a serious operating layer for running agents across real workspaces without losing visibility or control.
+              </p>
+            </div>
+
+            <div class="cta-actions">
+              <a class="button button--primary" href="https://github.com/SapienXai/AgentOS-MissionControl" target="_blank" rel="noreferrer">Open repository</a>
+              <a class="button button--secondary" href="https://youtu.be/KKX52CFtZrI" target="_blank" rel="noreferrer">Watch demo</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="site-footer__inner reveal">
+          <div class="site-footer__grid">
+            <div class="site-footer__brand">
+              <div class="site-footer__brand-mark">AgentOS</div>
+              <p class="site-footer__brand-lead">
+                Human operating layer for AI agents, built on OpenClaw.
+              </p>
+              <p class="site-footer__brand-note">
+                Operate agents, projects, and companies from one control surface.
+              </p>
+            </div>
+
+            <nav class="site-footer__column" aria-label="Product">
+              <span class="site-footer__column-title">Product</span>
+              <a href="#what-it-does">Features</a>
+              <a href="#works-with">Architecture</a>
+              <a href="https://github.com/SapienXai/AgentOS-MissionControl#readme" target="_blank" rel="noreferrer">Docs</a>
+              <a href="#quickstart">Quickstart</a>
+            </nav>
+
+            <nav class="site-footer__column" aria-label="Resources">
+              <span class="site-footer__column-title">Resources</span>
+              <a href="https://github.com/SapienXai/AgentOS-MissionControl" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://github.com/SapienXai/AgentOS-MissionControl/releases" target="_blank" rel="noreferrer">Changelog</a>
+              <a href="https://github.com/SapienXai/AgentOS-MissionControl/issues" target="_blank" rel="noreferrer">Roadmap</a>
+            </nav>
+
+            <nav class="site-footer__column" aria-label="Company">
+              <span class="site-footer__column-title">Company</span>
+              <a href="https://sapienx.app/" target="_blank" rel="noreferrer">SapienX</a>
+              <a href="https://x.com/sapienapp" target="_blank" rel="noreferrer">X / Twitter</a>
+              <a href="https://sapienx.app/" target="_blank" rel="noreferrer">Contact</a>
+            </nav>
+          </div>
+
+          <div class="site-footer__bottom">
+            <p aria-label="Built on OpenClaw. Designed for real operators.">
+              <span>Built on</span>
+              <a
+                class="site-footer__bottom-logo-link"
+                href="https://openclaw.ai/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="OpenClaw"
+              >
+                <img class="site-footer__bottom-logo" src="./openclaw.png" alt="" />
+              </a>
+              <span>. Designed for real operators.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
