@@ -79,7 +79,7 @@
               </div>
           </div>
 
-          <a class="announcement-bar__cta" href="https://github.com/SapienXai/AgentOS-MissionControl" target="_blank" rel="noreferrer">
+          <a class="announcement-bar__cta" href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noreferrer">
             Repo
           </a>
         </div>
@@ -132,7 +132,20 @@
               <article class="hero-panel hero-panel--actions">
                 <div class="button-row">
                   <a class="button button--primary" href="#quickstart">Install AgentOS</a>
-                  <a class="button button--secondary" href="#what-it-does">Explore the system</a>
+                  <a
+                    class="button button--secondary button--github"
+                    href="https://github.com/SapienXai/AgentOS"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Star AgentOS on GitHub"
+                  >
+                    <span class="button__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor" d="M12 .297C5.373.297 0 5.67 0 12.297c0 5.303 3.438 9.8 8.205 11.386.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.725-4.042-1.61-4.042-1.61-.546-1.386-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.085 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.305 3.492.998.108-.776.418-1.305.762-1.605-2.665-.303-5.466-1.333-5.466-5.931 0-1.31.468-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 0 1 3.006-.404c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.654 1.653.242 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.625-5.475 5.921.43.372.814 1.102.814 2.222 0 1.606-.014 2.902-.014 3.296 0 .322.216.697.825.578C20.565 22.092 24 17.592 24 12.297 24 5.67 18.627.297 12 .297Z"/>
+                      </svg>
+                    </span>
+                    <span>Star on GitHub</span>
+                  </a>
                 </div>
                 <p class="hero-note" aria-label="Built on OpenClaw. Designed for real operators.">
                   <span>Built on</span>
@@ -170,6 +183,46 @@
                 allowfullscreen
               ></iframe>
             </div>
+
+            <section class="hero-integrations reveal reveal--delay-2" aria-labelledby="hero-integrations-title">
+              <div class="hero-integrations__header">
+                <div class="hero-integrations__heading">
+                  <div class="hero-integrations__copy">
+                    <div class="hero-integrations__eyebrow">OpenClaw integration catalog</div>
+                    <h2 id="hero-integrations-title">Works With Everything</h2>
+                    <p class="hero-integrations__description">
+                      <span class="hero-integrations__description-desktop">AgentOS works seamlessly across OpenClaw integrations, bringing every connection into one operating layer for execution.</span>
+                      <span class="hero-integrations__description-mobile">AgentOS unifies OpenClaw integrations into one operating layer for execution.</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hero-integrations__marquee">
+                <div class="hero-integrations__row">
+                  <div class="hero-integrations__rail">
+                    <div class="hero-integrations__track" data-integration-row="0"></div>
+                    <div class="hero-integrations__track hero-integrations__track--clone" data-integration-row-clone="0" aria-hidden="true"></div>
+                  </div>
+                </div>
+
+                <div class="hero-integrations__row hero-integrations__row--reverse">
+                  <div class="hero-integrations__rail">
+                    <div class="hero-integrations__track" data-integration-row="1"></div>
+                    <div class="hero-integrations__track hero-integrations__track--clone" data-integration-row-clone="1" aria-hidden="true"></div>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                class="hero-integrations__link"
+                href="https://openclaw.ai/integrations"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View all integrations
+              </a>
+            </section>
 
             <div class="hero-footer">
               <article class="hero-panel hero-panel--proof">
@@ -210,27 +263,6 @@
                   </div>
                 </div>
               </article>
-            </div>
-          </div>
-
-          <div class="hero-strip reveal reveal--delay-2">
-            <div class="hero-strip__rail">
-              <div class="hero-strip__track">
-                <span>Live topology canvas</span>
-                <span>Mission dispatch</span>
-                <span>Transcript-backed inspector</span>
-                <span>Workspace bootstrap</span>
-                <span>Planner deploy flows</span>
-                <span>Onboarding and fallback</span>
-              </div>
-              <div class="hero-strip__track hero-strip__track--clone" aria-hidden="true">
-                <span>Live topology canvas</span>
-                <span>Mission dispatch</span>
-                <span>Transcript-backed inspector</span>
-                <span>Workspace bootstrap</span>
-                <span>Planner deploy flows</span>
-                <span>Onboarding and fallback</span>
-              </div>
             </div>
           </div>
         </div>
@@ -285,7 +317,7 @@
 
                 <div class="quickstart-command">
                   <span class="quickstart-command__sigil">$</span>
-                  <pre id="release-snippet"><code>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS-MissionControl/main/install.sh | bash</code></pre>
+                  <pre id="release-snippet"><code>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</code></pre>
                   <button class="copy-button" type="button" data-copy-target="release-snippet">Copy</button>
                 </div>
 
@@ -321,7 +353,7 @@
 
                 <div class="quickstart-command">
                   <span class="quickstart-command__sigil">$</span>
-                  <pre id="source-snippet"><code>git clone https://github.com/SapienXai/AgentOS-MissionControl.git && cd AgentOS-MissionControl && pnpm install && pnpm dev</code></pre>
+                  <pre id="source-snippet"><code>git clone https://github.com/SapienXai/AgentOS.git && cd AgentOS && pnpm install && pnpm dev</code></pre>
                   <button class="copy-button" type="button" data-copy-target="source-snippet">Copy</button>
                 </div>
 
@@ -398,7 +430,7 @@
       <section class="section section--works-with" id="works-with">
         <div class="container">
           <div class="section-heading reveal">
-            <div class="eyebrow">Works With Everything</div>
+            <div class="eyebrow">Operating Stack</div>
             <h2>Built to sit above the whole operating stack.</h2>
             <p>
               AgentOS does not replace the runtime. It rides above it. That means the control plane can unify models, files, sessions, automations, planner assets, and the real project workspace beneath.
@@ -406,64 +438,6 @@
           </div>
 
           <div class="integration-stage reveal reveal--delay">
-            <div class="marquee-row">
-              <div class="marquee-track">
-                <span>OpenClaw</span>
-                <span>GPT-5</span>
-                <span>Claude</span>
-                <span>Local models</span>
-                <span>Terminal</span>
-                <span>Filesystem</span>
-                <span>Git repos</span>
-                <span>Workspaces</span>
-                <span>Agents</span>
-                <span>Runtimes</span>
-                <span>Transcripts</span>
-                <span>SSE snapshots</span>
-                <span>OpenClaw</span>
-                <span>GPT-5</span>
-                <span>Claude</span>
-                <span>Local models</span>
-                <span>Terminal</span>
-                <span>Filesystem</span>
-                <span>Git repos</span>
-                <span>Workspaces</span>
-                <span>Agents</span>
-                <span>Runtimes</span>
-                <span>Transcripts</span>
-                <span>SSE snapshots</span>
-              </div>
-            </div>
-
-            <div class="marquee-row marquee-row--reverse">
-              <div class="marquee-track">
-                <span>Planner</span>
-                <span>Automations</span>
-                <span>Gateway</span>
-                <span>Policies</span>
-                <span>AGENTS.md</span>
-                <span>MEMORY.md</span>
-                <span>Browser tasks</span>
-                <span>Channels</span>
-                <span>Team presets</span>
-                <span>Docs</span>
-                <span>Deliverables</span>
-                <span>Local machine</span>
-                <span>Planner</span>
-                <span>Automations</span>
-                <span>Gateway</span>
-                <span>Policies</span>
-                <span>AGENTS.md</span>
-                <span>MEMORY.md</span>
-                <span>Browser tasks</span>
-                <span>Channels</span>
-                <span>Team presets</span>
-                <span>Docs</span>
-                <span>Deliverables</span>
-                <span>Local machine</span>
-              </div>
-            </div>
-
             <div class="integration-grid">
               <article class="integration-card">
                 <small>Runtime truth</small>
@@ -497,7 +471,7 @@
             </div>
 
             <div class="cta-actions">
-              <a class="button button--primary" href="https://github.com/SapienXai/AgentOS-MissionControl" target="_blank" rel="noreferrer">Open repository</a>
+              <a class="button button--primary" href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noreferrer">Open repository</a>
               <a class="button button--secondary" href="https://youtu.be/KKX52CFtZrI" target="_blank" rel="noreferrer">Watch demo</a>
             </div>
           </div>
@@ -523,15 +497,15 @@
               <span class="site-footer__column-title">Product</span>
               <a href="#what-it-does">Features</a>
               <a href="#works-with">Architecture</a>
-              <a href="https://github.com/SapienXai/AgentOS-MissionControl#readme" target="_blank" rel="noreferrer">Docs</a>
+              <a href="https://github.com/SapienXai/AgentOS#readme" target="_blank" rel="noreferrer">Docs</a>
               <a href="#quickstart">Quickstart</a>
             </nav>
 
             <nav class="site-footer__column" aria-label="Resources">
               <span class="site-footer__column-title">Resources</span>
-              <a href="https://github.com/SapienXai/AgentOS-MissionControl" target="_blank" rel="noreferrer">GitHub</a>
-              <a href="https://github.com/SapienXai/AgentOS-MissionControl/releases" target="_blank" rel="noreferrer">Changelog</a>
-              <a href="https://github.com/SapienXai/AgentOS-MissionControl/issues" target="_blank" rel="noreferrer">Roadmap</a>
+              <a href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://github.com/SapienXai/AgentOS/releases" target="_blank" rel="noreferrer">Changelog</a>
+              <a href="https://github.com/SapienXai/AgentOS/issues" target="_blank" rel="noreferrer">Roadmap</a>
             </nav>
 
             <nav class="site-footer__column" aria-label="Company">
@@ -564,6 +538,7 @@
     </footer>
   </div>
 
+  <script src="/agentos/integrations-data.js"></script>
   <script src="/agentos/script.js"></script>
 </body>
 </html>

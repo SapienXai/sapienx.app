@@ -10,6 +10,24 @@ const featureCards = document.querySelectorAll(".feature-card");
 const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
 const siteNav = document.querySelector(".site-nav");
 const siteHeader = document.querySelector(".site-header");
+const integrationCatalog = Array.isArray(window.AGENTOS_INTEGRATION_CATALOG)
+  ? window.AGENTOS_INTEGRATION_CATALOG
+      .map((entry) => {
+        if (!Array.isArray(entry) || entry.length < 3) {
+          return null;
+        }
+
+        const [name, accent, svg] = entry;
+        return { name, accent, svg };
+      })
+      .filter(Boolean)
+  : [];
+
+const integrationCatalogRows = [[], []];
+
+integrationCatalog.forEach((entry, index) => {
+  integrationCatalogRows[index % integrationCatalogRows.length].push(entry);
+});
 
 // Mobile menu toggle
 if (mobileMenuToggle && siteNav && siteHeader) {
@@ -86,6 +104,38 @@ document.addEventListener("mouseleave", () => {
   if (mouseGlow) {
     mouseGlow.style.opacity = "0";
   }
+});
+
+const createIntegrationPill = ({ name, accent, svg }) => {
+  const pill = document.createElement("span");
+  pill.className = "hero-integration-pill";
+  pill.style.setProperty("--pill-accent", accent);
+
+  const icon = document.createElement("span");
+  icon.className = "hero-integration-pill__icon";
+  icon.setAttribute("aria-hidden", "true");
+  icon.innerHTML = svg;
+
+  const label = document.createElement("span");
+  label.className = "hero-integration-pill__label";
+  label.textContent = name;
+
+  pill.append(icon, label);
+  return pill;
+};
+
+integrationCatalogRows.forEach((items, rowIndex) => {
+  const track = document.querySelector(`[data-integration-row="${rowIndex}"]`);
+  const clone = document.querySelector(`[data-integration-row-clone="${rowIndex}"]`);
+
+  if (!track || !clone) {
+    return;
+  }
+
+  items.forEach((item) => {
+    track.append(createIntegrationPill(item));
+    clone.append(createIntegrationPill(item));
+  });
 });
 
 const revealObserver = new IntersectionObserver(
