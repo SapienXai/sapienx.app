@@ -1520,10 +1520,12 @@ pre {
   position: relative;
   z-index: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 2.9rem;
   padding-top: 0.95rem;
+  gap: 0.32rem;
   border-top: 1px solid rgba(151, 188, 255, 0.1);
 }
 
@@ -1538,6 +1540,37 @@ pre {
   color: rgba(203, 213, 225, 0.9);
   font-size: 0.76rem;
   letter-spacing: 0.03em;
+}
+
+.site-footer__microcopy {
+  color: rgba(148, 163, 184, 0.78);
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.site-footer__credit-link {
+  display: inline-flex;
+  align-items: center;
+  color: #f8fafc;
+  font-family: var(--font-display);
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 16px rgba(103, 232, 249, 0.24);
+  transition:
+    transform 0.18s ease,
+    color 0.18s ease,
+    text-shadow 0.18s ease;
+  transform-origin: center;
+}
+
+.site-footer__credit-link:hover,
+.site-footer__credit-link:focus-visible {
+  color: #ffffff;
+  text-shadow: 0 0 22px rgba(103, 232, 249, 0.38);
+  transform: scale(1.08);
 }
 
 .site-footer__bottom-logo {
@@ -2272,6 +2305,10 @@ pre {
 
   .site-footer__bottom-logo {
     width: 4rem;
+  }
+
+  .site-footer__credit-link {
+    font-size: 0.9rem;
   }
 
   .site-footer__column a {
