@@ -54,6 +54,19 @@
     <div class="page-aura page-aura--right" aria-hidden="true"></div>
     <div class="mouse-glow" id="mouse-glow"></div>
     <div class="page-grid" aria-hidden="true"></div>
+    <div class="page-traffic" aria-hidden="true">
+      <svg class="page-traffic__svg" id="page-traffic-svg" preserveAspectRatio="none">
+        <defs>
+          <filter id="page-traffic-glow" x="-160%" y="-160%" width="420%" height="420%">
+            <feGaussianBlur stdDeviation="5"></feGaussianBlur>
+          </filter>
+        </defs>
+        <g class="page-traffic__routes"></g>
+        <g class="page-traffic__nodes"></g>
+        <g class="page-traffic__packets"></g>
+        <g class="page-traffic__labels"></g>
+      </svg>
+    </div>
 
     <header class="site-header">
       <div class="announcement-bar">
@@ -98,7 +111,6 @@
 
         <nav class="site-nav" id="site-navigation" aria-label="Primary navigation">
           <a href="#quickstart">Quickstart</a>
-          <a href="#what-it-does">What It Does</a>
           <a href="#works-with">Works With Everything</a>
           <a href="#cta">Start</a>
         </nav>
@@ -139,12 +151,54 @@
                     rel="noreferrer"
                     aria-label="Star AgentOS on GitHub"
                   >
+                    <span class="button__sparkles" aria-hidden="true">
+                      <span class="button__spark button__spark--1">⭐</span>
+                      <span class="button__spark button__spark--2">⭐</span>
+                      <span class="button__spark button__spark--3">⭐</span>
+                      <span class="button__spark button__spark--4">⭐</span>
+                      <span class="button__spark button__spark--5">⭐</span>
+                    </span>
                     <span class="button__icon" aria-hidden="true">
                       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path fill="currentColor" d="M12 .297C5.373.297 0 5.67 0 12.297c0 5.303 3.438 9.8 8.205 11.386.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.725-4.042-1.61-4.042-1.61-.546-1.386-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.085 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.305 3.492.998.108-.776.418-1.305.762-1.605-2.665-.303-5.466-1.333-5.466-5.931 0-1.31.468-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 0 1 3.006-.404c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.654 1.653.242 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.625-5.475 5.921.43.372.814 1.102.814 2.222 0 1.606-.014 2.902-.014 3.296 0 .322.216.697.825.578C20.565 22.092 24 17.592 24 12.297 24 5.67 18.627.297 12 .297Z"/>
                       </svg>
                     </span>
-                    <span>Star on GitHub</span>
+                    <span class="button__label">Star on GitHub</span>
+                  </a>
+                </div>
+                <div class="hero-socials" aria-label="SapienX social links">
+                  <a
+                    class="hero-social"
+                    href="https://x.com/sapienapp"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="SapienX on X"
+                  >
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path fill="currentColor" d="M18.9 2H22l-6.77 7.74L23.2 22h-6.26l-4.9-7.4L5.56 22H2.44l7.24-8.28L1.6 2h6.42l4.43 6.77L18.9 2Zm-1.1 18h1.73L7.1 3.9H5.24L17.8 20Z"/>
+                    </svg>
+                  </a>
+                  <a
+                    class="hero-social"
+                    href="https://t.me/sapienapp"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="SapienX on Telegram"
+                  >
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path fill="currentColor" d="M21.5 4.3 18.3 19c-.24 1.04-.86 1.3-1.75.82l-4.85-3.58-2.34 2.25c-.26.26-.48.48-.98.48l.35-4.97 9.05-8.18c.4-.35-.08-.55-.62-.2l-11.2 7.05-4.82-1.5c-1.05-.33-1.07-1.05.22-1.55l18.85-7.27c.88-.32 1.65.2 1.36 1.95Z"/>
+                    </svg>
+                  </a>
+                  <a
+                    class="hero-social"
+                    href="https://github.com/SapienXai/AgentOS"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="SapienX on GitHub"
+                  >
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path fill="currentColor" d="M12 .297C5.373.297 0 5.67 0 12.297c0 5.303 3.438 9.8 8.205 11.386.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.725-4.042-1.61-4.042-1.61-.546-1.386-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.085 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.305 3.492.998.108-.776.418-1.305.762-1.605-2.665-.303-5.466-1.333-5.466-5.931 0-1.31.468-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 0 1 3.006-.404c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.654 1.653.242 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.625-5.475 5.921.43.372.814 1.102.814 2.222 0 1.606-.014 2.902-.014 3.296 0 .322.216.697.825.578C20.565 22.092 24 17.592 24 12.297 24 5.67 18.627.297 12 .297Z"/>
+                    </svg>
                   </a>
                 </div>
                 <p class="hero-note" aria-label="Built on OpenClaw. Designed for real operators.">
@@ -225,44 +279,115 @@
             </section>
 
             <div class="hero-footer">
-              <article class="hero-panel hero-panel--proof">
-                <span class="hero-list__label">Why this lands</span>
-                <div class="hero-list">
-                  <div>
-                    <strong>See the system</strong>
-                    <p>Workspaces, agents, runtimes, and health stay visible.</p>
+              <section class="hero-feature-hub" aria-labelledby="hero-feature-hub-title">
+                <div class="hero-feature-hub__header">
+                  <div class="hero-feature-hub__copy">
+                    <span class="hero-feature-hub__eyebrow">Operator Core</span>
+                    <h2 id="hero-feature-hub-title">A Smarter Way to Operate OpenClaw</h2>
                   </div>
-                  <div>
-                    <strong>Dispatch real work</strong>
-                    <p>Missions map to actual folders, files, and operating policies.</p>
-                  </div>
-                  <div>
-                    <strong>Inspect what happened</strong>
-                    <p>Transcript history and created files keep output reviewable.</p>
-                  </div>
+                  <p class="hero-feature-hub__intro">
+                    OpenClaw provides the runtime. AgentOS makes it legible, guided, and operable for real people doing real work.
+                  </p>
                 </div>
-              </article>
 
-              <article class="hero-panel hero-panel--metrics">
-                <div class="metric-grid">
-                  <div class="metric-card">
-                    <small>Control plane</small>
-                    <strong>Sidebar + canvas + inspector</strong>
-                  </div>
-                  <div class="metric-card">
-                    <small>Deploy flow</small>
-                    <strong>Plan -> scaffold -> run</strong>
-                  </div>
-                  <div class="metric-card">
-                    <small>Runtime truth</small>
-                    <strong>OpenClaw-backed state</strong>
-                  </div>
-                  <div class="metric-card">
-                    <small>Operating style</small>
-                    <strong>Local-first</strong>
-                  </div>
+                <div class="hero-feature-hub__grid">
+                  <article class="hero-feature-card hero-feature-card--onboarding">
+                    <div class="hero-feature-card__meta">
+                      <span class="hero-feature-card__index">01</span>
+                      <span class="hero-feature-card__signal">Fast start</span>
+                    </div>
+                    <h3>Guided Onboarding</h3>
+                    <p>
+                      <span class="hero-feature-card__description-desktop">Get from zero to a working system faster with a cleaner setup flow on top of OpenClaw.</span>
+                      <span class="hero-feature-card__description-mobile">Start faster with a simpler setup flow.</span>
+                    </p>
+                    <div class="hero-feature-card__details">
+                      <span>Cleaner setup</span>
+                      <span>Faster first success</span>
+                    </div>
+                  </article>
+
+                  <article class="hero-feature-card hero-feature-card--wizards">
+                    <div class="hero-feature-card__meta">
+                      <span class="hero-feature-card__index">02</span>
+                      <span class="hero-feature-card__signal">Guided build</span>
+                    </div>
+                    <h3>Workspace, Agent &amp; Task Wizards</h3>
+                    <p>
+                      <span class="hero-feature-card__description-desktop">Create better workspaces, agents, and tasks through guided flows powered by the full flexibility of OpenClaw.</span>
+                      <span class="hero-feature-card__description-mobile">Create workspaces, agents, and tasks with guided flows.</span>
+                    </p>
+                    <div class="hero-feature-card__details">
+                      <span>Guided creation</span>
+                      <span>Flexible underneath</span>
+                    </div>
+                  </article>
+
+                  <article class="hero-feature-card hero-feature-card--control">
+                    <div class="hero-feature-card__meta">
+                      <span class="hero-feature-card__index">03</span>
+                      <span class="hero-feature-card__signal">Human layer</span>
+                    </div>
+                    <h3>Human Control Surface</h3>
+                    <p>
+                      <span class="hero-feature-card__description-desktop">Run agents, missions, and operations from one clear interface built for human operators.</span>
+                      <span class="hero-feature-card__description-mobile">Run agents and operations from one clear interface.</span>
+                    </p>
+                    <div class="hero-feature-card__details">
+                      <span>One interface</span>
+                      <span>Operational clarity</span>
+                    </div>
+                  </article>
+
+                  <article class="hero-feature-card hero-feature-card--visibility">
+                    <div class="hero-feature-card__meta">
+                      <span class="hero-feature-card__index">04</span>
+                      <span class="hero-feature-card__signal">Live signal</span>
+                    </div>
+                    <h3>Runtime Visibility</h3>
+                    <p>
+                      <span class="hero-feature-card__description-desktop">See what agents are doing, what changed, and what needs your attention in real time.</span>
+                      <span class="hero-feature-card__description-mobile">See agent activity and important changes in real time.</span>
+                    </p>
+                    <div class="hero-feature-card__details">
+                      <span>Live changes</span>
+                      <span>Attention cues</span>
+                    </div>
+                  </article>
+
+                  <article class="hero-feature-card hero-feature-card--approval">
+                    <div class="hero-feature-card__meta">
+                      <span class="hero-feature-card__index">05</span>
+                      <span class="hero-feature-card__signal">Review gates</span>
+                    </div>
+                    <h3>Approval Layer</h3>
+                    <p>
+                      <span class="hero-feature-card__description-desktop">Review critical actions before execution and keep humans in control when it matters most.</span>
+                      <span class="hero-feature-card__description-mobile">Review critical actions before they run.</span>
+                    </p>
+                    <div class="hero-feature-card__details">
+                      <span>Critical checkpoints</span>
+                      <span>Human-in-loop</span>
+                    </div>
+                  </article>
+
+                  <article class="hero-feature-card hero-feature-card--builder">
+                    <div class="hero-feature-card__meta">
+                      <span class="hero-feature-card__index">06</span>
+                      <span class="hero-feature-card__signal">Focused teams</span>
+                    </div>
+                    <h3>Job &amp; Team Builder</h3>
+                    <p>
+                      <span class="hero-feature-card__description-desktop">Create custom jobs and purpose-built agent teams for focused operational work like Telegram, growth, or research.</span>
+                      <span class="hero-feature-card__description-mobile">Build custom jobs and focused agent teams.</span>
+                    </p>
+                    <div class="hero-feature-card__details">
+                      <span>Custom jobs</span>
+                      <span>Purpose-built teams</span>
+                    </div>
+                  </article>
                 </div>
-              </article>
+              </section>
             </div>
           </div>
         </div>
@@ -270,16 +395,16 @@
 
       <section class="section section--quickstart" id="quickstart">
         <div class="container">
-          <div class="section-heading section-heading--quickstart reveal">
-            <span class="section-heading__pointer" aria-hidden="true"></span>
-            <div class="section-heading__copy">
-              <div class="eyebrow">QuickStart</div>
-              <h2>Install AgentOS and open Mission Control.</h2>
-              <p>
-                Pick an install path, run one command, and verify the local runtime.
-              </p>
+            <div class="section-heading section-heading--quickstart reveal">
+              <span class="section-heading__pointer" aria-hidden="true"></span>
+              <div class="section-heading__copy">
+                <div class="eyebrow">QuickStart</div>
+                <h2>Install AgentOS.</h2>
+                <p>
+                  Pick an install path, run one command, and verify the local runtime.
+                </p>
+              </div>
             </div>
-          </div>
 
           <div class="quickstart-shell reveal reveal--delay">
             <div class="quickstart-shell__header">
@@ -299,11 +424,6 @@
                 <button class="quickstart-tab" type="button" role="tab" aria-selected="false" data-tab-target="source">
                   Source
                 </button>
-              </div>
-
-              <div class="quickstart-shell__status" aria-hidden="true">
-                <span class="quickstart-shell__status-main">local-first</span>
-                <span class="quickstart-shell__status-accent">recommended</span>
               </div>
 
               <span class="quickstart-shell__beta">CLI beta</span>
@@ -372,68 +492,13 @@
         </div>
       </section>
 
-      <section class="section" id="what-it-does">
-        <div class="container">
-          <div class="section-heading reveal">
-            <div class="eyebrow">What It Does</div>
-            <h2>Everything the operator needs above the runtime.</h2>
-            <p>
-              This section mirrors the technical role of the reference site, but the cards are specific to AgentOS. These are the core operating surfaces already present in the product.
-            </p>
-          </div>
-
-          <div class="feature-grid">
-            <article class="feature-card reveal">
-              <span class="feature-card__badge">01</span>
-              <h3>Live topology canvas</h3>
-              <p>Visualize workspace, agent, runtime, and model relationships from one operator-facing map.</p>
-            </article>
-            <article class="feature-card reveal reveal--delay">
-              <span class="feature-card__badge">02</span>
-              <h3>Mission dispatch</h3>
-              <p>Route structured work to real OpenClaw agents with thinking levels and clear operational intent.</p>
-            </article>
-            <article class="feature-card reveal reveal--delay-2">
-              <span class="feature-card__badge">03</span>
-              <h3>Transcript-backed inspection</h3>
-              <p>Inspect runtime output, warnings, token usage, and created files after execution.</p>
-            </article>
-            <article class="feature-card reveal">
-              <span class="feature-card__badge">04</span>
-              <h3>Workspace bootstrap wizard</h3>
-              <p>Create a new workspace with templates, presets, memory, docs, and kickoff missions.</p>
-            </article>
-            <article class="feature-card reveal reveal--delay">
-              <span class="feature-card__badge">05</span>
-              <h3>Planner deploy flows</h3>
-              <p>Turn company context into a live workspace, agent team, automations, and first missions.</p>
-            </article>
-            <article class="feature-card reveal reveal--delay-2">
-              <span class="feature-card__badge">06</span>
-              <h3>Agent presets and policies</h3>
-              <p>Configure workers, browsers, setup agents, network rules, install scope, and heartbeat policies.</p>
-            </article>
-            <article class="feature-card reveal">
-              <span class="feature-card__badge">07</span>
-              <h3>OpenClaw onboarding</h3>
-              <p>Detect missing runtime state, install or start OpenClaw, and verify readiness directly from the UI.</p>
-            </article>
-            <article class="feature-card reveal reveal--delay">
-              <span class="feature-card__badge">08</span>
-              <h3>Honest fallback mode</h3>
-              <p>If the runtime is unavailable, the product says so clearly instead of pretending the system is live.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section class="section section--works-with" id="works-with">
         <div class="container">
           <div class="section-heading reveal">
             <div class="eyebrow">Operating Stack</div>
-            <h2>Built to sit above the whole operating stack.</h2>
+            <h2>Above the Operating Stack.</h2>
             <p>
-              AgentOS does not replace the runtime. It rides above it. That means the control plane can unify models, files, sessions, automations, planner assets, and the real project workspace beneath.
+              AgentOS sits above OpenClaw to unify models, files, sessions, automations, planner assets, and the live workspace in one control plane.
             </p>
           </div>
 
@@ -495,7 +560,6 @@
 
             <nav class="site-footer__column" aria-label="Product">
               <span class="site-footer__column-title">Product</span>
-              <a href="#what-it-does">Features</a>
               <a href="#works-with">Architecture</a>
               <a href="https://github.com/SapienXai/AgentOS#readme" target="_blank" rel="noreferrer">Docs</a>
               <a href="#quickstart">Quickstart</a>
@@ -511,8 +575,9 @@
             <nav class="site-footer__column" aria-label="Company">
               <span class="site-footer__column-title">Company</span>
               <a href="https://sapienx.app/" target="_blank" rel="noreferrer">SapienX</a>
-              <a href="https://x.com/sapienapp" target="_blank" rel="noreferrer">X / Twitter</a>
-              <a href="https://sapienx.app/" target="_blank" rel="noreferrer">Contact</a>
+              <a href="https://x.com/sapienapp" target="_blank" rel="noreferrer">X</a>
+              <a href="https://t.me/sapienapp" target="_blank" rel="noreferrer">Telegram</a>
+              <a href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noreferrer">GitHub</a>
             </nav>
           </div>
 
