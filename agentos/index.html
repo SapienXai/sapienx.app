@@ -71,8 +71,6 @@
     <header class="site-header">
       <div class="announcement-bar">
         <div class="container announcement-bar__inner">
-          <span class="announcement-bar__tag">New</span>
-
           <div class="announcement-bar__marquee" aria-label="Latest announcement">
               <div class="announcement-bar__track">
                 <div class="announcement-bar__items">
@@ -515,29 +513,84 @@
         <div class="container">
           <div class="section-heading reveal">
             <div class="eyebrow">Operating Stack</div>
-            <h2>Above the Operating Stack.</h2>
+            <h2>
+              Built above
+              <span class="section-heading__inline-logo">
+                <img src="/agentos/openclaw.png" alt="OpenClaw" />
+              </span>
+              <span aria-hidden="true">.</span>
+            </h2>
             <p>
-              AgentOS sits above OpenClaw to unify models, files, sessions, automations, planner assets, and the live workspace in one control plane.
+              AgentOS turns OpenClaw into a human-operable control system for real work.
             </p>
           </div>
 
-          <div class="integration-stage reveal reveal--delay">
-            <div class="integration-grid">
-              <article class="integration-card">
-                <small>Runtime truth</small>
-                <strong>Sessions, presence, gateway state, models, and transcript files</strong>
-                <p>The live state stays grounded in OpenClaw instead of being duplicated into a fake SaaS abstraction.</p>
+          <div class="stack-shell reveal reveal--delay">
+            <div class="stack-shell__rail" aria-hidden="true">
+              <span>Human-operable</span>
+              <span>Runtime truth</span>
+              <span>Workspace reality</span>
+              <span>Human control</span>
+            </div>
+
+            <div class="stack-grid">
+              <article class="stack-card stack-card--runtime">
+                <div class="stack-card__heading">
+                  <span class="stack-card__index">01</span>
+                  <h3>Live runtime</h3>
+                </div>
+                <p>See sessions, models, transcripts, presence, and gateway state as they actually are.</p>
+                <div class="stack-card__chips" aria-label="Live runtime details">
+                  <span>Sessions</span>
+                  <span>Models</span>
+                  <span>Transcripts</span>
+                  <span>Presence</span>
+                  <span>Gateway state</span>
+                </div>
               </article>
-              <article class="integration-card">
-                <small>Workspace reality</small>
-                <strong>Real project folders, docs, memory, deliverables, and scaffolds</strong>
-                <p>Missions tie directly to the filesystem, which is where the work actually lives.</p>
+
+              <article class="stack-card stack-card--workspace">
+                <div class="stack-card__heading">
+                  <span class="stack-card__index">02</span>
+                  <h3>Real workspace</h3>
+                </div>
+                <p>Work directly on real files, folders, docs, memory, and deliverables.</p>
+                <div class="stack-card__chips" aria-label="Real workspace details">
+                  <span>Files</span>
+                  <span>Folders</span>
+                  <span>Docs</span>
+                  <span>Memory</span>
+                  <span>Deliverables</span>
+                </div>
               </article>
-              <article class="integration-card">
-                <small>Operator actions</small>
-                <strong>Planning, deploy, inspection, onboarding, and policy-aware control</strong>
-                <p>The human stays above the system with one coherent operating picture and real review loops.</p>
+
+              <article class="stack-card stack-card--control">
+                <div class="stack-card__heading">
+                  <span class="stack-card__index">03</span>
+                  <h3>Human control</h3>
+                </div>
+                <p>Plan, inspect, approve, and steer agents without losing the full operating picture.</p>
+                <div class="stack-card__chips" aria-label="Human control details">
+                  <span>Plan</span>
+                  <span>Inspect</span>
+                  <span>Approve</span>
+                  <span>Steer</span>
+                  <span>Operating picture</span>
+                </div>
               </article>
+            </div>
+
+            <div class="stack-foundation" aria-label="OpenClaw foundation">
+              <div class="stack-foundation__brand">
+                <span class="stack-foundation__label">Foundation</span>
+                <strong>OpenClaw</strong>
+              </div>
+              <p>Runtime, workspace state, and control loops stay grounded in the system underneath.</p>
+              <div class="stack-foundation__pulse" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
             </div>
           </div>
         </div>
@@ -612,7 +665,7 @@
               >
                 <img class="site-footer__bottom-logo" src="/agentos/openclaw.png" alt="" />
               </a>
-              <span>. Designed for real operators. Created by </span>
+              <span>Designed for real operators. Created by </span>
               <a class="site-footer__credit-link" href="https://sapienx.app/" target="_blank" rel="noreferrer">SapienX</a>
             </p>
             <p class="site-footer__microcopy">One human. Infinite agents. Company-scale power.</p>
