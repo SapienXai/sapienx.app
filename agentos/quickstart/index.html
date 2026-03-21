@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>AgentOS Quickstart | Install OpenClaw and Open Mission Control | SapienX</title>
+    <meta
+      name="description"
+      content="Install OpenClaw, verify the runtime, and then use AgentOS Mission Control as the human operating layer on top."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="SapienX" />
+    <meta name="application-name" content="AgentOS" />
+    <meta name="theme-color" content="#09111d" />
+    <link rel="canonical" href="https://sapienx.app/agentos/quickstart/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SapienX" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="AgentOS Quickstart | SapienX" />
+    <meta
+      property="og:description"
+      content="Install OpenClaw, verify the runtime, and then use AgentOS Mission Control on top of it."
+    />
+    <meta property="og:url" content="https://sapienx.app/agentos/quickstart/" />
+    <meta property="og:image" content="https://sapienx.app/agentos/banner.jpeg" />
+    <meta property="og:image:alt" content="AgentOS mission control interface banner" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AgentOS Quickstart | SapienX" />
+    <meta
+      name="twitter:description"
+      content="Install OpenClaw, verify the runtime, and then open AgentOS Mission Control."
+    />
+    <meta name="twitter:image" content="https://sapienx.app/agentos/banner.jpeg" />
+    <meta name="twitter:image:alt" content="AgentOS mission control interface banner" />
+
+    <link rel="icon" type="image/webp" href="/agentos/logo.webp" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/agentos/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/agentos/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/agentos/support.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "AgentOS",
+            "item": "https://sapienx.app/agentos/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Quickstart",
+            "item": "https://sapienx.app/agentos/quickstart/"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the fastest way to install AgentOS?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use the OpenClaw installer one-liner from the official docs, then open AgentOS Mission Control on top of the running runtime."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I verify the runtime underneath AgentOS?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Run openclaw doctor, then use openclaw gateway status to confirm the underlying runtime state."
+              }
+            }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="support-header">
+      <div class="container support-header__inner">
+        <a class="brand" href="/agentos/" aria-label="AgentOS home">
+          <img class="brand__logo" src="/agentos/logo.webp" alt="AgentOS logo" />
+          <span class="brand__copy">
+            <strong>AgentOS</strong>
+            <span>by SapienX</span>
+          </span>
+        </a>
+
+        <nav class="support-nav" aria-label="AgentOS">
+          <a href="/agentos/faq/">FAQ</a>
+          <a href="/agentos/openclaw/">Built on OpenClaw</a>
+          <a href="/agentos/compare/openclaw-vs-agentos/">Compare</a>
+          <a href="/agentos/use-cases/ai-operations/">Use cases</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="support-main">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/agentos/">AgentOS</a></li>
+            <li><span aria-current="page">Quickstart</span></li>
+          </ol>
+        </nav>
+
+        <section class="support-hero">
+          <span class="eyebrow">Quickstart</span>
+          <h1>Install OpenClaw. Open Mission Control.</h1>
+          <p>
+            Pick the workflow that matches your environment. AgentOS is built on top of OpenClaw: install the runtime,
+            verify it, then open the human operating layer.
+          </p>
+          <div class="cta-row" role="group" aria-label="Primary actions">
+            <a class="button button--primary" href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noopener noreferrer"
+              >Open repository</a
+            >
+            <a class="button button--secondary" href="/agentos/openclaw/">How it works</a>
+            <a class="button button--ghost" href="/agentos/faq/">FAQ</a>
+          </div>
+        </section>
+
+        <div class="support-content">
+          <section class="section-card" aria-labelledby="qs-fast-title">
+            <h2 id="qs-fast-title">Fastest path (OpenClaw installer)</h2>
+            <p>Install OpenClaw using the documented installer path, then open AgentOS Mission Control on top of it.</p>
+            <pre><code>curl -fsSL https://openclaw.bot/install.sh | bash</code></pre>
+            <div class="pill-row" aria-label="Next commands">
+              <span class="pill"><code>openclaw doctor</code></span>
+              <span class="pill"><code>openclaw gateway status</code></span>
+            </div>
+            <div class="callout">
+              Once OpenClaw is healthy, use AgentOS as the human control surface: create one workspace per project and
+              keep tasks scoped to concrete deliverables.
+            </div>
+          </section>
+
+          <section class="section-card" aria-labelledby="qs-pnpm-title">
+            <h2 id="qs-pnpm-title">Alternate install (npm)</h2>
+            <p>Best when you want the documented package workflow for OpenClaw.</p>
+            <pre><code>npm install -g openclaw@latest</code></pre>
+            <div class="pill-row" aria-label="Next commands">
+              <span class="pill"><code>openclaw doctor</code></span>
+              <span class="pill"><code>openclaw gateway status</code></span>
+            </div>
+          </section>
+
+          <section class="section-card" aria-labelledby="qs-source-title">
+            <h2 id="qs-source-title">Builders (website source)</h2>
+            <p>Clone this repository if you want to edit the AgentOS marketing site or extend the page cluster.</p>
+            <pre><code>git clone https://github.com/SapienXai/AgentOS.git
+cd AgentOS
+pnpm install
+pnpm dev</code></pre>
+            <div class="callout">
+              AgentOS stays aligned with OpenClaw runtime truth. If you are debugging deeper behavior, check the
+              OpenClaw gateway status underneath.
+            </div>
+          </section>
+
+          <section class="section-card" aria-labelledby="qs-verify-title">
+          <h2 id="qs-verify-title">Verify the operating stack</h2>
+            <p>AgentOS sits above OpenClaw. You want both layers healthy.</p>
+            <ul>
+              <li><span class="kpi">Runtime health</span>: run <code>openclaw doctor</code> for local checks.</li>
+              <li><span class="kpi">Gateway state</span>: confirm your OpenClaw gateway/session state with <code>openclaw gateway status</code>.</li>
+              <li><span class="kpi">First workspace</span>: create a workspace that points to real files and a real deliverable, then assign one task with an explicit output.</li>
+            </ul>
+          </section>
+
+          <section class="section-card" aria-labelledby="qs-faq-title">
+            <h2 id="qs-faq-title">Quickstart FAQ</h2>
+            <details>
+              <summary>What is the fastest way to install AgentOS?</summary>
+              <p>
+                Use the OpenClaw installer one-liner from the official docs, then open AgentOS Mission Control on top
+                of the running runtime.
+              </p>
+            </details>
+            <details>
+              <summary>How do I verify the runtime underneath AgentOS?</summary>
+              <p>
+                Start with <code>openclaw doctor</code>, then confirm the gateway state with <code>openclaw gateway status</code>.
+                If you need deeper truth about orchestration, check the OpenClaw gateway/session state underneath.
+              </p>
+            </details>
+          </section>
+
+          <section class="section-card" aria-labelledby="qs-related-title">
+            <h2 id="qs-related-title">Related pages</h2>
+            <p>Understand the architecture and choose the right operational surface for your workflow.</p>
+            <div class="related" aria-label="Related AgentOS pages">
+              <a href="/agentos/openclaw/"><span>Built on OpenClaw</span><small>What AgentOS adds above the runtime</small></a>
+              <a href="/agentos/features/workspace-agent-task-wizards/"
+                ><span>Workspace, agent, task wizards</span><small>Guided creation and structure</small></a
+              >
+              <a href="/agentos/use-cases/solo-founder/"
+                ><span>Solo founder</span><small>Coordinate multiple projects with one operating layer</small></a
+              >
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="support-footer">
+      <div class="container support-footer__inner">
+        <p class="support-footer__note">
+          AgentOS is the human operating layer built on top of OpenClaw. OpenClaw remains the orchestration backend.
+        </p>
+        <nav class="support-footer__links" aria-label="Footer links">
+          <a href="/agentos/">Overview</a>
+          <a href="/agentos/faq/">FAQ</a>
+          <a href="/agentos/compare/openclaw-vs-agentos/">Compare</a>
+          <a href="https://openclaw.ai/" target="_blank" rel="noopener noreferrer">OpenClaw</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

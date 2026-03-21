@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>AgentOS Built on OpenClaw | Human Operating Layer, OpenClaw Runtime | SapienX</title>
+    <meta
+      name="description"
+      content="AgentOS is built on top of OpenClaw. OpenClaw remains the orchestration backend; AgentOS adds the human operating layer: workspaces, wizards, approvals, and runtime visibility."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="SapienX" />
+    <meta name="application-name" content="AgentOS" />
+    <meta name="theme-color" content="#09111d" />
+    <link rel="canonical" href="https://sapienx.app/agentos/openclaw/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SapienX" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="AgentOS Built on OpenClaw | SapienX" />
+    <meta
+      property="og:description"
+      content="OpenClaw runs the backend. AgentOS makes it legible and controllable for humans with a workspace-centric operating surface."
+    />
+    <meta property="og:url" content="https://sapienx.app/agentos/openclaw/" />
+    <meta property="og:image" content="https://sapienx.app/agentos/banner.jpeg" />
+    <meta property="og:image:alt" content="AgentOS mission control interface banner" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AgentOS Built on OpenClaw | SapienX" />
+    <meta
+      name="twitter:description"
+      content="OpenClaw is the orchestration backend. AgentOS is the human operating layer that adds workspaces, approvals, and runtime visibility."
+    />
+    <meta name="twitter:image" content="https://sapienx.app/agentos/banner.jpeg" />
+    <meta name="twitter:image:alt" content="AgentOS mission control interface banner" />
+
+    <link rel="icon" type="image/webp" href="/agentos/logo.webp" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/agentos/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/agentos/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/agentos/support.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "AgentOS",
+            "item": "https://sapienx.app/agentos/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Built on OpenClaw",
+            "item": "https://sapienx.app/agentos/openclaw/"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does AgentOS replace OpenClaw?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. OpenClaw remains the backend/orchestration layer. AgentOS sits above it as the human operating layer and UI."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does AgentOS add on top of OpenClaw?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AgentOS adds guided onboarding, workspace/agent/task wizards, runtime visibility, and human approvals so people can operate multi-agent work with clarity."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="support-header">
+      <div class="container support-header__inner">
+        <a class="brand" href="/agentos/" aria-label="AgentOS home">
+          <img class="brand__logo" src="/agentos/logo.webp" alt="AgentOS logo" />
+          <span class="brand__copy">
+            <strong>AgentOS</strong>
+            <span>by SapienX</span>
+          </span>
+        </a>
+
+        <nav class="support-nav" aria-label="AgentOS">
+          <a href="/agentos/quickstart/">Quickstart</a>
+          <a href="/agentos/faq/">FAQ</a>
+          <a href="/agentos/compare/openclaw-vs-agentos/">Compare</a>
+          <a href="/agentos/features/runtime-visibility/">Runtime visibility</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="support-main">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/agentos/">AgentOS</a></li>
+            <li><span aria-current="page">Built on OpenClaw</span></li>
+          </ol>
+        </nav>
+
+        <section class="support-hero">
+          <span class="eyebrow">Built on OpenClaw</span>
+          <h1>OpenClaw runs the runtime. AgentOS runs the human layer.</h1>
+          <p>
+            AgentOS is intentionally not a replacement for OpenClaw. It is the operating layer that makes OpenClaw
+            legible, guided, and controllable for humans managing real work across multiple projects and agents.
+          </p>
+          <div class="cta-row" role="group" aria-label="Primary actions">
+            <a class="button button--primary" href="/agentos/compare/openclaw-vs-agentos/">OpenClaw vs AgentOS</a>
+            <a class="button button--secondary" href="/agentos/quickstart/">Install</a>
+            <a class="button button--ghost" href="https://openclaw.ai/" target="_blank" rel="noopener noreferrer"
+              >OpenClaw site</a
+            >
+          </div>
+        </section>
+
+        <div class="support-content">
+          <section class="section-card" aria-labelledby="arch-title">
+            <h2 id="arch-title">The operating stack</h2>
+            <p>
+              The clean mental model: OpenClaw is the orchestration backend and runtime truth. AgentOS is the control
+              surface for the human coordinating multiple agents and projects.
+            </p>
+
+            <div class="grid-2" role="list">
+              <div class="callout" role="listitem">
+                <strong>OpenClaw (backend)</strong>
+                <p>
+                  Orchestration, runtime state, integrations, and the underlying execution loops. This layer stays the
+                  source of truth.
+                </p>
+              </div>
+              <div class="callout" role="listitem">
+                <strong>AgentOS (human layer)</strong>
+                <p>
+                  A UI and operating layer: workspaces, wizards, approvals, task and job structure, and runtime
+                  visibility mapped to human intent.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section-card" aria-labelledby="what-adds-title">
+            <h2 id="what-adds-title">What AgentOS adds above raw OpenClaw</h2>
+            <p>AgentOS exists because raw orchestration is not the same thing as operability for humans.</p>
+            <ul>
+              <li>
+                <strong>Workspace-centric operations</strong>: a project surface tied to real files, docs, memory, and
+                deliverables.
+              </li>
+              <li>
+                <strong>Guided wizards</strong>: create workspaces, agents, and tasks with structure without losing
+                OpenClaw flexibility.
+              </li>
+              <li>
+                <strong>Runtime visibility</strong>: see sessions, models, transcripts, presence, and gateway state
+                connected to the work you are operating.
+              </li>
+              <li><strong>Approval layer</strong>: human-in-the-loop gates for actions that should not run silently.</li>
+              <li>
+                <strong>Jobs and teams</strong>: repeatable operational patterns for focused work like research, growth,
+                or community operations.
+              </li>
+            </ul>
+          </section>
+
+          <section class="section-card" aria-labelledby="why-title">
+            <h2 id="why-title">Why this separation matters</h2>
+            <p>
+              Most teams get stuck in the gap between orchestration and operations: you can run a system, but you cannot
+              reliably steer it. AgentOS targets that gap.
+            </p>
+            <div class="pill-row" aria-label="Key outcomes">
+              <span class="pill">Less context loss</span>
+              <span class="pill">Clearer oversight</span>
+              <span class="pill">Human checkpoints</span>
+              <span class="pill">Real workspace grounding</span>
+            </div>
+          </section>
+
+          <section class="section-card" aria-labelledby="openclaw-faq-title">
+            <h2 id="openclaw-faq-title">FAQ</h2>
+            <details>
+              <summary>Does AgentOS replace OpenClaw?</summary>
+              <p>No. OpenClaw remains the backend/orchestration layer. AgentOS sits above it as the human operating layer.</p>
+            </details>
+            <details>
+              <summary>What does AgentOS add on top of OpenClaw?</summary>
+              <p>
+                AgentOS adds guided onboarding, workspace/agent/task wizards, runtime visibility, and human approvals so
+                people can operate multi-agent work with clarity.
+              </p>
+            </details>
+          </section>
+
+          <section class="section-card" aria-labelledby="related-title">
+            <h2 id="related-title">Related pages</h2>
+            <p>Go deeper into the features that make OpenClaw operable day to day.</p>
+            <div class="related" aria-label="Related AgentOS pages">
+              <a href="/agentos/features/runtime-visibility/"
+                ><span>Runtime visibility</span><small>See execution truth without guesswork</small></a
+              >
+              <a href="/agentos/features/approval-layer/"><span>Approval layer</span><small>Human-in-the-loop gates</small></a>
+              <a href="/agentos/use-cases/ai-operations/"
+                ><span>AI operations</span><small>Operate multiple agents with oversight</small></a
+              >
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="support-footer">
+      <div class="container support-footer__inner">
+        <p class="support-footer__note">
+          AgentOS is the human operating layer built on OpenClaw. OpenClaw remains the backend orchestration runtime.
+        </p>
+        <nav class="support-footer__links" aria-label="Footer links">
+          <a href="/agentos/">Overview</a>
+          <a href="/agentos/quickstart/">Quickstart</a>
+          <a href="/agentos/compare/openclaw-vs-agentos/">Compare</a>
+          <a href="/agentos/faq/">FAQ</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
+

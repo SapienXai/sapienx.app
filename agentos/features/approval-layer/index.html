@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Approval Layer for AI Agent Oversight | AgentOS | SapienX</title>
+    <meta
+      name="description"
+      content="AgentOS approval gates let humans review critical actions before execution, giving AI operations a clear human-in-the-loop checkpoint."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="SapienX" />
+    <meta name="application-name" content="AgentOS" />
+    <meta name="theme-color" content="#09111d" />
+    <link rel="canonical" href="https://sapienx.app/agentos/features/approval-layer/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SapienX" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Approval Layer for AI Agent Oversight | AgentOS" />
+    <meta
+      property="og:description"
+      content="Review critical actions before they run. AgentOS keeps humans in control of AI operations."
+    />
+    <meta property="og:url" content="https://sapienx.app/agentos/features/approval-layer/" />
+    <meta property="og:image" content="https://sapienx.app/agentos/banner.jpeg" />
+    <meta property="og:image:alt" content="AgentOS mission control interface banner" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Approval Layer for AI Agent Oversight | AgentOS" />
+    <meta
+      name="twitter:description"
+      content="Human-in-the-loop checkpoints for critical AI actions, approvals, and oversight."
+    />
+    <meta name="twitter:image" content="https://sapienx.app/agentos/banner.jpeg" />
+    <meta name="twitter:image:alt" content="AgentOS mission control interface banner" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    />
+    <link rel="icon" type="image/webp" href="/agentos/logo.webp" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/agentos/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/agentos/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/agentos/support.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "AgentOS", "item": "https://sapienx.app/agentos/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Approval layer",
+            "item": "https://sapienx.app/agentos/features/approval-layer/"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the approval layer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is a human-in-the-loop gate that surfaces critical actions for review before execution."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why use approvals in AI operations?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Approvals help operators stop, review, or redirect actions when accuracy, safety, or context matters."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="support-header">
+      <div class="container support-header__inner">
+        <a class="brand" href="/agentos/" aria-label="AgentOS home">
+          <img class="brand__logo" src="/agentos/logo.webp" alt="AgentOS logo" />
+          <span class="brand__copy">
+            <strong>AgentOS</strong>
+            <span>by SapienX</span>
+          </span>
+        </a>
+        <nav class="support-nav" aria-label="AgentOS">
+          <a href="/agentos/quickstart/">Quickstart</a>
+          <a href="/agentos/openclaw/">OpenClaw</a>
+          <a href="/agentos/compare/openclaw-vs-agentos/">Compare</a>
+          <a href="/agentos/faq/">FAQ</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="support-main">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/agentos/">AgentOS</a></li>
+            <li><span aria-current="page">Approval layer</span></li>
+          </ol>
+        </nav>
+
+        <section class="support-hero">
+          <span class="eyebrow">Feature</span>
+          <h1>Human approvals for critical actions.</h1>
+          <p>
+            AgentOS adds a review layer when an action should not run silently. That keeps humans in control while
+            OpenClaw continues to handle the backend orchestration.
+          </p>
+          <div class="cta-row" role="group" aria-label="Primary actions">
+            <a class="button button--primary" href="/agentos/compare/openclaw-vs-agentos/">Compare the layers</a>
+            <a class="button button--secondary" href="/agentos/features/runtime-visibility/">Runtime visibility</a>
+            <a class="button button--ghost" href="/agentos/quickstart/">Quickstart</a>
+          </div>
+        </section>
+
+        <div class="support-content">
+          <section class="section-card" aria-labelledby="approval-title">
+            <h2 id="approval-title">What the approval layer does</h2>
+            <p>
+              It exposes critical decisions to a human before execution continues. That is useful when a change is
+              high impact, hard to roll back, or needs explicit operator context.
+            </p>
+            <div class="grid-2" role="list">
+              <div class="callout" role="listitem">
+                <strong>Review before action</strong>
+                <p>Let humans check the request, context, and expected impact before it runs.</p>
+              </div>
+              <div class="callout" role="listitem">
+                <strong>Stop or continue</strong>
+                <p>Keep the operator able to approve, reject, or redirect the work.</p>
+              </div>
+              <div class="callout" role="listitem">
+                <strong>Auditability</strong>
+                <p>Make it easier to understand who approved what and why.</p>
+              </div>
+              <div class="callout" role="listitem">
+                <strong>Risk control</strong>
+                <p>Reduce the chance that an agent executes outside the intended boundary.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section-card" aria-labelledby="where-title">
+            <h2 id="where-title">Where approvals fit best</h2>
+            <ul>
+              <li>Actions that touch important workspace state.</li>
+              <li>Steps that change a job's path or direction.</li>
+              <li>Operations where a human should review the context first.</li>
+              <li>Workflows with real operational or reputational impact.</li>
+            </ul>
+          </section>
+
+          <section class="section-card" aria-labelledby="faq-title">
+            <h2 id="faq-title">FAQ</h2>
+            <details>
+              <summary>What is the approval layer?</summary>
+              <p>It is a human-in-the-loop gate that surfaces critical actions for review before execution.</p>
+            </details>
+            <details>
+              <summary>Why use approvals in AI operations?</summary>
+              <p>Approvals help operators stop, review, or redirect actions when accuracy, safety, or context matters.</p>
+            </details>
+          </section>
+
+          <section class="section-card" aria-labelledby="related-title">
+            <h2 id="related-title">Related pages</h2>
+            <div class="related" aria-label="Related AgentOS pages">
+              <a href="/agentos/features/runtime-visibility/"
+                ><span>Runtime visibility</span><small>See what changed before approving</small></a
+              >
+              <a href="/agentos/use-cases/ai-operations/"
+                ><span>AI operations</span><small>Human-in-the-loop supervision</small></a
+              >
+              <a href="/agentos/openclaw/"><span>Built on OpenClaw</span><small>How the runtime fits underneath</small></a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="support-footer">
+      <div class="container support-footer__inner">
+        <p class="support-footer__note">
+          AgentOS is the human operating layer built on OpenClaw. OpenClaw remains the orchestration backend.
+        </p>
+        <nav class="support-footer__links" aria-label="Footer links">
+          <a href="/agentos/">Overview</a>
+          <a href="/agentos/quickstart/">Quickstart</a>
+          <a href="/agentos/openclaw/">OpenClaw</a>
+          <a href="/agentos/faq/">FAQ</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

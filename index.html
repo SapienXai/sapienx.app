@@ -4,29 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- Primary Meta Tags -->
-    <title>SapienX | Intelligent Agents</title>
-    <meta name="title" content="SapienX | Intelligent Agents">
-    <meta name="description" content="SapienX builds intelligent AI agents that create, operate, and grow autonomous Web3 startups — powering a new era of decentralized, self-running digital businesses.">
+    <title>SapienX | AgentOS, GhostChat, and Intelligent Agents</title>
+    <meta name="title" content="SapienX | AgentOS, GhostChat, and Intelligent Agents">
+    <meta name="description" content="SapienX builds intelligent AI products like AgentOS and GhostChat for autonomous Web3 operations, human control, and live community browsing.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SapienX">
+    <meta name="application-name" content="SapienX">
+    <meta name="theme-color" content="#050505">
+    <link rel="canonical" href="https://sapienx.app/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="SapienX | Intelligent Agents">
-    <meta property="og:description" content="SapienX builds intelligent AI agents that create, operate, and grow autonomous Web3 startups — powering a new era of decentralized, self-running digital businesses.">
+    <meta property="og:site_name" content="SapienX">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="SapienX | AgentOS, GhostChat, and Intelligent Agents">
+    <meta property="og:description" content="SapienX builds intelligent AI products like AgentOS and GhostChat for autonomous Web3 operations, human control, and live community browsing.">
+    <meta property="og:url" content="https://sapienx.app/">
     <meta property="og:image" content="https://sapienx-app.vercel.app/images/banner.jpg">
+    <meta property="og:image:alt" content="SapienX product banner">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="SapienX | Intelligent Agents">
-    <meta property="twitter:description" content="SapienX builds intelligent AI agents that create, operate, and grow autonomous Web3 startups — powering a new era of decentralized, self-running digital businesses.">
+    <meta property="twitter:site" content="@sapienapp">
+    <meta property="twitter:title" content="SapienX | AgentOS, GhostChat, and Intelligent Agents">
+    <meta property="twitter:description" content="SapienX builds intelligent AI products like AgentOS and GhostChat for autonomous Web3 operations, human control, and live community browsing.">
     <meta property="twitter:image" content="https://sapienx-app.vercel.app/images/banner.jpg">
+    <meta property="twitter:image:alt" content="SapienX product banner">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="apple-touch-icon" href="/images/favicon.png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap">
     <link rel="stylesheet" href="./style.css">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Organization",
+                    "@id": "https://sapienx.app/#organization",
+                    "name": "SapienX",
+                    "url": "https://sapienx.app/",
+                    "sameAs": [
+                        "https://x.com/sapienapp",
+                        "https://t.me/sapienapp",
+                        "https://github.com/SapienXai/AgentOS"
+                    ]
+                },
+                {
+                    "@type": "WebSite",
+                    "@id": "https://sapienx.app/#website",
+                    "url": "https://sapienx.app/",
+                    "name": "SapienX",
+                    "publisher": {
+                        "@id": "https://sapienx.app/#organization"
+                    }
+                }
+            ]
+        }
+    </script>
 </head>
 
 <body>
@@ -65,6 +107,14 @@
                 </div>
             </div>
 
+            <div class="nav-item">
+                <a href="#" aria-haspopup="true">Projects <span style="font-size:0.6rem; margin-left:4px;">▼</span></a>
+                <div class="dropdown-menu">
+                    <a href="#projects">Projects Overview</a>
+                    <a href="/agentos/" target="_blank" rel="noopener noreferrer">AgentOS</a>
+                    <a href="/ghostchat/" target="_blank" rel="noopener noreferrer">GhostChat</a>
+                </div>
+            </div>
             <a href="mailto:info@sapienx.app" target="_blank" rel="noopener noreferrer">Contact</a>
             <a href="https://app.coincollect.org/nfts/collections/mint/0x589C351d8836177BfD0F6d8A5f7Bd3aA9DfBB70C"
                 class="nav-cta" target="_blank" rel="noopener noreferrer">Mint</a>
@@ -93,7 +143,7 @@
         <section class="hero">
             <div class="content glass">
                 <h2>AI + Web3 Revolution</h2>
-                <p>Supercharge your business with decentralized AI tools and DAO governance.</p>
+                <p>Supercharge your business with decentralized AI tools, AgentOS for agent operations, and GhostChat for live Web3 context.</p>
             </div>
         </section>
 
@@ -108,6 +158,52 @@
             <div class="content glass">
                 <h2>AI AppStore</h2>
                 <p>Access ready-to-use agents for Automation, Fraud Detection, and Predictive Maintenance.</p>
+            </div>
+        </section>
+
+        <section class="projects" id="projects">
+            <div class="content glass projects-panel">
+                <div class="projects-intro">
+                    <span class="section-kicker">Selected products</span>
+                    <h2>Two standalone products, one ecosystem.</h2>
+                    <p>SapienX ships separate experiences for different jobs. AgentOS handles agent operations; GhostChat brings live community context and safety signals into Web3 browsing.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <article class="project-card project-card--agentos">
+                        <div class="project-card__media">
+                            <img src="/agentos/banner.jpeg" alt="AgentOS landing page preview" loading="lazy">
+                        </div>
+                        <div class="project-card__body">
+                            <span class="project-card__label">Human operating layer</span>
+                            <h3>AgentOS</h3>
+                            <p>Run agents, projects, and operations from one local-first control surface built on OpenClaw.</p>
+                            <div class="project-card__tags" aria-label="AgentOS tags">
+                                <span>OpenClaw</span>
+                                <span>Agent ops</span>
+                                <span>Local-first</span>
+                            </div>
+                            <a class="project-card__link" href="/agentos/" target="_blank" rel="noopener noreferrer">Open AgentOS</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card project-card--ghostchat">
+                        <div class="project-card__media">
+                            <img src="/ghostchat/banner.jpeg" alt="GhostChat landing page preview" loading="lazy">
+                        </div>
+                        <div class="project-card__body">
+                            <span class="project-card__label">Live Web3 context</span>
+                            <h3>GhostChat</h3>
+                            <p>A browser extension that adds live, site-context chat with community trends, safety signals, and profile controls.</p>
+                            <div class="project-card__tags" aria-label="GhostChat tags">
+                                <span>Browser extension</span>
+                                <span>Web3</span>
+                                <span>Safety signals</span>
+                            </div>
+                            <a class="project-card__link" href="/ghostchat/" target="_blank" rel="noopener noreferrer">Open GhostChat</a>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
 
@@ -155,6 +251,8 @@
                     <ul>
                         <li><a href="/images/sapienx-whitepaper-v2.0.pdf" target="_blank"
                                 rel="noopener noreferrer">WhitePaper</a></li>
+                        <li><a href="/agentos/" target="_blank" rel="noopener noreferrer">AgentOS</a></li>
+                        <li><a href="/ghostchat/" target="_blank" rel="noopener noreferrer">GhostChat</a></li>
                         <li><a href="mailto:info@sapienx.app" target="_blank" rel="noopener noreferrer">Contact</a></li>
                     </ul>
                 </div>

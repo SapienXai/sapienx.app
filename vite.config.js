@@ -1,9 +1,43 @@
 import { cpSync, existsSync, mkdirSync, readdirSync, statSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { dirname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
 
 const rootDir = dirname(fileURLToPath(import.meta.url));
+
+function discoverHtmlEntries(absoluteDir) {
+  const entries = {};
+
+  const walk = (dir) => {
+    if (!existsSync(dir)) {
+      return;
+    }
+
+    const children = readdirSync(dir).filter((entry) => entry !== ".DS_Store").sort();
+
+    for (const entry of children) {
+      const absolutePath = resolve(dir, entry);
+      const stats = statSync(absolutePath);
+
+      if (stats.isDirectory()) {
+        walk(absolutePath);
+        continue;
+      }
+
+      if (!absolutePath.endsWith(".html")) {
+        continue;
+      }
+
+      // Keep output paths stable: "agentos/faq/index.html" -> "agentos/faq/index".
+      const rel = relative(rootDir, absolutePath).replace(/\\/g, "/");
+      const name = rel.replace(/\.html$/i, "");
+      entries[name] = absolutePath;
+    }
+  };
+
+  walk(absoluteDir);
+  return entries;
+}
 
 function copyRouteAssets(routes) {
   const copyRecursive = (sourceDir, targetDir) => {
@@ -49,8 +83,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(rootDir, "index.html"),
-        agentos: resolve(rootDir, "agentos/index.html"),
+        index: resolve(rootDir, "index.html"),
+        ...discoverHtmlEntries(resolve(rootDir, "agentos")),
       },
     },
   },
