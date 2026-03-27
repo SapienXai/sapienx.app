@@ -2,9 +2,6 @@ const revealElements = document.querySelectorAll(".reveal");
 const quickstartTabs = document.querySelectorAll("[data-tab-target]");
 const quickstartPanels = document.querySelectorAll("[data-tab-panel]");
 const copyButtons = document.querySelectorAll("[data-copy-target]");
-const heroVideoFrame = document.querySelector(".hero-video-frame");
-const heroVideoShell = heroVideoFrame?.closest(".hero-video-shell");
-const heroVideoLaunch = heroVideoShell?.querySelector("[data-video-launch]");
 const year = document.querySelector("#year");
 const mouseGlow = document.getElementById("mouse-glow");
 const auras = document.querySelectorAll(".page-aura");
@@ -24,10 +21,6 @@ const githubButtonStars = githubButton
 const reducedMotionQuery =
   typeof window.matchMedia === "function"
     ? window.matchMedia("(prefers-reduced-motion: reduce)")
-    : null;
-const heroVideoMobileQuery =
-  typeof window.matchMedia === "function"
-    ? window.matchMedia("(max-width: 720px)")
     : null;
 const integrationCatalog = Array.isArray(window.AGENTOS_INTEGRATION_CATALOG)
   ? window.AGENTOS_INTEGRATION_CATALOG
@@ -1071,76 +1064,6 @@ copyButtons.forEach((button) => {
     }
   });
 });
-
-if (heroVideoFrame) {
-  const baseSrc = heroVideoFrame.dataset.baseSrc?.trim();
-  let heroVideoWasActivated = false;
-  let heroVideoWasLoaded = false;
-
-  const buildHeroVideoSrc = ({ autoplay = false } = {}) => {
-    if (!baseSrc) {
-      return "";
-    }
-
-    const src = new URL(baseSrc, window.location.href);
-
-    if (window.location.protocol !== "file:") {
-      src.searchParams.set("origin", window.location.origin);
-    }
-
-    if (autoplay) {
-      src.searchParams.set("autoplay", "1");
-    } else {
-      src.searchParams.delete("autoplay");
-    }
-
-    return src.toString();
-  };
-
-  const setHeroVideoPosterActive = (isActive) => {
-    heroVideoShell?.classList.toggle("is-poster-active", isActive);
-  };
-
-  const loadHeroVideo = ({ autoplay = false } = {}) => {
-    const src = buildHeroVideoSrc({ autoplay });
-
-    if (!src) {
-      return;
-    }
-
-    heroVideoFrame.src = src;
-    heroVideoWasLoaded = true;
-    setHeroVideoPosterActive(false);
-  };
-
-  if (baseSrc) {
-    const startsInMobilePosterMode = Boolean(heroVideoLaunch && heroVideoMobileQuery?.matches);
-
-    if (startsInMobilePosterMode) {
-      setHeroVideoPosterActive(true);
-      heroVideoFrame.removeAttribute("src");
-
-      const syncHeroVideoViewport = (event) => {
-        if (!event.matches && !heroVideoWasActivated && !heroVideoWasLoaded) {
-          loadHeroVideo();
-        }
-      };
-
-      if (typeof heroVideoMobileQuery.addEventListener === "function") {
-        heroVideoMobileQuery.addEventListener("change", syncHeroVideoViewport);
-      } else if (typeof heroVideoMobileQuery.addListener === "function") {
-        heroVideoMobileQuery.addListener(syncHeroVideoViewport);
-      }
-
-      heroVideoLaunch.addEventListener("click", () => {
-        heroVideoWasActivated = true;
-        loadHeroVideo({ autoplay: true });
-      });
-    } else {
-      loadHeroVideo();
-    }
-  }
-}
 
 if (year) {
   year.textContent = String(new Date().getFullYear());

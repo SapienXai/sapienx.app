@@ -200,7 +200,10 @@
             <div class="hero-content">
               <article class="hero-panel hero-panel--intro">
                 <p class="hero-panel__kicker">The human layer for OpenClaw</p>
-                <h1>One human. Thousands of agents. Hundreds of projects.</h1>
+                <h1>
+                  One human. Thousands of agents.<br class="hero-headline__break" />
+                  Hundreds of projects.
+                </h1>
                 <p>
                   AgentOS is the control layer that simplifies complex agent, project, and AI workforce management on top of OpenClaw.
                 </p>
@@ -295,44 +298,19 @@
             </div>
 
             <div class="hero-video-shell">
-              <div class="hero-video-shell__chrome">
-                <div class="window-dots" aria-hidden="true">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <div class="hero-video-shell__label">Mission Control Walkthrough</div>
-              </div>
-
-              <button
-                class="hero-video-cover"
-                type="button"
-                data-video-launch
-                aria-label="Play AgentOS Mission Control walkthrough"
-                aria-controls="hero-video-frame"
-              >
-                <span
-                  class="hero-video-cover__image"
-                  aria-hidden="true"
-                  style="background-image: url('https://i.ytimg.com/vi/ujz-4bYDjdY/hqdefault.jpg');"
-                ></span>
-                <span class="hero-video-cover__play" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="currentColor" d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.15-5.18a1 1 0 0 0 0-1.68L9.54 5.98A1 1 0 0 0 8 6.82Z"/>
-                  </svg>
-                </span>
-              </button>
-
-              <iframe
+              <video
                 id="hero-video-frame"
                 class="hero-video-frame"
-                data-base-src="https://www.youtube.com/embed/ujz-4bYDjdY?rel=0&playsinline=1"
                 title="AgentOS Mission Control walkthrough"
-                loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+                poster="/agentos/banner.jpeg"
+              >
+                <source src="/agentos/assets/agentos-TASKs.webm" type="video/webm" />
+              </video>
             </div>
 
             <section class="hero-integrations reveal reveal--delay-2" aria-labelledby="hero-integrations-title">
