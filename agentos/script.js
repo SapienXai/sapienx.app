@@ -21,6 +21,7 @@ const githubButtonSparkles = githubButton?.querySelector(".button__sparkles");
 const githubButtonStars = githubButton
   ? Array.from(githubButton.querySelectorAll(".button__spark"))
   : [];
+const heroTitleMorph = document.querySelector("[data-hero-title-morph]");
 const reducedMotionQuery =
   typeof window.matchMedia === "function"
     ? window.matchMedia("(prefers-reduced-motion: reduce)")
@@ -1006,6 +1007,94 @@ if (typeof reducedMotionQuery?.addEventListener === "function") {
 } else if (typeof reducedMotionQuery?.addListener === "function") {
   reducedMotionQuery.addListener(handleReducedMotionChange);
 }
+
+const initHeroTitleMorph = () => {
+  if (!heroTitleMorph) {
+    return;
+  }
+
+  const fromText = heroTitleMorph.dataset.fromText?.trim() || "Thousands of agents";
+  const toText = heroTitleMorph.dataset.toText?.trim() || "Hundreds of projects";
+  const cycle = [fromText, toText];
+
+  if (reducedMotionQuery?.matches) {
+    heroTitleMorph.textContent = toText;
+    return;
+  }
+
+  const randomCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let cycleIndex = 0;
+  let timeoutId = 0;
+
+  const setText = (value) => {
+    heroTitleMorph.textContent = value;
+  };
+
+  const morphTo = (nextText) => {
+    const currentText = heroTitleMorph.textContent || "";
+    const maxLength = Math.max(currentText.length, nextText.length);
+    let frame = 0;
+    const totalFrames = maxLength + 12;
+
+    const step = () => {
+      if (frame >= totalFrames) {
+        setText(nextText);
+        timeoutId = window.setTimeout(runCycle, 1450);
+        return;
+      }
+
+      const settleCount = Math.max(0, frame - 4);
+      const chars = [];
+
+      for (let index = 0; index < maxLength; index += 1) {
+        const targetChar = nextText[index] || "";
+        if (index < settleCount) {
+          chars.push(targetChar);
+          continue;
+        }
+
+        if (targetChar === " " || targetChar === "") {
+          chars.push(targetChar);
+          continue;
+        }
+
+        const randomIndex = Math.floor(Math.random() * randomCharset.length);
+        chars.push(randomCharset[randomIndex]);
+      }
+
+      setText(chars.join("").trimEnd());
+      frame += 1;
+      timeoutId = window.setTimeout(step, 34);
+    };
+
+    step();
+  };
+
+  const runCycle = () => {
+    cycleIndex = (cycleIndex + 1) % cycle.length;
+    morphTo(cycle[cycleIndex]);
+  };
+
+  setText(cycle[0]);
+  timeoutId = window.setTimeout(runCycle, 1300);
+
+  const handleReducedMotionChange = (event) => {
+    if (!event.matches) {
+      return;
+    }
+
+    window.clearTimeout(timeoutId);
+    setText(toText);
+  };
+
+  if (typeof reducedMotionQuery?.addEventListener === "function") {
+    reducedMotionQuery.addEventListener("change", handleReducedMotionChange);
+  } else if (typeof reducedMotionQuery?.addListener === "function") {
+    reducedMotionQuery.addListener(handleReducedMotionChange);
+  }
+};
+
+initHeroTitleMorph();
 
 const revealObserver = new IntersectionObserver(
   (entries) => {
