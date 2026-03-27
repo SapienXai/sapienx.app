@@ -911,20 +911,74 @@ pre {
 }
 
 .hero-title-morph {
+  --splitflap-columns: 22;
+  --splitflap-gap: 0.16em;
+  --splitflap-height: 1.08em;
+  --splitflap-bg: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(4, 10, 22, 0.97));
   position: relative;
-  display: inline-block;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0.68em, 1fr);
+  gap: var(--splitflap-gap);
+  min-height: var(--splitflap-height);
   min-width: 19ch;
+  vertical-align: baseline;
+  padding: 0.06em 0.08em;
+  border-radius: 0.22em;
+  background:
+    linear-gradient(180deg, rgba(148, 163, 184, 0.2), rgba(148, 163, 184, 0)),
+    rgba(2, 6, 23, 0.5);
+  box-shadow:
+    inset 0 0 0 1px rgba(148, 163, 184, 0.22),
+    0 0.18em 0.7em rgba(2, 6, 23, 0.6);
+  overflow: hidden;
+}
+
+.hero-title-morph__cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 0.68em;
+  height: var(--splitflap-height);
+  border-radius: 0.12em;
+  background: var(--splitflap-bg);
+  color: #e2e8f0;
+  text-shadow: 0 0 0.15em rgba(148, 163, 184, 0.5);
+  box-shadow:
+    inset 0 0 0 1px rgba(148, 163, 184, 0.18),
+    inset 0 -0.1em 0.22em rgba(15, 23, 42, 0.65),
+    0 0.08em 0.2em rgba(2, 6, 23, 0.5);
+  transform-origin: center;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.hero-title-morph__cell::before {
+  content: "";
+  position: absolute;
+  inset: 49.5% 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.25), transparent);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.hero-title-morph__cell.is-flipping {
+  animation: splitFlapFlip 210ms ease;
+}
+
+.hero-title-morph__cell--blank {
+  opacity: 0.72;
 }
 
 .hero-title-morph::after {
   content: "";
-  display: inline-block;
   width: 0.08em;
-  height: 0.95em;
-  margin-left: 0.14em;
-  vertical-align: -0.05em;
-  background: currentColor;
-  opacity: 0.5;
+  height: 0.94em;
+  margin-left: 0.16em;
+  align-self: center;
+  justify-self: start;
+  background: rgba(203, 213, 225, 0.85);
+  box-shadow: 0 0 0.35em rgba(148, 163, 184, 0.65);
   animation: heroMorphCaret 0.9s steps(1, end) infinite;
 }
 
@@ -941,10 +995,27 @@ pre {
   pointer-events: none;
 }
 
+@keyframes splitFlapFlip {
+  0% {
+    transform: perspective(280px) rotateX(0deg);
+    filter: brightness(1);
+  }
+
+  50% {
+    transform: perspective(280px) rotateX(-88deg);
+    filter: brightness(0.72);
+  }
+
+  100% {
+    transform: perspective(280px) rotateX(0deg);
+    filter: brightness(1.02);
+  }
+}
+
 @keyframes heroMorphCaret {
   0%,
   44% {
-    opacity: 0.52;
+    opacity: 0.58;
   }
 
   45%,
