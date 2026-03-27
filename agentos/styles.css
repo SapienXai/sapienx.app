@@ -902,6 +902,7 @@ pre {
   line-height: 1.1;
   letter-spacing: -0.05em;
   font-weight: 800;
+  text-wrap: balance;
   position: relative;
 }
 
@@ -3595,8 +3596,9 @@ pre {
   }
 
   .hero-panel h1 {
-    font-size: clamp(2rem, 12vw, 3.5rem);
-    line-height: 1.1;
+    font-size: clamp(1.75rem, 8.8vw, 2.25rem);
+    line-height: 1.08;
+    max-width: 20ch;
   }
 
   .hero-integrations {
