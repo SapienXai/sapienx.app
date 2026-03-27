@@ -21,6 +21,7 @@ const githubButtonSparkles = githubButton?.querySelector(".button__sparkles");
 const githubButtonStars = githubButton
   ? Array.from(githubButton.querySelectorAll(".button__spark"))
   : [];
+const heroRotatingText = document.querySelector("[data-hero-rotating-text]");
 const reducedMotionQuery =
   typeof window.matchMedia === "function"
     ? window.matchMedia("(prefers-reduced-motion: reduce)")
@@ -190,6 +191,103 @@ const githubStarState = {
   resizeTimeout: 0,
   stars: [],
   bounds: null,
+};
+
+const initHeroHeadlineRotation = () => {
+  if (!heroRotatingText) {
+    return;
+  }
+
+  const phrases = (heroRotatingText.dataset.heroPhrases || "")
+    .split("|")
+    .map((phrase) => phrase.trim())
+    .filter(Boolean);
+
+  if (phrases.length < 2) {
+    return;
+  }
+
+  if (reducedMotionQuery?.matches) {
+    heroRotatingText.textContent = phrases[0];
+    return;
+  }
+
+  let phraseIndex = 0;
+  let frameTimer = 0;
+  let holdTimer = 0;
+  let phase = "hold";
+  let currentText = phrases[0];
+
+  const clearTimers = () => {
+    window.clearTimeout(frameTimer);
+    window.clearTimeout(holdTimer);
+  };
+
+  const render = () => {
+    heroRotatingText.textContent = currentText || "\u00a0";
+  };
+
+  const typeTo = (targetText, speed, onComplete) => {
+    const isDeleting = currentText.length > targetText.length;
+    const step = () => {
+      if (currentText === targetText) {
+        onComplete();
+        return;
+      }
+
+      if (isDeleting) {
+        currentText = currentText.slice(0, -1);
+      } else {
+        currentText = targetText.slice(0, currentText.length + 1);
+      }
+
+      render();
+      frameTimer = window.setTimeout(step, speed);
+    };
+
+    step();
+  };
+
+  const runCycle = () => {
+    if (phase === "hold") {
+      phase = "erase";
+      heroRotatingText.classList.add("is-swapping");
+      typeTo("", 34, runCycle);
+      return;
+    }
+
+    if (phase === "erase") {
+      phase = "type";
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      typeTo(phrases[phraseIndex], 56, runCycle);
+      return;
+    }
+
+    phase = "hold";
+    heroRotatingText.classList.remove("is-swapping");
+    holdTimer = window.setTimeout(runCycle, 1900);
+  };
+
+  render();
+  holdTimer = window.setTimeout(runCycle, 2100);
+
+  const syncReducedMotion = (event) => {
+    if (!event.matches) {
+      return;
+    }
+
+    clearTimers();
+    currentText = phrases[0];
+    phase = "hold";
+    heroRotatingText.classList.remove("is-swapping");
+    render();
+  };
+
+  if (typeof reducedMotionQuery?.addEventListener === "function") {
+    reducedMotionQuery.addEventListener("change", syncReducedMotion);
+  } else if (typeof reducedMotionQuery?.addListener === "function") {
+    reducedMotionQuery.addListener(syncReducedMotion);
+  }
 };
 
 integrationCatalog.forEach((entry, index) => {
@@ -1145,3 +1243,5 @@ if (heroVideoFrame) {
 if (year) {
   year.textContent = String(new Date().getFullYear());
 }
+
+initHeroHeadlineRotation();

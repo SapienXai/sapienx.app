@@ -902,7 +902,27 @@ pre {
   line-height: 1.1;
   letter-spacing: -0.05em;
   font-weight: 800;
+  text-wrap: balance;
   position: relative;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.08em;
+}
+
+.hero-title__line {
+  display: block;
+}
+
+.hero-title__line--dynamic {
+  min-height: 1.12em;
+}
+
+.hero-title__line--dynamic.is-swapping {
+  opacity: 0.94;
 }
 
 .hero-panel h1::after {
@@ -3595,8 +3615,9 @@ pre {
   }
 
   .hero-panel h1 {
-    font-size: clamp(2rem, 12vw, 3.5rem);
-    line-height: 1.1;
+    font-size: clamp(1.75rem, 8.8vw, 2.25rem);
+    line-height: 1.08;
+    max-width: 22ch;
   }
 
   .hero-integrations {
