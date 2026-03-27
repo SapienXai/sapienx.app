@@ -906,6 +906,28 @@ pre {
   position: relative;
 }
 
+.hero-title-line {
+  display: block;
+}
+
+.hero-title-morph {
+  position: relative;
+  display: inline-block;
+  min-width: 19ch;
+}
+
+.hero-title-morph::after {
+  content: "";
+  display: inline-block;
+  width: 0.08em;
+  height: 0.95em;
+  margin-left: 0.14em;
+  vertical-align: -0.05em;
+  background: currentColor;
+  opacity: 0.5;
+  animation: heroMorphCaret 0.9s steps(1, end) infinite;
+}
+
 .hero-panel h1::after {
   content: "";
   position: absolute;
@@ -917,6 +939,18 @@ pre {
   background: radial-gradient(circle, rgba(56, 189, 248, 0.1), transparent 70%);
   z-index: -1;
   pointer-events: none;
+}
+
+@keyframes heroMorphCaret {
+  0%,
+  44% {
+    opacity: 0.52;
+  }
+
+  45%,
+  100% {
+    opacity: 0;
+  }
 }
 
 .hero-panel--intro > p:not(.hero-panel__kicker) {
