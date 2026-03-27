@@ -1015,26 +1015,54 @@ const initHeroTitleMorph = () => {
 
   const fromText = heroTitleMorph.dataset.fromText?.trim() || "Thousands of agents";
   const toText = heroTitleMorph.dataset.toText?.trim() || "Hundreds of projects";
-  const cycle = [fromText, toText];
+  const normalizeText = (value, width) => value.padEnd(width, " ");
+  const displayWidth = Math.max(fromText.length, toText.length);
+  const cycle = [normalizeText(fromText, displayWidth), normalizeText(toText, displayWidth)];
+  const randomCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const cells = [];
 
   if (reducedMotionQuery?.matches) {
     heroTitleMorph.textContent = toText;
     return;
   }
 
-  const randomCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  heroTitleMorph.textContent = "";
+
+  for (let index = 0; index < displayWidth; index += 1) {
+    const cell = document.createElement("span");
+    cell.className = "hero-title-morph__cell";
+    cell.textContent = cycle[0][index] === " " ? "·" : cycle[0][index];
+    if (cycle[0][index] === " ") {
+      cell.classList.add("hero-title-morph__cell--blank");
+    }
+    heroTitleMorph.append(cell);
+    cells.push(cell);
+  }
+
   let cycleIndex = 0;
   let timeoutId = 0;
 
   const setText = (value) => {
-    heroTitleMorph.textContent = value;
+    for (let index = 0; index < displayWidth; index += 1) {
+      const character = value[index] || " ";
+      const cell = cells[index];
+      if (!cell) {
+        continue;
+      }
+
+      if (character === " ") {
+        cell.textContent = "·";
+        cell.classList.add("hero-title-morph__cell--blank");
+      } else {
+        cell.textContent = character;
+        cell.classList.remove("hero-title-morph__cell--blank");
+      }
+    }
   };
 
   const morphTo = (nextText) => {
-    const currentText = heroTitleMorph.textContent || "";
-    const maxLength = Math.max(currentText.length, nextText.length);
     let frame = 0;
-    const totalFrames = maxLength + 12;
+    const totalFrames = displayWidth + 10;
 
     const step = () => {
       if (frame >= totalFrames) {
@@ -1044,25 +1072,39 @@ const initHeroTitleMorph = () => {
       }
 
       const settleCount = Math.max(0, frame - 4);
-      const chars = [];
-
-      for (let index = 0; index < maxLength; index += 1) {
+      for (let index = 0; index < displayWidth; index += 1) {
         const targetChar = nextText[index] || "";
+        const cell = cells[index];
+        if (!cell) {
+          continue;
+        }
+
+        let displayChar = targetChar;
+
         if (index < settleCount) {
-          chars.push(targetChar);
-          continue;
+          displayChar = targetChar;
+        } else if (targetChar === " " || targetChar === "") {
+          displayChar = " ";
+        } else {
+          const randomIndex = Math.floor(Math.random() * randomCharset.length);
+          displayChar = randomCharset[randomIndex];
         }
 
-        if (targetChar === " " || targetChar === "") {
-          chars.push(targetChar);
-          continue;
+        if (displayChar === " ") {
+          cell.textContent = "·";
+          cell.classList.add("hero-title-morph__cell--blank");
+        } else {
+          cell.textContent = displayChar;
+          cell.classList.remove("hero-title-morph__cell--blank");
         }
 
-        const randomIndex = Math.floor(Math.random() * randomCharset.length);
-        chars.push(randomCharset[randomIndex]);
+        if (index >= settleCount - 1) {
+          cell.classList.remove("is-flipping");
+          void cell.offsetWidth;
+          cell.classList.add("is-flipping");
+        }
       }
 
-      setText(chars.join("").trimEnd());
       frame += 1;
       timeoutId = window.setTimeout(step, 34);
     };
@@ -1084,7 +1126,7 @@ const initHeroTitleMorph = () => {
     }
 
     window.clearTimeout(timeoutId);
-    setText(toText);
+    setText(cycle[1]);
   };
 
   if (typeof reducedMotionQuery?.addEventListener === "function") {
