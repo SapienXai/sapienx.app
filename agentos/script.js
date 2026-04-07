@@ -1,6 +1,8 @@
 const revealElements = document.querySelectorAll(".reveal");
 const quickstartTabs = document.querySelectorAll("[data-tab-target]");
 const quickstartPanels = document.querySelectorAll("[data-tab-panel]");
+const installCommandElement = document.querySelector("[data-install-command]");
+const installPlatformLabel = document.querySelector("[data-install-platform-label]");
 const copyButtons = document.querySelectorAll("[data-copy-target]");
 const year = document.querySelector("#year");
 const mouseGlow = document.getElementById("mouse-glow");
@@ -37,6 +39,10 @@ const integrationCatalog = Array.isArray(window.AGENTOS_INTEGRATION_CATALOG)
 
 const integrationCatalogRows = [[], []];
 const SVG_NS = "http://www.w3.org/2000/svg";
+const INSTALL_COMMANDS = {
+  windows: "iwr https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.ps1 | iex",
+  unix: "curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash",
+};
 const TRAFFIC_GRID_SIZE = 40;
 const TRAFFIC_LABEL_MIN_WIDTH = 1080;
 const TRAFFIC_LABEL_HOLD_RANGE = [860, 1180];
@@ -214,6 +220,56 @@ const buildTrafficPath = (points) =>
     .join(" ");
 
 const randomBetween = (min, max) => min + Math.random() * (max - min);
+
+const detectInstallPlatform = () => {
+  const platformTokens = [
+    navigator.userAgentData?.platform,
+    navigator.platform,
+    navigator.userAgent,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  if (platformTokens.includes("win")) {
+    return "windows";
+  }
+
+  if (platformTokens.includes("mac")) {
+    return "macos";
+  }
+
+  if (platformTokens.includes("linux") || platformTokens.includes("x11") || platformTokens.includes("cros")) {
+    return "linux";
+  }
+
+  return "unix";
+};
+
+const updateInstallCommand = () => {
+  if (!installCommandElement && !installPlatformLabel) {
+    return;
+  }
+
+  const platform = detectInstallPlatform();
+  const command = platform === "windows" ? INSTALL_COMMANDS.windows : INSTALL_COMMANDS.unix;
+  const labelText =
+    platform === "windows"
+      ? "Detected: Windows PowerShell"
+      : platform === "macos"
+        ? "Detected: macOS shell"
+        : platform === "linux"
+          ? "Detected: Linux shell"
+          : "Detected: Unix-like shell";
+
+  if (installCommandElement) {
+    installCommandElement.textContent = command;
+  }
+
+  if (installPlatformLabel) {
+    installPlatformLabel.textContent = labelText;
+  }
+};
 
 const renderGithubStars = () => {
   githubStarState.stars.forEach((star) => {
@@ -1016,6 +1072,8 @@ const revealObserver = new IntersectionObserver(
 );
 
 revealElements.forEach((element) => revealObserver.observe(element));
+
+updateInstallCommand();
 
 const setActiveTab = (target) => {
   quickstartTabs.forEach((tab) => {

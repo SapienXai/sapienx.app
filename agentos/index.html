@@ -493,6 +493,15 @@
                 <button class="quickstart-tab is-active" type="button" role="tab" aria-selected="true" data-tab-target="release">
                   One-liner
                 </button>
+                <button class="quickstart-tab" type="button" role="tab" aria-selected="false" data-tab-target="macos">
+                  macOS
+                </button>
+                <button class="quickstart-tab" type="button" role="tab" aria-selected="false" data-tab-target="linux">
+                  Linux
+                </button>
+                <button class="quickstart-tab" type="button" role="tab" aria-selected="false" data-tab-target="windows">
+                  Windows
+                </button>
                 <button class="quickstart-tab" type="button" role="tab" aria-selected="false" data-tab-target="package">
                   pnpm
                 </button>
@@ -507,17 +516,53 @@
             <div class="quickstart-panels">
               <section class="quickstart-panel is-active" role="tabpanel" data-tab-panel="release">
                 <p class="quickstart-panel__lede">
-                  # Fastest path. Install the published AgentOS release and open Mission Control locally.
+                  # Fastest path. The one-liner auto-detects your platform and installs the right AgentOS release.
                 </p>
 
                 <div class="quickstart-command">
                   <span class="quickstart-command__sigil">$</span>
-                  <pre id="release-snippet"><code>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</code></pre>
+                  <pre id="release-snippet"><code data-install-command="auto">curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</code></pre>
                   <button class="copy-button" type="button" data-copy-target="release-snippet">Copy</button>
                 </div>
 
                 <div class="quickstart-panel__meta">
-                  <span>Packaged CLI install</span>
+                  <span data-install-platform-label>Auto-detecting platform</span>
+                  <span>Launch with <code>agentos start --open</code></span>
+                  <span>Verify with <code>agentos doctor</code></span>
+                </div>
+              </section>
+
+              <section class="quickstart-panel" role="tabpanel" data-tab-panel="macos" hidden>
+                <p class="quickstart-panel__lede">
+                  # macOS path. Use the shell installer from the repository README.
+                </p>
+
+                <div class="quickstart-command">
+                  <span class="quickstart-command__sigil">$</span>
+                  <pre id="macos-snippet"><code>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</code></pre>
+                  <button class="copy-button" type="button" data-copy-target="macos-snippet">Copy</button>
+                </div>
+
+                <div class="quickstart-panel__meta">
+                  <span>macOS shell install</span>
+                  <span>Launch with <code>agentos start --open</code></span>
+                  <span>Verify with <code>agentos doctor</code></span>
+                </div>
+              </section>
+
+              <section class="quickstart-panel" role="tabpanel" data-tab-panel="linux" hidden>
+                <p class="quickstart-panel__lede">
+                  # Linux path. Use the same shell installer as macOS.
+                </p>
+
+                <div class="quickstart-command">
+                  <span class="quickstart-command__sigil">$</span>
+                  <pre id="linux-snippet"><code>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</code></pre>
+                  <button class="copy-button" type="button" data-copy-target="linux-snippet">Copy</button>
+                </div>
+
+                <div class="quickstart-panel__meta">
+                  <span>Linux shell install</span>
                   <span>Launch with <code>agentos start --open</code></span>
                   <span>Verify with <code>agentos doctor</code></span>
                 </div>
@@ -556,6 +601,24 @@
                   <span>Ideal for forks and product teams</span>
                   <span>Customize UI, flows, and branding</span>
                   <span>Check <code>openclaw gateway status --json</code></span>
+                </div>
+              </section>
+
+              <section class="quickstart-panel" role="tabpanel" data-tab-panel="windows" hidden>
+                <p class="quickstart-panel__lede">
+                  # Windows path. Use the PowerShell installer from the repository README.
+                </p>
+
+                <div class="quickstart-command">
+                  <span class="quickstart-command__sigil">$</span>
+                  <pre id="windows-snippet"><code>iwr https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.ps1 | iex</code></pre>
+                  <button class="copy-button" type="button" data-copy-target="windows-snippet">Copy</button>
+                </div>
+
+                <div class="quickstart-panel__meta">
+                  <span>Windows PowerShell install</span>
+                  <span>Launch with <code>agentos start --open</code></span>
+                  <span>Verify with <code>agentos doctor</code></span>
                 </div>
               </section>
             </div>

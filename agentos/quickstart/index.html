@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <title>AgentOS Quickstart | Install OpenClaw and Open Mission Control | SapienX</title>
+    <title>AgentOS Quickstart | Install AgentOS and Open Mission Control | SapienX</title>
     <meta
       name="description"
-      content="Install OpenClaw, verify the runtime, and then use AgentOS Mission Control as the human operating layer on top."
+      content="Install AgentOS, verify the runtime, and then use AgentOS Mission Control as the human operating layer on top."
     />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="SapienX" />
@@ -21,7 +21,7 @@
     <meta property="og:title" content="AgentOS Quickstart | SapienX" />
     <meta
       property="og:description"
-      content="Install OpenClaw, verify the runtime, and then use AgentOS Mission Control on top of it."
+      content="Install AgentOS, verify the runtime, and then use AgentOS Mission Control on top of it."
     />
     <meta property="og:url" content="https://sapienx.app/agentos/quickstart/" />
     <meta property="og:image" content="https://sapienx.app/agentos/banner.jpeg" />
@@ -31,7 +31,7 @@
     <meta name="twitter:title" content="AgentOS Quickstart | SapienX" />
     <meta
       name="twitter:description"
-      content="Install OpenClaw, verify the runtime, and then open AgentOS Mission Control."
+      content="Install AgentOS, verify the runtime, and then open AgentOS Mission Control."
     />
     <meta name="twitter:image" content="https://sapienx.app/agentos/banner.jpeg" />
     <meta name="twitter:image:alt" content="AgentOS mission control interface banner" />
@@ -71,7 +71,7 @@
               "name": "What is the fastest way to install AgentOS?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Use the OpenClaw installer one-liner from the official docs, then open AgentOS Mission Control on top of the running runtime."
+                "text": "Use the home page one-liner if you want the platform to be detected automatically. If you prefer explicit commands, use the Unix shell command on macOS or Linux and the PowerShell command on Windows. Then open AgentOS Mission Control locally."
               }
             },
             {
@@ -79,7 +79,7 @@
               "name": "How do I verify the runtime underneath AgentOS?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Run openclaw doctor, then use openclaw gateway status to confirm the underlying runtime state."
+                "text": "Run agentos doctor, then launch Mission Control with agentos start --open to confirm the local stack is ready."
               }
             }
         ]
@@ -120,10 +120,10 @@
 
         <section class="support-hero">
           <span class="eyebrow">Quickstart</span>
-          <h1>Install OpenClaw. Open Mission Control.</h1>
+          <h1>Install AgentOS. Open Mission Control.</h1>
           <p>
-            Pick the workflow that matches your environment. AgentOS is built on top of OpenClaw: install the runtime,
-            verify it, then open the human operating layer.
+            Pick the workflow that matches your environment. The home page one-liner now auto-detects Windows versus
+            Unix-like shells; this page keeps the explicit commands and links in one place.
           </p>
           <div class="cta-row" role="group" aria-label="Primary actions">
             <a class="button button--primary" href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noopener noreferrer"
@@ -136,26 +136,59 @@
 
         <div class="support-content">
           <section class="section-card" aria-labelledby="qs-fast-title">
-            <h2 id="qs-fast-title">Fastest path (OpenClaw installer)</h2>
-            <p>Install OpenClaw using the documented installer path, then open AgentOS Mission Control on top of it.</p>
-            <pre><code>curl -fsSL https://openclaw.bot/install.sh | bash</code></pre>
+            <h2 id="qs-fast-title">Fastest path (Unix one-liner)</h2>
+            <p>Use the shell installer on macOS or Linux. The home page one-liner will route Windows users to PowerShell.</p>
+            <pre><code>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</code></pre>
             <div class="pill-row" aria-label="Next commands">
-              <span class="pill"><code>openclaw doctor</code></span>
-              <span class="pill"><code>openclaw gateway status</code></span>
+              <span class="pill"><code>agentos start --open</code></span>
+              <span class="pill"><code>agentos doctor</code></span>
             </div>
             <div class="callout">
-              Once OpenClaw is healthy, use AgentOS as the human control surface: create one workspace per project and
-              keep tasks scoped to concrete deliverables.
+              Once AgentOS is installed, use it as the human control surface: create one workspace per project and keep
+              tasks scoped to concrete deliverables.
+            </div>
+          </section>
+
+          <section class="section-card" aria-labelledby="qs-macos-title">
+            <h2 id="qs-macos-title">macOS</h2>
+            <p>The shell installer is the same command used by the Unix one-liner.</p>
+            <pre><code>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</code></pre>
+            <div class="pill-row" aria-label="Next commands">
+              <span class="pill"><code>agentos start --open</code></span>
+              <span class="pill"><code>agentos doctor</code></span>
+            </div>
+          </section>
+
+          <section class="section-card" aria-labelledby="qs-linux-title">
+            <h2 id="qs-linux-title">Linux</h2>
+            <p>The shell installer is the same command used by macOS.</p>
+            <pre><code>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</code></pre>
+            <div class="pill-row" aria-label="Next commands">
+              <span class="pill"><code>agentos start --open</code></span>
+              <span class="pill"><code>agentos doctor</code></span>
             </div>
           </section>
 
           <section class="section-card" aria-labelledby="qs-pnpm-title">
-            <h2 id="qs-pnpm-title">Alternate install (npm)</h2>
-            <p>Best when you want the documented package workflow for OpenClaw.</p>
-            <pre><code>npm install -g openclaw@latest</code></pre>
+            <h2 id="qs-pnpm-title">Alternate install (pnpm)</h2>
+            <p>Best when you want the documented package workflow for AgentOS.</p>
+            <pre><code>pnpm add -g @sapienx/agentos</code></pre>
             <div class="pill-row" aria-label="Next commands">
-              <span class="pill"><code>openclaw doctor</code></span>
-              <span class="pill"><code>openclaw gateway status</code></span>
+              <span class="pill"><code>agentos start --open</code></span>
+              <span class="pill"><code>agentos doctor</code></span>
+            </div>
+          </section>
+
+          <section class="section-card" aria-labelledby="qs-windows-title">
+            <h2 id="qs-windows-title">Windows PowerShell</h2>
+            <p>Use the Windows install path documented in the AgentOS repository README.</p>
+            <pre><code>iwr https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.ps1 | iex</code></pre>
+            <div class="pill-row" aria-label="Next commands">
+              <span class="pill"><code>agentos start --open</code></span>
+              <span class="pill"><code>agentos doctor</code></span>
+            </div>
+            <div class="callout">
+              If you need a pinned release or uninstall steps, follow the links and details in the repository README.
             </div>
           </section>
 
@@ -174,10 +207,10 @@ pnpm dev</code></pre>
 
           <section class="section-card" aria-labelledby="qs-verify-title">
           <h2 id="qs-verify-title">Verify the operating stack</h2>
-            <p>AgentOS sits above OpenClaw. You want both layers healthy.</p>
+            <p>Use the local checks to confirm AgentOS is ready.</p>
             <ul>
-              <li><span class="kpi">Runtime health</span>: run <code>openclaw doctor</code> for local checks.</li>
-              <li><span class="kpi">Gateway state</span>: confirm your OpenClaw gateway/session state with <code>openclaw gateway status</code>.</li>
+              <li><span class="kpi">Runtime health</span>: run <code>agentos doctor</code> for local checks.</li>
+              <li><span class="kpi">Launch state</span>: open Mission Control with <code>agentos start --open</code>.</li>
               <li><span class="kpi">First workspace</span>: create a workspace that points to real files and a real deliverable, then assign one task with an explicit output.</li>
             </ul>
           </section>
@@ -187,14 +220,15 @@ pnpm dev</code></pre>
             <details>
               <summary>What is the fastest way to install AgentOS?</summary>
               <p>
-                Use the OpenClaw installer one-liner from the official docs, then open AgentOS Mission Control on top
-                of the running runtime.
+                Use the documented install path that matches your platform. On macOS or Linux, use the installer
+                one-liner; on Windows, use the PowerShell command from the repository README. Then open AgentOS
+                Mission Control locally.
               </p>
             </details>
             <details>
               <summary>How do I verify the runtime underneath AgentOS?</summary>
               <p>
-                Start with <code>openclaw doctor</code>, then confirm the gateway state with <code>openclaw gateway status</code>.
+                Start with <code>agentos doctor</code>, then launch Mission Control with <code>agentos start --open</code>.
                 If you need deeper truth about orchestration, check the OpenClaw gateway/session state underneath.
               </p>
             </details>
