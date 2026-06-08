@@ -184,6 +184,12 @@ section:nth-child(even) .content {
     align-items: center;
 }
 
+.hero {
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-top: 16vh;
+}
+
 .hero .content,
 .vision .content,
 .stack .content,
@@ -199,10 +205,23 @@ section:nth-child(even) .content {
     transform: none;
 }
 
+.hero .content {
+    max-width: 620px;
+    padding: 1rem;
+    margin-left: 6%;
+    margin-bottom: 5vh;
+    background: linear-gradient(180deg, rgba(5, 10, 22, 0.28), rgba(5, 10, 22, 0.1));
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+}
+
 .hero-panel {
     display: grid;
-    grid-template-columns: minmax(0, 1.18fr) minmax(290px, 0.82fr);
-    gap: 1.25rem;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
     align-items: stretch;
 }
 
@@ -211,11 +230,13 @@ section:nth-child(even) .content {
     flex-direction: column;
     gap: 1rem;
     justify-content: center;
+    align-items: flex-start;
+    text-align: left;
 }
 
 .hero-copy h1 {
     margin: 0;
-    font-size: clamp(3rem, 6vw, 5.6rem);
+    font-size: clamp(2.25rem, 4.2vw, 3.6rem);
     line-height: 0.92;
     letter-spacing: -0.06em;
     text-transform: none;
@@ -229,9 +250,9 @@ section:nth-child(even) .content {
 .vision-copy p,
 .stack-copy p,
 .stack-callout p {
-    font-size: 0.98rem;
+    font-size: 0.92rem;
     color: rgba(255, 255, 255, 0.66);
-    max-width: 62ch;
+    max-width: 34ch;
 }
 
 .hero-actions {
@@ -297,15 +318,13 @@ section:nth-child(even) .content {
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.035);
     color: rgba(255, 255, 255, 0.72);
-    font-size: 0.68rem;
+    font-size: 0.64rem;
     letter-spacing: 0.14rem;
     text-transform: uppercase;
 }
 
 .hero-side {
-    display: grid;
-    gap: 0.85rem;
-    align-content: start;
+    display: none;
 }
 
 .hero-stat-card,
@@ -321,7 +340,7 @@ section:nth-child(even) .content {
 
 .hero-stat-card {
     --accent-rgb: 124, 198, 255;
-    padding: 1.05rem 1.05rem 1.15rem;
+    padding: 0.92rem 0.98rem 1rem;
 }
 
 .hero-stat-card:nth-child(2) {
@@ -376,7 +395,7 @@ section:nth-child(even) .content {
 .hero-stat-card p,
 .vision-card p,
 .stack-card p {
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     color: rgba(255, 255, 255, 0.66);
 }
 
@@ -1132,6 +1151,12 @@ section:nth-child(even) .content {
         perspective: none;
     }
 
+    .hero {
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        padding-top: 8vh;
+    }
+
     .content {
         padding: 1.5rem;
         text-align: center;
@@ -1144,7 +1169,7 @@ section:nth-child(even) .content {
     .vision .content,
     .stack .content,
     .projects .content {
-        padding: 1.35rem;
+        padding: 1.15rem;
     }
 
     .hero-panel,
@@ -1153,41 +1178,50 @@ section:nth-child(even) .content {
         gap: 1rem;
     }
 
+    .hero .content {
+        max-width: 88vw;
+        padding: 0.8rem;
+        margin-left: 0;
+        margin-bottom: 0.5rem;
+        margin-top: 0;
+        background: linear-gradient(180deg, rgba(5, 10, 22, 0.22), rgba(5, 10, 22, 0.08));
+        border-radius: 18px;
+    }
+
     .hero-copy,
     .vision-copy,
     .stack-copy {
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
+        text-align: left;
     }
 
     .hero-copy h1 {
-        font-size: clamp(2.4rem, 10vw, 3.6rem);
+        font-size: clamp(1.7rem, 8vw, 2.6rem);
+        max-width: 10ch;
     }
 
     .hero-copy p,
     .vision-copy p,
     .stack-copy p,
     .stack-callout p {
-        font-size: 0.85rem;
+        font-size: 0.76rem;
+        max-width: 26ch;
     }
 
     .hero-actions {
         flex-direction: column;
         justify-content: center;
+        align-items: flex-start;
     }
 
     .hero-badges {
-        justify-content: center;
+        justify-content: flex-start;
+        gap: 0.45rem;
     }
 
-    .hero-side,
     .vision-grid,
     .stack-grid {
         grid-template-columns: 1fr;
-    }
-
-    .hero-side {
-        gap: 0.7rem;
     }
 
     .vision-copy h2,
