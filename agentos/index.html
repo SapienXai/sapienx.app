@@ -49,7 +49,7 @@
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
   />
-  <link rel="icon" type="image/webp" href="/agentos/logo.webp" />
+  <link rel="icon" type="image/webp" sizes="512x512" href="/agentos/assets/agentlogo.webp" />
   <link rel="icon" type="image/png" sizes="32x32" href="/agentos/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/agentos/apple-touch-icon.png" />
   <link rel="stylesheet" href="/agentos/styles.css" />
@@ -106,9 +106,9 @@
           "@id": "https://sapienx.app/agentos/#video-mission-control-walkthrough",
           "name": "AgentOS Mission Control walkthrough",
           "description": "A walkthrough of AgentOS Mission Control: the human operating layer built on OpenClaw.",
-          "thumbnailUrl": "https://i.ytimg.com/vi/ujz-4bYDjdY/hqdefault.jpg",
-          "embedUrl": "https://www.youtube.com/embed/ujz-4bYDjdY?rel=0&playsinline=1",
-          "contentUrl": "https://youtu.be/ujz-4bYDjdY",
+          "thumbnailUrl": "https://i.ytimg.com/vi/ribFHZuKRos/hqdefault.jpg",
+          "embedUrl": "https://www.youtube.com/embed/ribFHZuKRos?autoplay=1&mute=1&controls=1&playsinline=1&rel=0&modestbranding=1&loop=1&playlist=ribFHZuKRos",
+          "contentUrl": "https://www.youtube.com/watch?v=ribFHZuKRos",
           "publisher": { "@id": "https://sapienx.app/#organization" }
         }
       ]
@@ -166,10 +166,10 @@
       <div class="container site-header__inner">
         <a class="brand" href="#top" aria-label="AgentOS home">
           <span class="brand__mark" aria-hidden="true">
-            <img class="brand__logo" src="/agentos/logo.webp" alt="" />
+            <img class="brand__logo" src="/agentos/assets/agentlogo.webp" alt="" />
           </span>
           <span class="brand__copy">
-            <strong>AgentOS</strong>
+            <strong><span>Agent</span><span class="brand__os">OS</span></strong>
             <small>by SapienX</small>
           </span>
         </a>
@@ -187,7 +187,7 @@
         </button>
 
         <div class="site-actions">
-          <a class="button button--ghost" href="https://youtu.be/ujz-4bYDjdY" target="_blank" rel="noreferrer">Watch demo</a>
+                  <a class="button button--ghost" href="https://www.youtube.com/watch?v=ribFHZuKRos" target="_blank" rel="noreferrer">Watch demo</a>
           <a class="button button--primary" href="#quickstart">Quickstart</a>
         </div>
       </div>
@@ -298,19 +298,16 @@
             </div>
 
             <div class="hero-video-shell">
-              <video
+              <iframe
                 id="hero-video-frame"
                 class="hero-video-frame"
                 title="AgentOS Mission Control walkthrough"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="auto"
-                poster="/agentos/banner.jpeg"
-              >
-                <source src="/agentos/assets/agentos-TASKs.webm" type="video/webm" />
-              </video>
+                src="https://www.youtube.com/embed/ribFHZuKRos?autoplay=1&mute=1&controls=1&playsinline=1&rel=0&modestbranding=1&loop=1&playlist=ribFHZuKRos"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+                loading="eager"
+              ></iframe>
             </div>
 
             <section class="hero-integrations reveal reveal--delay-2" aria-labelledby="hero-integrations-title">
@@ -730,7 +727,7 @@
 
             <div class="cta-actions">
               <a class="button button--primary" href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noreferrer">Open repository</a>
-              <a class="button button--secondary" href="https://youtu.be/ujz-4bYDjdY" target="_blank" rel="noreferrer">Watch demo</a>
+              <a class="button button--secondary" href="https://www.youtube.com/watch?v=ribFHZuKRos" target="_blank" rel="noreferrer">Watch demo</a>
             </div>
           </div>
         </div>

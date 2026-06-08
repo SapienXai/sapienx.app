@@ -455,6 +455,10 @@ pre {
   text-transform: uppercase;
 }
 
+.brand__os {
+  color: #fa003f;
+}
+
 .brand__copy small {
   margin-top: 0.22rem;
   color: var(--muted);
