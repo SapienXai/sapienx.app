@@ -9,14 +9,14 @@
   --muted-strong: #cbd5e1;
   --line: rgba(148, 163, 184, 0.1);
   --line-strong: rgba(148, 163, 184, 0.2);
-  --accent: #38bdf8;
-  --accent-glow: rgba(56, 189, 248, 0.15);
+  --accent: #fa003f;
+  --accent-glow: rgba(250, 0, 63, 0.16);
   --cyan: #22d3ee;
   --cyan-bright: #67e8f9;
   --blue: #3b82f6;
   --purple: #8b5cf6;
   --sand: #fbbf24;
-  --rose: #f43f5e;
+  --rose: #fa003f;
   --success: #10b981;
   --radius: 24px;
   --radius-sm: 16px;
@@ -456,7 +456,7 @@ pre {
 }
 
 .brand__os {
-  color: #fa003f;
+  color: var(--accent);
 }
 
 .brand__copy small {
@@ -497,7 +497,7 @@ pre {
   bottom: -0.35rem;
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 180ms ease;
@@ -568,6 +568,31 @@ pre {
     0 20px 36px -22px rgba(56, 189, 248, 0.32);
 }
 
+.hero-producthunt-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(250px, 100%);
+  max-width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.hero-producthunt-badge img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-producthunt-badge:hover,
+.hero-producthunt-badge:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px -24px rgba(250, 0, 63, 0.45);
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -613,8 +638,8 @@ pre {
 
 .button--primary {
   color: #fff;
-  background: linear-gradient(135deg, var(--blue), var(--purple));
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  background: linear-gradient(135deg, var(--accent), #c40031);
+  box-shadow: 0 0 20px rgba(250, 0, 63, 0.3);
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -622,7 +647,7 @@ pre {
 
 .button--primary:hover {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 15px 30px rgba(250, 0, 63, 0.4);
 }
 
 .button--primary::after {
@@ -1793,11 +1818,11 @@ pre {
   background:
     radial-gradient(circle at 10% 16%, rgba(248, 250, 252, 0.75) 0 1px, transparent 2px),
     radial-gradient(circle at 24% 40%, rgba(248, 250, 252, 0.35) 0 1px, transparent 2px),
-    radial-gradient(circle at 39% 12%, rgba(244, 63, 94, 0.45) 0 1px, transparent 2px),
-    radial-gradient(circle at 58% 28%, rgba(34, 211, 238, 0.45) 0 1px, transparent 2px),
+    radial-gradient(circle at 39% 12%, rgba(250, 0, 63, 0.45) 0 1px, transparent 2px),
+    radial-gradient(circle at 58% 28%, rgba(250, 0, 63, 0.36) 0 1px, transparent 2px),
     radial-gradient(circle at 75% 14%, rgba(248, 250, 252, 0.45) 0 1px, transparent 2px),
-    radial-gradient(circle at 88% 34%, rgba(34, 211, 238, 0.42) 0 1px, transparent 2px),
-    linear-gradient(90deg, rgba(244, 63, 94, 0.07), transparent 22%, transparent 76%, rgba(34, 211, 238, 0.08));
+    radial-gradient(circle at 88% 34%, rgba(250, 0, 63, 0.32) 0 1px, transparent 2px),
+    linear-gradient(90deg, rgba(250, 0, 63, 0.08), transparent 22%, transparent 76%, rgba(250, 0, 63, 0.1));
   opacity: 0.7;
   pointer-events: none;
 }
@@ -1816,8 +1841,8 @@ pre {
   width: 0.9rem;
   height: 0.9rem;
   margin-top: 0.95rem;
-  border-right: 2px solid #ff5b61;
-  border-bottom: 2px solid #ff5b61;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
   transform: rotate(-45deg);
 }
 
@@ -1831,11 +1856,11 @@ pre {
   margin-top: 2.35rem;
   border-radius: 32px;
   overflow: hidden;
-  border: 1px solid rgba(91, 124, 183, 0.28);
+  border: 1px solid rgba(250, 0, 63, 0.28);
   background:
     linear-gradient(180deg, rgba(4, 10, 20, 0.98), rgba(5, 14, 28, 0.96)),
-    radial-gradient(circle at top right, rgba(34, 211, 238, 0.08), transparent 28%),
-    radial-gradient(circle at top left, rgba(244, 63, 94, 0.06), transparent 26%);
+    radial-gradient(circle at top right, rgba(250, 0, 63, 0.08), transparent 28%),
+    radial-gradient(circle at top left, rgba(250, 0, 63, 0.06), transparent 26%);
   box-shadow:
     0 24px 70px -40px rgba(2, 6, 23, 0.95),
     inset 0 1px 0 rgba(255, 255, 255, 0.03);
@@ -1848,7 +1873,7 @@ pre {
   gap: 1rem;
   flex-wrap: wrap;
   padding: 1.45rem 1.6rem 1.2rem;
-  border-bottom: 1px solid rgba(91, 124, 183, 0.2);
+  border-bottom: 1px solid rgba(250, 0, 63, 0.2);
   background: rgba(2, 8, 18, 0.72);
 }
 
@@ -1884,13 +1909,13 @@ pre {
   min-width: 0;
   padding: 0.35rem;
   border-radius: 20px;
-  border: 1px solid rgba(91, 124, 183, 0.12);
+  border: 1px solid rgba(250, 0, 63, 0.12);
   background: rgba(2, 6, 23, 0.84);
 }
 
 .quickstart-tab,
 .copy-button {
-  border: 1px solid rgba(151, 188, 255, 0.14);
+  border: 1px solid rgba(250, 0, 63, 0.14);
   background: rgba(8, 14, 24, 0.74);
   color: var(--muted-strong);
   font: inherit;
@@ -1917,10 +1942,10 @@ pre {
 }
 
 .quickstart-tab.is-active {
-  color: #06111f;
-  border-color: rgba(34, 211, 238, 0.16);
-  background: linear-gradient(135deg, #24e4dc, #14c2e8);
-  box-shadow: 0 12px 24px -18px rgba(36, 228, 220, 0.75);
+  color: #fff;
+  border-color: rgba(250, 0, 63, 0.28);
+  background: linear-gradient(135deg, #fa003f, #c40031);
+  box-shadow: 0 12px 24px -18px rgba(250, 0, 63, 0.78);
 }
 
 .quickstart-shell__beta {
@@ -1931,9 +1956,9 @@ pre {
   min-height: 3rem;
   padding: 0.55rem 0.95rem;
   border-radius: 14px;
-  border: 1px solid rgba(91, 124, 183, 0.22);
+  border: 1px solid rgba(250, 0, 63, 0.22);
   background: rgba(255, 255, 255, 0.02);
-  color: rgba(191, 203, 227, 0.8);
+  color: rgba(243, 193, 205, 0.82);
   font-family: var(--font-mono);
   font-size: 0.88rem;
   letter-spacing: 0.08em;
@@ -1949,14 +1974,15 @@ pre {
   padding: 2rem 2.2rem 1.55rem;
   animation: fadeUp 260ms ease;
   background:
-    linear-gradient(180deg, rgba(7, 18, 36, 0.94), rgba(4, 12, 24, 0.98));
+    linear-gradient(180deg, rgba(7, 18, 36, 0.94), rgba(4, 12, 24, 0.98)),
+    radial-gradient(circle at 84% 8%, rgba(250, 0, 63, 0.08), transparent 24%);
 }
 
 .quickstart-panel__lede {
   margin: 0;
   width: 100%;
   max-width: none;
-  color: rgba(133, 152, 193, 0.88);
+  color: rgba(243, 193, 205, 0.9);
   font-family: var(--font-mono);
   font-size: clamp(0.8rem, 1.15vw, 0.94rem);
   font-style: italic;
@@ -1974,12 +2000,14 @@ pre {
   margin-top: 1.5rem;
   padding: 1.25rem 1.3rem;
   border-radius: 22px;
-  border: 1px solid rgba(91, 124, 183, 0.14);
-  background: rgba(2, 8, 18, 0.58);
+  border: 1px solid rgba(250, 0, 63, 0.16);
+  background:
+    linear-gradient(180deg, rgba(2, 8, 18, 0.66), rgba(2, 8, 18, 0.58)),
+    radial-gradient(circle at top right, rgba(250, 0, 63, 0.08), transparent 24%);
 }
 
 .quickstart-command__sigil {
-  color: #ff5b61;
+  color: var(--accent);
   font-family: var(--font-mono);
   font-size: clamp(1.55rem, 2.5vw, 2rem);
   line-height: 1;
@@ -2032,9 +2060,9 @@ pre {
   min-height: 2.35rem;
   padding: 0.5rem 0.8rem;
   border-radius: 999px;
-  border: 1px solid rgba(91, 124, 183, 0.16);
+  border: 1px solid rgba(250, 0, 63, 0.18);
   background: rgba(15, 23, 42, 0.42);
-  color: rgba(203, 213, 225, 0.88);
+  color: rgba(243, 225, 230, 0.88);
   font-size: 0.82rem;
   line-height: 1.4;
   white-space: normal;
@@ -2050,7 +2078,7 @@ pre {
 .quickstart-shell__caption {
   margin: 0;
   padding: 1.2rem 2.2rem 1.55rem;
-  border-top: 1px solid rgba(91, 124, 183, 0.14);
+  border-top: 1px solid rgba(250, 0, 63, 0.14);
   color: rgba(148, 163, 184, 0.9);
   font-size: clamp(0.76rem, 1.02vw, 0.86rem);
   line-height: 1.45;
@@ -2110,7 +2138,7 @@ pre {
   justify-content: center;
   width: 3rem;
   height: 3rem;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.1));
+  background: linear-gradient(135deg, rgba(250, 0, 63, 0.12), rgba(139, 92, 246, 0.08));
   border: 1px solid var(--line-strong);
   color: var(--accent);
   font-size: 0.9rem;
@@ -2637,6 +2665,10 @@ pre {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.site-footer__producthunt-badge {
+  margin-top: 0.5rem;
 }
 
 .site-footer__credit-link {
@@ -3787,6 +3819,10 @@ pre {
 
   .site-footer__bottom-logo {
     width: 4rem;
+  }
+
+  .site-footer__producthunt-badge {
+    width: min(220px, 100%);
   }
 
   .site-footer__credit-link {

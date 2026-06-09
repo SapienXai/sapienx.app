@@ -1,0 +1,30 @@
+{
+  "name": "AgentOS",
+  "short_name": "AgentOS",
+  "description": "Human operating layer for AI agents, built on OpenClaw.",
+  "start_url": "/agentos/",
+  "scope": "/agentos/",
+  "display": "standalone",
+  "background_color": "#09111d",
+  "theme_color": "#09111d",
+  "icons": [
+    {
+      "src": "/agentos/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/agentos/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/agentos/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
