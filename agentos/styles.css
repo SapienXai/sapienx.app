@@ -244,109 +244,6 @@ pre {
   margin: 0 auto;
 }
 
-.announcement-bar {
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(151, 188, 255, 0.12);
-  background: linear-gradient(90deg, rgba(6, 12, 22, 0.98), rgba(15, 23, 42, 0.94) 55%, rgba(7, 14, 26, 0.98));
-  backdrop-filter: blur(22px);
-  color: #fff;
-}
-
-.announcement-bar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, rgba(34, 211, 238, 0.08), transparent 22%, transparent 78%, rgba(251, 191, 36, 0.08)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 65%);
-  pointer-events: none;
-}
-
-.announcement-bar__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 0.75rem;
-  min-height: 2rem;
-  padding: 0.26rem 0;
-  color: inherit;
-  position: relative;
-  z-index: 1;
-}
-
-.announcement-bar__marquee {
-  position: relative;
-  min-width: 0;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-}
-
-.announcement-bar__track {
-  display: flex;
-  align-items: center;
-  width: max-content;
-  gap: 1.5rem;
-  animation: announcementTicker 24s linear infinite;
-}
-
-.announcement-bar__items {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex: none;
-}
-
-.announcement-bar__items span {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-  padding-right: 1.5rem;
-  color: var(--muted-strong);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-}
-
-.announcement-bar__items span::after {
-  content: "";
-  position: absolute;
-  right: 0.3rem;
-  top: 50%;
-  width: 0.32rem;
-  height: 0.32rem;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--sand), var(--cyan-bright));
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
-  transform: translateY(-50%);
-}
-
-.announcement-bar__cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 1.35rem;
-  padding: 0.12rem 0.65rem;
-  border-radius: 999px;
-  border: 1px solid rgba(56, 189, 248, 0.16);
-  background: rgba(8, 16, 28, 0.72);
-  color: var(--accent);
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
-}
-
-.announcement-bar__cta:hover,
-.announcement-bar__cta:focus-visible {
-  color: #fff;
-  border-color: rgba(103, 232, 249, 0.32);
-  background: rgba(56, 189, 248, 0.12);
-}
-
 .site-header {
   position: sticky;
   top: 0;
@@ -890,10 +787,17 @@ pre {
   width: max-content;
   max-width: none;
   margin: 0 auto;
-  gap: 0.45rem;
+  gap: 0.35rem;
   flex-wrap: nowrap;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
   white-space: nowrap;
   line-height: 1;
+}
+
+.hero-panel--intro .hero-panel__kicker {
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
 }
 
 .hero-panel__kicker-text {
@@ -920,19 +824,37 @@ pre {
 }
 
 .hero-panel h1 {
-  --headline-gradient: linear-gradient(135deg, #fff 20%, #94a3b8 100%);
+  --headline-gradient: linear-gradient(
+    90deg,
+    #fff9fb 0%,
+    #fa003f 14%,
+    #ff8a3d 28%,
+    #f8d866 40%,
+    #49d6c8 52%,
+    #577cff 66%,
+    #b661ff 78%,
+    #fa003f 90%,
+    #fff9fb 100%
+  );
   margin-top: 0.75rem;
-  font-size: clamp(2.2rem, 5.2vw, 3.5rem);
-  max-width: 25ch;
+  font-size: clamp(2.55rem, 6.4vw, 4.45rem);
+  max-width: 16ch;
   background: var(--headline-gradient);
+  background-size: 240% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1.1;
-  letter-spacing: -0.05em;
-  font-weight: 800;
+  letter-spacing: -0.035em;
+  font-weight: 900;
   text-wrap: balance;
   position: relative;
+  animation: heroRainbowShift 16s ease-in-out infinite;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.11);
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.1),
+    0 20px 48px rgba(250, 0, 63, 0.2),
+    0 28px 60px rgba(73, 214, 200, 0.12);
 }
 
 .hero-headline__break {
@@ -947,9 +869,13 @@ pre {
   transform: translate(-50%, -50%);
   width: 120%;
   height: 120%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.1), transparent 70%);
+  background:
+    radial-gradient(circle, rgba(255, 249, 251, 0.2), rgba(250, 0, 63, 0.14) 34%, rgba(73, 214, 200, 0.08) 52%, transparent 74%);
   z-index: -1;
   pointer-events: none;
+  filter: blur(22px);
+  opacity: 0.48;
+  animation: heroGlowPulse 8s ease-in-out infinite alternate;
 }
 
 .hero-panel--intro > p:not(.hero-panel__kicker) {
@@ -2762,15 +2688,6 @@ pre {
   }
 }
 
-@keyframes announcementTicker {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 @keyframes pageTrafficFlow {
   from {
     stroke-dashoffset: 0;
@@ -2842,6 +2759,32 @@ pre {
   }
 }
 
+@keyframes heroRainbowShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes heroGlowPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.97);
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.02);
+    opacity: 0.62;
+  }
+}
+
 @media (min-width: 1180px) {
   html {
     font-size: 13px;
@@ -2863,6 +2806,7 @@ pre {
 
   .hero-stage {
     gap: 0.65rem;
+    padding-top: 2rem;
   }
 
   .hero-content {
@@ -3593,9 +3537,9 @@ pre {
   }
 
   .hero-panel h1 {
-    font-size: clamp(1.75rem, 8.8vw, 2.25rem);
+    font-size: clamp(2.1rem, 10vw, 3rem);
     line-height: 1.08;
-    max-width: 20ch;
+    max-width: 14ch;
   }
 
   .hero-integrations {
@@ -3714,24 +3658,10 @@ pre {
     font-size: clamp(1.72rem, 8.8vw, 2.15rem);
   }
 
-  .announcement-bar__inner {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    min-height: 1.75rem;
-    padding: 0.18rem 0;
-  }
-
-  .announcement-bar__items span {
-    font-size: 0.66rem;
-    padding-right: 1.25rem;
-  }
-
-  .announcement-bar__cta {
-    display: none;
-  }
-
-  .hero-panel__kicker {
+  .hero-panel--intro .hero-panel__kicker {
     gap: 0.35rem;
+    font-size: 0.54rem;
+    letter-spacing: 0.11em;
   }
 
   .hero-panel__kicker-logo {
@@ -3895,10 +3825,6 @@ pre {
 
   .marquee-track {
     animation-duration: 20s;
-  }
-
-  .announcement-bar__track {
-    animation-duration: 18s;
   }
 }
 
