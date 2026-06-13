@@ -49,12 +49,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@700;800;900&family=Space+Grotesk:wght@500;700&display=swap"
   />
   <link rel="manifest" href="/agentos/manifest.webmanifest" />
   <link rel="icon" type="image/png" sizes="512x512" href="/agentos/icon-512.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/agentos/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/agentos/apple-touch-icon.png" />
+  <script>
+    (() => {
+      try {
+        const storedTheme = localStorage.getItem("agentos-theme");
+        const theme = storedTheme || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        document.documentElement.dataset.theme = theme === "light" ? "light" : "dark";
+        document.documentElement.style.colorScheme = theme === "light" ? "light" : "dark";
+      } catch {
+        document.documentElement.dataset.theme = "dark";
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="/agentos/styles.css" />
   <script type="application/ld+json">
     {
@@ -158,15 +170,35 @@
           <a href="#cta">Start</a>
         </nav>
 
-        <button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="site-navigation" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
         <div class="site-actions">
                   <a class="button button--ghost" href="https://www.youtube.com/watch?v=ribFHZuKRos" target="_blank" rel="noreferrer">Watch demo</a>
           <a class="button button--primary" href="#quickstart">Quickstart</a>
+        </div>
+
+        <div class="header-controls">
+          <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" data-theme-toggle>
+            <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="m17.66 17.66 1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="m6.34 17.66-1.41 1.41"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+            <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.99 12.65A8.5 8.5 0 1 1 11.35 3a6.5 6.5 0 0 0 9.64 9.65Z"></path>
+            </svg>
+            <span class="theme-toggle__label" data-theme-toggle-label>Dark</span>
+          </button>
+
+          <button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="site-navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
     </header>
@@ -800,6 +832,7 @@
   </div>
 
   <script src="/agentos/integrations-data.js"></script>
+  <script src="/agentos/theme.js"></script>
   <script src="/agentos/script.js"></script>
 </body>
 </html>
