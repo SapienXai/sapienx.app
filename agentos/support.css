@@ -104,8 +104,10 @@ img {
 }
 
 .brand__logo {
+  display: block;
   width: 2.3rem;
   height: 2.3rem;
+  object-fit: contain;
   border-radius: 14px;
   border: 1px solid rgba(148, 163, 184, 0.18);
   background: rgba(2, 6, 23, 0.55);
@@ -543,4 +545,3 @@ details p {
     grid-template-columns: 1fr;
   }
 }
-
