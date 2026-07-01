@@ -1,1127 +1,899 @@
-const revealElements = document.querySelectorAll(".reveal");
-const quickstartTabs = document.querySelectorAll("[data-tab-target]");
-const quickstartPanels = document.querySelectorAll("[data-tab-panel]");
-const installCommandElement = document.querySelector("[data-install-command]");
-const installPlatformLabel = document.querySelector("[data-install-platform-label]");
-const copyButtons = document.querySelectorAll("[data-copy-target]");
-const year = document.querySelector("#year");
-const mouseGlow = document.getElementById("mouse-glow");
-const auras = document.querySelectorAll(".page-aura");
-const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+const header = document.querySelector("[data-header]");
+const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector(".site-nav");
-const siteHeader = document.querySelector(".site-header");
-const pageTrafficSvg = document.getElementById("page-traffic-svg");
-const pageTrafficRoutes = pageTrafficSvg?.querySelector(".page-traffic__routes");
-const pageTrafficNodes = pageTrafficSvg?.querySelector(".page-traffic__nodes");
-const pageTrafficPackets = pageTrafficSvg?.querySelector(".page-traffic__packets");
-const pageTrafficLabels = pageTrafficSvg?.querySelector(".page-traffic__labels");
-const githubButton = document.querySelector(".button--github");
-const githubButtonSparkles = githubButton?.querySelector(".button__sparkles");
-const githubButtonStars = githubButton
-  ? Array.from(githubButton.querySelectorAll(".button__spark"))
-  : [];
-const reducedMotionQuery =
-  typeof window.matchMedia === "function"
-    ? window.matchMedia("(prefers-reduced-motion: reduce)")
-    : null;
-const integrationCatalog = Array.isArray(window.AGENTOS_INTEGRATION_CATALOG)
-  ? window.AGENTOS_INTEGRATION_CATALOG
-      .map((entry) => {
-        if (!Array.isArray(entry) || entry.length < 3) {
-          return null;
-        }
+const revealElements = document.querySelectorAll(".reveal");
+const year = document.querySelector("#year");
+const demoDialog = document.querySelector("[data-demo-dialog]");
+const demoOpenButtons = document.querySelectorAll("[data-demo-open]");
+const demoCloseButton = document.querySelector("[data-demo-close]");
+const videoWrap = document.querySelector("[data-video-wrap]");
+const processRail = document.querySelector(".process-rail");
+const processSteps = processRail ? Array.from(processRail.querySelectorAll("[data-process-step]")) : [];
+const controlTabs = document.querySelectorAll("[data-control-tab]");
+const controlPanel = document.querySelector("[data-control-panel]");
+const controlTitle = document.querySelector("[data-control-title]");
+const controlEyebrow = document.querySelector("[data-control-eyebrow]");
+const workforceTeamPanel = document.querySelector("[data-workforce-team]");
+const workforceTaskPanel = document.querySelector("[data-workforce-tasks]");
+const workforceApprovalPanel = document.querySelector("[data-workforce-approval]");
+const workforceTeamFeed = document.querySelector("[data-team-feed]");
+const workforceTeamList = document.querySelector("[data-team-list]");
+const workforceWorkTitle = document.querySelector("[data-work-title]");
+const workforceLiveLabel = document.querySelector("[data-live-label]");
+const workforceWorkList = document.querySelector("[data-work-list]");
+const workforceApprovalTitle = document.querySelector("[data-approval-title]");
+const workforceApprovalCopy = document.querySelector("[data-approval-copy]");
+const workforceApprovalActions = document.querySelector("[data-approval-actions]");
 
-        const [name, accent, svg] = entry;
-        return { name, accent, svg };
-      })
-      .filter(Boolean)
-  : [];
-
-const integrationCatalogRows = [[], []];
-const SVG_NS = "http://www.w3.org/2000/svg";
-const INSTALL_COMMANDS = {
-  windows: "iwr https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.ps1 | iex",
-  unix: "curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash",
+const CONTROL_COPY = {
+  workspaces: ["Workspace operations", "Everything in motion"],
+  agents: ["Workforce directory", "Every role, clearly owned"],
+  tasks: ["Task operations", "Real work, moving forward"],
+  context: ["Knowledge layer", "The context agents work from"],
+  accounts: ["Connected accounts", "Tools ready for action"],
+  approvals: ["Human review", "Control at critical moments"],
+  runtime: ["Live runtime", "Execution you can actually see"],
+  models: ["Model management", "Route intelligence by job"],
 };
-const TRAFFIC_GRID_SIZE = 40;
-const TRAFFIC_LABEL_MIN_WIDTH = 1080;
-const TRAFFIC_LABEL_HOLD_RANGE = [860, 1180];
-const GITHUB_STAR_PADDING_X = 12;
-const GITHUB_STAR_PADDING_Y = 7;
-const GITHUB_STAR_MIN_SPEED = 40;
-const GITHUB_STAR_MAX_SPEED = 164;
-const TRAFFIC_ROUTE_BLUEPRINTS = [
+
+const CONTROL_VIEWS = {
+  workspaces: () => `
+    <div class="control-view control-view--workspaces">
+      <div class="control-hero">
+        <div>
+          <span class="ui-kicker">Workspace overview</span>
+          <h4>Northstar operating room</h4>
+          <p>One workspace with guardrails, approvals, and live routing across every active team.</p>
+        </div>
+        <div class="control-hero-stack">
+          <span>12 live tasks</span>
+          <span>3 approvals</span>
+          <span>$428 spend</span>
+        </div>
+      </div>
+      <div class="control-grid">
+        <div class="control-card">
+          <div class="control-card__head">
+            <span class="ui-kicker">Workspace health</span>
+            <b>Live</b>
+          </div>
+          <div class="control-bars">
+            <span style="--bar: 84%"></span>
+            <span style="--bar: 68%"></span>
+            <span style="--bar: 93%"></span>
+            <span style="--bar: 77%"></span>
+          </div>
+          <div class="control-card__foot">
+            <span>Automation coverage</span><strong>78%</strong>
+          </div>
+        </div>
+        <div class="control-card">
+          <div class="control-card__head">
+            <span class="ui-kicker">Workspace rules</span>
+            <b>Guarded</b>
+          </div>
+          <div class="control-list">
+            <div class="control-list-item"><span>High risk actions</span><strong>Approval required</strong></div>
+            <div class="control-list-item"><span>Connected tools</span><strong>14 active</strong></div>
+            <div class="control-list-item"><span>Policy breaches</span><strong>0 today</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+  agents: () => `
+    <div class="control-view control-view--agents">
+      <div class="control-hero">
+        <div>
+          <span class="ui-kicker">Agent roster</span>
+          <h4>Specialists with clear ownership</h4>
+          <p>Each agent carries a role, model, and live assignment so the workforce reads like a real team.</p>
+        </div>
+        <div class="control-hero-stack">
+          <span>5 departments</span>
+          <span>4 active models</span>
+          <span>8 on task</span>
+        </div>
+      </div>
+      <div class="control-grid control-grid--cards">
+        <article class="agent-card-mini"><span>R</span><div><strong>Research</strong><small>OpenAI / GPT-5.5</small></div><b>Finding signals</b></article>
+        <article class="agent-card-mini"><span>G</span><div><strong>Growth</strong><small>Claude / 3.5 Sonnet</small></div><b>Launching demand</b></article>
+        <article class="agent-card-mini"><span>S</span><div><strong>Support</strong><small>OpenAI / o4-mini</small></div><b>Clearing queues</b></article>
+        <article class="agent-card-mini"><span>B</span><div><strong>Builder</strong><small>OpenAI / GPT-4.1</small></div><b>Shipping flows</b></article>
+      </div>
+    </div>
+  `,
+  tasks: () => `
+    <div class="control-view control-view--tasks">
+      <div class="control-hero">
+        <div>
+          <span class="ui-kicker">Task board</span>
+          <h4>Work moves from queue to completion</h4>
+          <p>Active work streams, review gates, and completion states stay visible for the whole company.</p>
+        </div>
+        <div class="control-hero-stack">
+          <span>4 running</span>
+          <span>1 review</span>
+          <span>2 done</span>
+        </div>
+      </div>
+      <div class="control-grid">
+        <div class="control-card control-card--stacked">
+          <div class="control-card__head"><span class="ui-kicker">Task queue</span><b>Live</b></div>
+          <div class="control-task"><span>Research market shifts</span><strong>68%</strong></div>
+          <div class="control-task is-review"><span>Approve launch campaign</span><strong>Review</strong></div>
+          <div class="control-task"><span>Resolve priority tickets</span><strong>41%</strong></div>
+          <div class="control-task is-done"><span>Draft executive summary</span><strong>Done</strong></div>
+        </div>
+        <div class="control-card">
+          <div class="control-card__head"><span class="ui-kicker">Approvals</span><b>Queued</b></div>
+          <div class="control-list">
+            <div class="control-list-item"><span>Launch campaign</span><strong>Approve</strong></div>
+            <div class="control-list-item"><span>Support macros</span><strong>Review</strong></div>
+            <div class="control-list-item"><span>Automation deploy</span><strong>Inspect</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+  context: () => `
+    <div class="control-view control-view--context">
+      <div class="control-hero">
+        <div>
+          <span class="ui-kicker">Context layer</span>
+          <h4>Knowledge arrives with the task</h4>
+          <p>Briefs, policies, and tool context stay attached so agents do the right thing faster.</p>
+        </div>
+        <div class="control-hero-stack">
+          <span>19 briefs</span>
+          <span>7 policies</span>
+          <span>11 sources</span>
+        </div>
+      </div>
+      <div class="control-grid control-grid--cards">
+        <article class="control-note-card"><span>Market briefs</span><strong>4 live sources</strong><p>Fresh signals are routed into the research queue.</p></article>
+        <article class="control-note-card"><span>Policy layer</span><strong>Human guardrails</strong><p>Approval rules are attached to risk-sensitive work.</p></article>
+        <article class="control-note-card"><span>Task memory</span><strong>Cross-agent handoff</strong><p>Completed work becomes reusable context for the next run.</p></article>
+        <article class="control-note-card"><span>Tool context</span><strong>Connected accounts</strong><p>Account credentials and scopes stay visible and auditable.</p></article>
+      </div>
+    </div>
+  `,
+  accounts: () => `
+    <div class="control-view control-view--accounts">
+      <div class="control-hero">
+        <div>
+          <span class="ui-kicker">Connected accounts</span>
+          <h4>Tools that agents can actually use</h4>
+          <p>Every connection shows ownership, scope, and what is live right now.</p>
+        </div>
+        <div class="control-hero-stack">
+          <span>14 integrations</span>
+          <span>3 pending</span>
+          <span>0 broken</span>
+        </div>
+      </div>
+      <div class="control-grid control-grid--cards">
+        <article class="integration-card"><span>Slack</span><small>Messages, alerts</small><b>Connected</b></article>
+        <article class="integration-card"><span>Notion</span><small>Briefs, docs</small><b>Connected</b></article>
+        <article class="integration-card"><span>GitHub</span><small>Repos, issues</small><b>Connected</b></article>
+        <article class="integration-card"><span>Stripe</span><small>Billing, spend</small><b>Scoped</b></article>
+      </div>
+    </div>
+  `,
+  approvals: () => `
+    <div class="control-view control-view--approvals">
+      <div class="control-hero">
+        <div>
+          <span class="ui-kicker">Approval queue</span>
+          <h4>Human review sits on top</h4>
+          <p>High-impact actions pause for review, while safe work keeps moving.</p>
+        </div>
+        <div class="control-hero-stack">
+          <span>3 awaiting</span>
+          <span>2 approved</span>
+          <span>1 blocked</span>
+        </div>
+      </div>
+      <div class="control-grid">
+        <div class="control-card control-card--stacked">
+          <div class="control-card__head"><span class="ui-kicker">Pending</span><b>Needs review</b></div>
+          <div class="control-task is-review"><span>Publish launch campaign</span><strong>Approve</strong></div>
+          <div class="control-task is-review"><span>Deploy automation update</span><strong>Inspect</strong></div>
+          <div class="control-task is-done"><span>Close support macros</span><strong>Done</strong></div>
+        </div>
+        <div class="control-card">
+          <div class="control-card__head"><span class="ui-kicker">Risk controls</span><b>Live</b></div>
+          <div class="control-list">
+            <div class="control-list-item"><span>Spend threshold</span><strong>$250</strong></div>
+            <div class="control-list-item"><span>Model swap</span><strong>Manual</strong></div>
+            <div class="control-list-item"><span>External publish</span><strong>Always review</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+  runtime: () => `
+    <div class="control-view control-view--runtime">
+      <div class="control-hero">
+        <div>
+          <span class="ui-kicker">Runtime visibility</span>
+          <h4>See execution in real time</h4>
+          <p>Latency, spend, and session health stay visible as work moves across the workforce.</p>
+        </div>
+        <div class="control-hero-stack">
+          <span>98.7% health</span>
+          <span>02:14 avg run</span>
+          <span>$428 MTD</span>
+        </div>
+      </div>
+      <div class="control-grid">
+        <div class="control-card">
+          <div class="control-card__head"><span class="ui-kicker">Runtime chart</span><b>Stable</b></div>
+          <div class="control-bars control-bars--runtime">
+            <span style="--bar: 42%"></span>
+            <span style="--bar: 58%"></span>
+            <span style="--bar: 76%"></span>
+            <span style="--bar: 64%"></span>
+            <span style="--bar: 83%"></span>
+          </div>
+        </div>
+        <div class="control-card">
+          <div class="control-card__head"><span class="ui-kicker">Sessions</span><b>Healthy</b></div>
+          <div class="control-list">
+            <div class="control-list-item"><span>Research run</span><strong>02:14</strong></div>
+            <div class="control-list-item"><span>Growth run</span><strong>Running</strong></div>
+            <div class="control-list-item"><span>Ops run</span><strong>92%</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+  models: () => `
+    <div class="control-view control-view--models">
+      <div class="control-hero">
+        <div>
+          <span class="ui-kicker">Model routing</span>
+          <h4>Route intelligence by job</h4>
+          <p>Pick the right model for the right workload, then keep routing transparent.</p>
+        </div>
+        <div class="control-hero-stack">
+          <span>3 active</span>
+          <span>2 queued</span>
+          <span>1 fallback</span>
+        </div>
+      </div>
+      <div class="control-grid control-grid--cards">
+        <article class="routing-card"><span>OpenAI / GPT-5.5</span><strong>Research and analysis</strong><small>Fast decisions, high precision</small></article>
+        <article class="routing-card"><span>Claude / 3.5 Sonnet</span><strong>Planning and campaigns</strong><small>Reasoning-heavy workflows</small></article>
+        <article class="routing-card"><span>OpenAI / o4-mini</span><strong>Support and quick replies</strong><small>Low-latency operations</small></article>
+        <article class="routing-card"><span>Fallback routing</span><strong>Safe re-run path</strong><small>Transparent and controlled</small></article>
+      </div>
+    </div>
+  `,
+};
+
+const renderControlView = (key) => {
+  if (!controlPanel) {
+    return;
+  }
+
+  const render = CONTROL_VIEWS[key] || CONTROL_VIEWS.workspaces;
+  controlPanel.innerHTML = render();
+};
+
+const PROCESS_LOAD_MS = 1600;
+const PROCESS_SETTLE_MS = 320;
+let processStepIndex = 0;
+let processStepFrameId;
+let processStepTimeoutId;
+
+const updateProcessRail = (activeIndex, progress = 0) => {
+  if (!processSteps.length) {
+    return;
+  }
+
+  processSteps.forEach((step, index) => {
+    const count = step.querySelector("[data-process-count]");
+    const state = step.querySelector("[data-process-state]");
+    const progressTrack = step.querySelector(".process-progress");
+    const isComplete = index < activeIndex;
+    const isActive = index === activeIndex;
+    const isNext = index === activeIndex + 1;
+    const isLoading = isActive;
+
+    step.classList.toggle("is-complete", isComplete);
+    step.classList.toggle("is-loading", isLoading);
+    step.classList.toggle("is-next", isNext);
+
+    if (count) {
+      count.textContent = String(index + 1).padStart(2, "0");
+    }
+
+    if (state) {
+      if (isComplete) {
+        state.textContent = "Completed";
+      } else if (isLoading) {
+        state.textContent = "Loading";
+      } else if (isNext) {
+        state.textContent = "Next";
+      } else {
+        state.textContent = "Queued";
+      }
+    }
+
+    if (progressTrack) {
+      step.style.setProperty("--process-progress", `${isLoading ? progress : 0}%`);
+      if (isLoading) {
+        progressTrack.setAttribute("data-state", "loading");
+      } else {
+        progressTrack.removeAttribute("data-state");
+      }
+    }
+  });
+};
+
+const clearProcessTimers = () => {
+  window.cancelAnimationFrame(processStepFrameId);
+  window.clearTimeout(processStepTimeoutId);
+};
+
+const easeInOutCubic = (value) => (value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2);
+
+const queueNextProcessStep = () => {
+  if (!processSteps.length) {
+    return;
+  }
+
+  clearProcessTimers();
+
+  const stepStart = performance.now();
+  const animate = (now) => {
+    const elapsed = now - stepStart;
+    const eased = easeInOutCubic(Math.min(elapsed / PROCESS_LOAD_MS, 1));
+    const progress = eased * 100;
+
+    updateProcessRail(processStepIndex, progress);
+
+    if (elapsed < PROCESS_LOAD_MS) {
+      processStepFrameId = window.requestAnimationFrame(animate);
+    } else {
+      updateProcessRail(processStepIndex + 1, 100);
+      processStepTimeoutId = window.setTimeout(() => {
+        processStepIndex = (processStepIndex + 1) % processSteps.length;
+        updateProcessRail(processStepIndex, 0);
+        queueNextProcessStep();
+      }, PROCESS_SETTLE_MS);
+    }
+  };
+
+  updateProcessRail(processStepIndex, 0);
+  processStepFrameId = window.requestAnimationFrame(animate);
+};
+
+const WORKFORCE_STATES = [
   {
-    color: "103 232 249",
-    signalDuration: "18s",
-    signalDelay: "-3s",
-    holds: [{ pointIndex: 4, messages: ["routing", "handoff"] }],
-    points: [
-      [0.08, 0.14],
-      [0.22, 0.14],
-      [0.22, 0.3],
-      [0.38, 0.3],
-      [0.38, 0.18],
-      [0.58, 0.18],
+    feed: "Research Agent is briefing the room.",
+    workTitle: "Live work",
+    liveLabel: "Live",
+    departments: [
+      { icon: "R", name: "Research", detail: "Market intelligence", status: "Active", incoming: true },
+      { icon: "G", name: "Growth", detail: "Demand & campaigns", status: "Active" },
+      { icon: "S", name: "Support", detail: "Customer operations", status: "Active" },
+      { icon: "B", name: "Builder", detail: "Product & automation", status: "Working" },
+      { icon: "O", name: "Ops", detail: "Runtime & budget", status: "Watching" },
     ],
-    packets: [
-      { color: "103 232 249", duration: 11000, delay: 0, radius: 3.1 },
-      { color: "96 165 250", duration: 15200, delay: 2600, radius: 1.45 },
+    tasks: [
+      { title: "Research Q3 market shifts", meta: "Research Agent · 2m ago", status: "is-running", value: "68%", active: true },
+      { title: "Approve launch campaign", meta: "Growth Agent · awaiting you", status: "is-review", value: "Review" },
+      { title: "Resolve priority tickets", meta: "Support Agent · 5m ago", status: "is-running", value: "41%" },
+      { title: "Draft executive summary", meta: "Research Agent · incoming", status: "is-running", value: "18%", incoming: true },
     ],
+    approval: {
+      title: "Publish launch campaign?",
+      copy: "Growth Agent is ready to publish across 3 connected accounts.",
+      actions: ["Review", "Approve"],
+    },
   },
   {
-    color: "96 165 250",
-    signalDuration: "20s",
-    signalDelay: "-7s",
-    holds: [{ pointIndex: 2, messages: ["queued", "verifying"] }],
-    points: [
-      [0.48, 0.08],
-      [0.48, 0.24],
-      [0.66, 0.24],
-      [0.66, 0.12],
-      [0.88, 0.12],
-      [0.88, 0.32],
+    feed: "Growth Agent has pulled a new campaign into review.",
+    workTitle: "Campaign control",
+    liveLabel: "Syncing",
+    departments: [
+      { icon: "G", name: "Growth", detail: "Demand & campaigns", status: "Working", incoming: true },
+      { icon: "R", name: "Research", detail: "Market intelligence", status: "Active" },
+      { icon: "S", name: "Support", detail: "Customer operations", status: "Active" },
+      { icon: "B", name: "Builder", detail: "Product & automation", status: "Active" },
+      { icon: "O", name: "Ops", detail: "Runtime & budget", status: "Watching" },
     ],
-    packets: [{ color: "96 165 250", duration: 12600, delay: 1400, radius: 2.35 }],
+    tasks: [
+      { title: "Refine campaign copy", meta: "Growth Agent · now", status: "is-review", value: "Ready", active: true },
+      { title: "Audit paid channels", meta: "Ops Agent · 3m ago", status: "is-running", value: "52%" },
+      { title: "Pull audience segments", meta: "Research Agent · 7m ago", status: "is-running", value: "31%" },
+      { title: "Archive stale variants", meta: "Growth Agent · completed", status: "is-done", value: "Done", incoming: true },
+    ],
+    approval: {
+      title: "Approve budget shift?",
+      copy: "Growth Agent wants to move spend toward the best-performing channel.",
+      actions: ["Hold", "Approve"],
+    },
   },
   {
-    color: "45 212 191",
-    signalDuration: "22s",
-    signalDelay: "-11s",
-    points: [
-      [0.12, 0.4],
-      [0.28, 0.4],
-      [0.28, 0.56],
-      [0.44, 0.56],
-      [0.44, 0.44],
-      [0.62, 0.44],
-      [0.62, 0.62],
+    feed: "Support Agent just cleared a priority queue.",
+    workTitle: "Customer care",
+    liveLabel: "Live",
+    departments: [
+      { icon: "S", name: "Support", detail: "Customer operations", status: "Active", incoming: true },
+      { icon: "R", name: "Research", detail: "Market intelligence", status: "Active" },
+      { icon: "G", name: "Growth", detail: "Demand & campaigns", status: "Active" },
+      { icon: "B", name: "Builder", detail: "Product & automation", status: "Working" },
+      { icon: "O", name: "Ops", detail: "Runtime & budget", status: "Watching" },
     ],
-    packets: [{ color: "45 212 191", duration: 13800, delay: 2300, radius: 1.6 }],
+    tasks: [
+      { title: "Close priority tickets", meta: "Support Agent · just now", status: "is-running", value: "88%", active: true },
+      { title: "Send escalation summary", meta: "Support Agent · waiting review", status: "is-review", value: "Review" },
+      { title: "Update help center draft", meta: "Builder Agent · 8m ago", status: "is-running", value: "64%" },
+      { title: "Resolve refund thread", meta: "Support Agent · completed", status: "is-done", value: "Done", incoming: true },
+    ],
+    approval: {
+      title: "Publish support macros?",
+      copy: "Support Agent is ready to roll the new reply set across the queue.",
+      actions: ["Review", "Deploy"],
+    },
   },
   {
-    color: "251 191 36",
-    signalDuration: "24s",
-    signalDelay: "-15s",
-    holds: [{ pointIndex: 3, messages: ["dispatching", "approved"] }],
-    points: [
-      [0.74, 0.2],
-      [0.74, 0.36],
-      [0.56, 0.36],
-      [0.56, 0.52],
-      [0.76, 0.52],
-      [0.76, 0.72],
+    feed: "Builder Agent pushed a fresh automation update.",
+    workTitle: "Product shipping",
+    liveLabel: "Working",
+    departments: [
+      { icon: "B", name: "Builder", detail: "Product & automation", status: "Working", incoming: true },
+      { icon: "R", name: "Research", detail: "Market intelligence", status: "Active" },
+      { icon: "G", name: "Growth", detail: "Demand & campaigns", status: "Active" },
+      { icon: "S", name: "Support", detail: "Customer operations", status: "Active" },
+      { icon: "O", name: "Ops", detail: "Runtime & budget", status: "Watching" },
     ],
-    packets: [
-      { color: "251 191 36", duration: 14200, delay: 1800, radius: 3.4 },
-      { color: "103 232 249", duration: 9800, delay: 5200, radius: 1.25 },
+    tasks: [
+      { title: "Ship onboarding flow", meta: "Builder Agent · now", status: "is-running", value: "74%", active: true },
+      { title: "Merge workflow fixes", meta: "Builder Agent · 4m ago", status: "is-running", value: "57%" },
+      { title: "Confirm QA checklist", meta: "Ops Agent · awaiting you", status: "is-review", value: "Review" },
+      { title: "Release layout patch", meta: "Builder Agent · completed", status: "is-done", value: "Done", incoming: true },
     ],
+    approval: {
+      title: "Deploy automation update?",
+      copy: "Builder Agent has a clean release candidate ready for one click deploy.",
+      actions: ["Inspect", "Deploy"],
+    },
   },
   {
-    color: "103 232 249",
-    signalDuration: "19s",
-    signalDelay: "-5s",
-    holds: [{ pointIndex: 3, messages: ["syncing", "watching"] }],
-    points: [
-      [0.08, 0.64],
-      [0.24, 0.64],
-      [0.24, 0.8],
-      [0.5, 0.8],
-      [0.5, 0.66],
-      [0.68, 0.66],
+    feed: "Ops Agent is tuning routing and runtime cost.",
+    workTitle: "Operations watch",
+    liveLabel: "Monitoring",
+    departments: [
+      { icon: "O", name: "Ops", detail: "Runtime & budget", status: "Watching", incoming: true },
+      { icon: "R", name: "Research", detail: "Market intelligence", status: "Active" },
+      { icon: "G", name: "Growth", detail: "Demand & campaigns", status: "Active" },
+      { icon: "S", name: "Support", detail: "Customer operations", status: "Active" },
+      { icon: "B", name: "Builder", detail: "Product & automation", status: "Working" },
     ],
-    packets: [{ color: "103 232 249", duration: 13000, delay: 3200, radius: 2.7 }],
+    tasks: [
+      { title: "Tune model routing", meta: "Ops Agent · now", status: "is-running", value: "89%", active: true },
+      { title: "Check spend ceilings", meta: "Ops Agent · 2m ago", status: "is-review", value: "Review" },
+      { title: "Confirm session health", meta: "Runtime · 6m ago", status: "is-running", value: "47%" },
+      { title: "Lock cost policy", meta: "Ops Agent · completed", status: "is-done", value: "Done", incoming: true },
+    ],
+    approval: {
+      title: "Confirm safe model swap?",
+      copy: "Ops Agent wants approval before moving traffic to the lower-cost route.",
+      actions: ["Review", "Confirm"],
+    },
   },
   {
-    color: "96 165 250",
-    signalDuration: "23s",
-    signalDelay: "-13s",
-    points: [
-      [0.82, 0.48],
-      [0.82, 0.72],
-      [0.92, 0.72],
-      [0.92, 0.88],
+    feed: "Research Agent has queued a new market brief.",
+    workTitle: "Briefing queue",
+    liveLabel: "Live",
+    departments: [
+      { icon: "R", name: "Research", detail: "Market intelligence", status: "Active", incoming: true },
+      { icon: "G", name: "Growth", detail: "Demand & campaigns", status: "Working" },
+      { icon: "S", name: "Support", detail: "Customer operations", status: "Active" },
+      { icon: "B", name: "Builder", detail: "Product & automation", status: "Active" },
+      { icon: "O", name: "Ops", detail: "Runtime & budget", status: "Watching" },
     ],
-    packets: [{ color: "96 165 250", duration: 9000, delay: 800, radius: 1.35 }],
+    tasks: [
+      { title: "Publish market brief", meta: "Research Agent · now", status: "is-review", value: "Ready", active: true },
+      { title: "Score competitor signals", meta: "Research Agent · 3m ago", status: "is-running", value: "76%" },
+      { title: "Close prior briefing", meta: "Research Agent · completed", status: "is-done", value: "Done" },
+      { title: "Add next cohort query", meta: "Research Agent · incoming", status: "is-running", value: "12%", incoming: true },
+    ],
+    approval: {
+      title: "Ship research summary?",
+      copy: "Research Agent can publish the brief once the review passes.",
+      actions: ["Hold", "Ship"],
+    },
   },
   {
-    color: "244 114 182",
-    signalDuration: "26s",
-    signalDelay: "-17s",
-    points: [
-      [0.36, 0.06],
-      [0.36, 0.18],
-      [0.52, 0.18],
-      [0.52, 0.34],
-      [0.74, 0.34],
+    feed: "Growth Agent is launching the next run.",
+    workTitle: "Launch queue",
+    liveLabel: "Syncing",
+    departments: [
+      { icon: "G", name: "Growth", detail: "Demand & campaigns", status: "Working", incoming: true },
+      { icon: "R", name: "Research", detail: "Market intelligence", status: "Active" },
+      { icon: "S", name: "Support", detail: "Customer operations", status: "Active" },
+      { icon: "B", name: "Builder", detail: "Product & automation", status: "Active" },
+      { icon: "O", name: "Ops", detail: "Runtime & budget", status: "Watching" },
     ],
-    packets: [{ color: "244 114 182", duration: 14800, delay: 4200, radius: 2.9 }],
-  },
-  {
-    color: "103 232 249",
-    signalDuration: "21s",
-    signalDelay: "-9s",
-    points: [
-      [0.16, 0.88],
-      [0.34, 0.88],
-      [0.34, 0.72],
-      [0.58, 0.72],
-      [0.58, 0.9],
-      [0.82, 0.9],
+    tasks: [
+      { title: "Launch new channel test", meta: "Growth Agent · now", status: "is-running", value: "91%", active: true },
+      { title: "Review budget split", meta: "Growth Agent · 1m ago", status: "is-review", value: "Review" },
+      { title: "Archive old variants", meta: "Growth Agent · completed", status: "is-done", value: "Done" },
+      { title: "Route fresh leads", meta: "Growth Agent · incoming", status: "is-running", value: "24%", incoming: true },
     ],
-    packets: [{ color: "103 232 249", duration: 15600, delay: 2800, radius: 1.5 }],
+    approval: {
+      title: "Push launch to live?",
+      copy: "Growth Agent is waiting on a final approval to move spend live.",
+      actions: ["Review", "Go live"],
+    },
   },
 ];
 
-const trafficState = {
-  frameId: 0,
-  resizeTimeout: 0,
-  packets: [],
-  nodes: [],
-  activeLabelPacketId: null,
-  label: null,
-  labelsEnabled: false,
-};
-
-const githubStarState = {
-  frameId: 0,
-  lastTime: 0,
-  resizeTimeout: 0,
-  stars: [],
-  bounds: null,
-};
-
-integrationCatalog.forEach((entry, index) => {
-  integrationCatalogRows[index % integrationCatalogRows.length].push(entry);
-});
-
-const createSvgElement = (tag, attributes = {}) => {
-  const element = document.createElementNS(SVG_NS, tag);
-
-  Object.entries(attributes).forEach(([key, value]) => {
-    element.setAttribute(key, String(value));
-  });
-
-  return element;
-};
-
-const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-
-const snapToTrafficGrid = (value, limit) =>
-  clamp(
-    Math.round(value / TRAFFIC_GRID_SIZE) * TRAFFIC_GRID_SIZE,
-    TRAFFIC_GRID_SIZE,
-    Math.max(TRAFFIC_GRID_SIZE, limit - TRAFFIC_GRID_SIZE)
-  );
-
-const buildTrafficPath = (points) =>
-  points
-    .map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`)
-    .join(" ");
-
-const randomBetween = (min, max) => min + Math.random() * (max - min);
-
-const detectInstallPlatform = () => {
-  const platformTokens = [
-    navigator.userAgentData?.platform,
-    navigator.platform,
-    navigator.userAgent,
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
-
-  if (platformTokens.includes("win")) {
-    return "windows";
-  }
-
-  if (platformTokens.includes("mac")) {
-    return "macos";
-  }
-
-  if (platformTokens.includes("linux") || platformTokens.includes("x11") || platformTokens.includes("cros")) {
-    return "linux";
-  }
-
-  return "unix";
-};
-
-const updateInstallCommand = () => {
-  if (!installCommandElement && !installPlatformLabel) {
+const updateDepartmentRows = (teamList, departments) => {
+  if (!teamList) {
     return;
   }
 
-  const platform = detectInstallPlatform();
-  const command = platform === "windows" ? INSTALL_COMMANDS.windows : INSTALL_COMMANDS.unix;
-  const labelText =
-    platform === "windows"
-      ? "Detected: Windows PowerShell"
-      : platform === "macos"
-        ? "Detected: macOS shell"
-        : platform === "linux"
-          ? "Detected: Linux shell"
-          : "Detected: Unix-like shell";
+  const rows = Array.from(teamList.querySelectorAll("[data-team-row]"));
 
-  if (installCommandElement) {
-    installCommandElement.textContent = command;
-  }
-
-  if (installPlatformLabel) {
-    installPlatformLabel.textContent = labelText;
-  }
-};
-
-const renderGithubStars = () => {
-  githubStarState.stars.forEach((star) => {
-    star.impact *= 0.86;
-
-    const translateX = star.x - star.width / 2;
-    const translateY = star.y - star.height / 2;
-    const stretch = 1 + star.impact;
-    const squash = Math.max(0.82, 1 - star.impact * 0.62);
-
-    star.element.style.transform =
-      `translate3d(${translateX.toFixed(2)}px, ${translateY.toFixed(2)}px, 0) ` +
-      `rotate(${star.rotation.toFixed(2)}deg) scale(${stretch.toFixed(3)}, ${squash.toFixed(3)})`;
-  });
-};
-
-const placeGithubStars = (stars, bounds) => {
-  const seededStars = [];
-
-  stars.forEach((star, index) => {
-    let attempts = 0;
-
-    while (attempts < 240) {
-      const x = randomBetween(
-        GITHUB_STAR_PADDING_X + star.radius,
-        bounds.width - GITHUB_STAR_PADDING_X - star.radius
-      );
-      const y = randomBetween(
-        GITHUB_STAR_PADDING_Y + star.radius,
-        bounds.height - GITHUB_STAR_PADDING_Y - star.radius
-      );
-
-      const overlaps = seededStars.some((otherStar) => {
-        const dx = x - otherStar.x;
-        const dy = y - otherStar.y;
-        const minDistance = star.radius + otherStar.radius + 4;
-        return dx * dx + dy * dy < minDistance * minDistance;
-      });
-
-      if (!overlaps) {
-        star.x = x;
-        star.y = y;
-        seededStars.push(star);
-        return;
-      }
-
-      attempts += 1;
+  departments.forEach((department, index) => {
+    let row = rows[index];
+    if (!row) {
+      row = document.createElement("div");
+      row.className = "agent-row";
+      row.dataset.teamRow = String(index);
+      row.innerHTML = '<span class="agent-icon"></span><span><strong></strong><small></small></span><i></i><b></b>';
+      teamList.appendChild(row);
+      rows[index] = row;
     }
 
-    const angle = (Math.PI * 2 * index) / Math.max(1, stars.length);
-    const orbitX = Math.max(0, bounds.width * 0.2 - star.radius * 1.4);
-    const orbitY = Math.max(0, bounds.height * 0.15 - star.radius);
-    star.x = bounds.width / 2 + Math.cos(angle) * orbitX;
-    star.y = bounds.height / 2 + Math.sin(angle) * orbitY;
-    seededStars.push(star);
+    const signature = `${department.icon}|${department.name}|${department.detail}|${department.status}`;
+    const wasSignature = row.dataset.teamSignature || "";
+    const changed = wasSignature !== signature;
+
+    row.classList.toggle("is-active", Boolean(department.active));
+
+    const icon = row.querySelector(".agent-icon");
+    const title = row.querySelector("strong");
+    const meta = row.querySelector("small");
+    const status = row.querySelector("b");
+
+    if (icon) {
+      icon.textContent = department.icon;
+    }
+
+    if (title) {
+      title.textContent = department.name;
+    }
+
+    if (meta) {
+      meta.textContent = department.detail;
+    }
+
+    if (status) {
+      status.textContent = department.status;
+    }
+
+    if (changed) {
+      row.dataset.teamSignature = signature;
+      row.classList.remove("is-incoming");
+      void row.offsetWidth;
+      row.classList.add("is-incoming");
+    }
   });
 };
 
-const resolveGithubWallCollisions = () => {
-  if (!githubStarState.bounds) {
+const updateTaskRows = (taskList, tasks) => {
+  if (!taskList) {
     return;
   }
 
-  githubStarState.stars.forEach((star) => {
-    const minX = GITHUB_STAR_PADDING_X + star.radius;
-    const maxX = githubStarState.bounds.width - GITHUB_STAR_PADDING_X - star.radius;
-    const minY = GITHUB_STAR_PADDING_Y + star.radius;
-    const maxY = githubStarState.bounds.height - GITHUB_STAR_PADDING_Y - star.radius;
-
-    if (star.x < minX) {
-      star.x = minX;
-      star.vx = Math.abs(star.vx) * 0.99;
-      star.spin += randomBetween(12, 22);
-      star.impact = Math.max(star.impact, 0.09);
-    } else if (star.x > maxX) {
-      star.x = maxX;
-      star.vx = -Math.abs(star.vx) * 0.99;
-      star.spin -= randomBetween(12, 22);
-      star.impact = Math.max(star.impact, 0.09);
+  const rows = Array.from(taskList.querySelectorAll("[data-task-row]"));
+  tasks.forEach((task, index) => {
+    let row = rows[index];
+    if (!row) {
+      row = document.createElement("div");
+      row.className = "task-row";
+      row.dataset.taskRow = String(index);
+      row.innerHTML = '<span class="task-status"></span><span><strong></strong><small></small></span><b></b>';
+      taskList.appendChild(row);
+      rows[index] = row;
     }
 
-    if (star.y < minY) {
-      star.y = minY;
-      star.vy = Math.abs(star.vy) * 0.99;
-      star.spin += randomBetween(10, 18);
-      star.impact = Math.max(star.impact, 0.08);
-    } else if (star.y > maxY) {
-      star.y = maxY;
-      star.vy = -Math.abs(star.vy) * 0.99;
-      star.spin -= randomBetween(10, 18);
-      star.impact = Math.max(star.impact, 0.08);
-    }
-  });
-};
+    const signature = `${task.title}|${task.meta}|${task.status}|${task.value}`;
+    const wasSignature = row.dataset.taskSignature || "";
+    const changed = wasSignature !== signature;
 
-const resolveGithubStarCollisions = () => {
-  const { stars } = githubStarState;
+    row.classList.toggle("is-highlighted", Boolean(task.active));
+    row.classList.toggle("is-done", task.status === "is-done");
 
-  for (let index = 0; index < stars.length; index += 1) {
-    const star = stars[index];
+    const status = row.querySelector(".task-status");
+    const title = row.querySelector("strong");
+    const meta = row.querySelector("small");
+    const value = row.querySelector("b");
 
-    for (let otherIndex = index + 1; otherIndex < stars.length; otherIndex += 1) {
-      const otherStar = stars[otherIndex];
-      const dx = otherStar.x - star.x;
-      const dy = otherStar.y - star.y;
-      const minDistance = star.radius + otherStar.radius + 2;
-      const distanceSquared = dx * dx + dy * dy;
-
-      if (distanceSquared >= minDistance * minDistance) {
-        continue;
-      }
-
-      const distance = Math.sqrt(distanceSquared) || 0.001;
-      const normalX = dx / distance;
-      const normalY = dy / distance;
-      const overlap = minDistance - distance;
-      const totalMass = star.mass + otherStar.mass;
-
-      star.x -= normalX * overlap * (otherStar.mass / totalMass);
-      star.y -= normalY * overlap * (otherStar.mass / totalMass);
-      otherStar.x += normalX * overlap * (star.mass / totalMass);
-      otherStar.y += normalY * overlap * (star.mass / totalMass);
-
-      const relativeVelocityX = otherStar.vx - star.vx;
-      const relativeVelocityY = otherStar.vy - star.vy;
-      const velocityAlongNormal = relativeVelocityX * normalX + relativeVelocityY * normalY;
-
-      if (velocityAlongNormal < 0) {
-        const restitution = 0.985;
-        const impulse =
-          (-(1 + restitution) * velocityAlongNormal) /
-          (1 / star.mass + 1 / otherStar.mass);
-        const impulseX = impulse * normalX;
-        const impulseY = impulse * normalY;
-
-        star.vx -= impulseX / star.mass;
-        star.vy -= impulseY / star.mass;
-        otherStar.vx += impulseX / otherStar.mass;
-        otherStar.vy += impulseY / otherStar.mass;
-      }
-
-      const tangentX = -normalY;
-      const tangentY = normalX;
-      const tangentialVelocity = relativeVelocityX * tangentX + relativeVelocityY * tangentY;
-      const impact = clamp(Math.abs(velocityAlongNormal) * 0.0045, 0.07, 0.24);
-
-      star.spin -= tangentialVelocity * 0.55 / star.mass;
-      otherStar.spin += tangentialVelocity * 0.55 / otherStar.mass;
-      star.impact = Math.max(star.impact, impact);
-      otherStar.impact = Math.max(otherStar.impact, impact);
-    }
-  }
-};
-
-const animateGithubStars = (timestamp) => {
-  if (!githubStarState.stars.length) {
-    return;
-  }
-
-  const delta = timestamp - (githubStarState.lastTime || timestamp - 16.67);
-  const deltaSeconds = Math.min(0.032, Math.max(0.01, delta / 1000));
-  const hoverBoost = githubButton?.matches(":hover, :focus-visible") ? 1.18 : 1;
-
-  githubStarState.lastTime = timestamp;
-
-  githubStarState.stars.forEach((star, index) => {
-    const driftTime = timestamp * 0.001 * star.driftSpeed + star.driftPhase;
-    star.vx += Math.cos(driftTime + index * 0.32) * star.driftStrength * deltaSeconds * hoverBoost;
-    star.vy +=
-      Math.sin(driftTime * 1.18 + index * 0.41) * star.driftStrength * deltaSeconds * hoverBoost;
-
-    const speed = Math.hypot(star.vx, star.vy);
-    const clampedSpeed = clamp(speed, GITHUB_STAR_MIN_SPEED, GITHUB_STAR_MAX_SPEED * hoverBoost);
-
-    if (speed > 0.001 && speed !== clampedSpeed) {
-      const scale = clampedSpeed / speed;
-      star.vx *= scale;
-      star.vy *= scale;
+    if (status) {
+      status.className = `task-status ${task.status}`;
     }
 
-    star.x += star.vx * deltaSeconds;
-    star.y += star.vy * deltaSeconds;
-    star.rotation += star.spin * deltaSeconds;
-    star.spin *= 0.998;
-
-    if (Math.abs(star.spin) < 14) {
-      star.spin += randomBetween(-6, 6);
-    }
-  });
-
-  resolveGithubWallCollisions();
-  resolveGithubStarCollisions();
-  resolveGithubWallCollisions();
-  renderGithubStars();
-
-  githubStarState.frameId = window.requestAnimationFrame(animateGithubStars);
-};
-
-const buildGithubStarPhysics = () => {
-  window.cancelAnimationFrame(githubStarState.frameId);
-  githubStarState.frameId = 0;
-  githubStarState.lastTime = 0;
-
-  if (!githubButtonSparkles || !githubButtonStars.length) {
-    return;
-  }
-
-  const bounds = githubButtonSparkles.getBoundingClientRect();
-
-  if (!bounds.width || !bounds.height) {
-    return;
-  }
-
-  githubStarState.bounds = {
-    width: bounds.width,
-    height: bounds.height,
-  };
-
-  githubStarState.stars = githubButtonStars.map((element) => {
-    element.style.transform = "translate3d(-999px, -999px, 0)";
-
-    const rect = element.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    const mass = clamp(size / 10.5, 0.94, 2.25);
-    const speedBias = clamp(1.55 - mass * 0.36, 0.72, 1.38);
-    const launchAngle = randomBetween(0, Math.PI * 2);
-    const launchSpeed = randomBetween(78, 134) * speedBias;
-
-    return {
-      element,
-      width: rect.width,
-      height: rect.height,
-      radius: Math.max(4.8, size * 0.3),
-      mass,
-      x: 0,
-      y: 0,
-      vx: Math.cos(launchAngle) * launchSpeed,
-      vy: Math.sin(launchAngle) * launchSpeed,
-      rotation: randomBetween(-24, 24),
-      spin: randomBetween(-54, 54) / mass,
-      driftPhase: randomBetween(0, Math.PI * 2),
-      driftSpeed: randomBetween(0.78, 1.52),
-      driftStrength: randomBetween(18, 34) / mass,
-      impact: 0,
-    };
-  });
-
-  placeGithubStars(githubStarState.stars, githubStarState.bounds);
-  renderGithubStars();
-
-  if (!reducedMotionQuery?.matches) {
-    githubStarState.lastTime = window.performance.now();
-    githubStarState.frameId = window.requestAnimationFrame(animateGithubStars);
-  }
-};
-
-const scheduleGithubStarBuild = () => {
-  window.clearTimeout(githubStarState.resizeTimeout);
-  githubStarState.resizeTimeout = window.setTimeout(buildGithubStarPhysics, 90);
-};
-
-const hideTrafficLabel = () => {
-  if (!trafficState.label) {
-    return;
-  }
-
-  trafficState.label.group.classList.remove("is-visible");
-};
-
-const ensureTrafficLabel = () => {
-  if (!pageTrafficLabels) {
-    return null;
-  }
-
-  if (trafficState.label) {
-    return trafficState.label;
-  }
-
-  const group = createSvgElement("g", {
-    class: "page-traffic__label",
-  });
-  const tail = createSvgElement("line", {
-    class: "page-traffic__label-tail",
-    x1: 0,
-    y1: -8,
-    x2: 0,
-    y2: -2.5,
-  });
-  const dot = createSvgElement("circle", {
-    class: "page-traffic__label-dot",
-    cx: 0,
-    cy: 0,
-    r: 1.8,
-  });
-  const bubble = createSvgElement("rect", {
-    class: "page-traffic__label-bubble",
-    x: -28,
-    y: -34,
-    width: 56,
-    height: 16,
-    rx: 8,
-    ry: 8,
-  });
-  const text = createSvgElement("text", {
-    class: "page-traffic__label-text",
-    x: 0,
-    y: -22,
-  });
-
-  group.append(tail, dot, bubble, text);
-  pageTrafficLabels.append(group);
-  trafficState.label = { group, bubble, text };
-  return trafficState.label;
-};
-
-const showTrafficLabel = (node, message) => {
-  const label = ensureTrafficLabel();
-
-  if (!label) {
-    return;
-  }
-
-  label.group.style.setProperty("--label-color", node.color);
-  label.text.textContent = message;
-  label.group.setAttribute("transform", `translate(${node.x} ${node.y - 8})`);
-
-  const bubbleWidth = clamp(18 + message.length * 6.4, 62, 112);
-  const bubbleHeight = 16;
-
-  label.bubble.setAttribute("x", (-bubbleWidth / 2).toFixed(2));
-  label.bubble.setAttribute("y", "-31");
-  label.bubble.setAttribute("width", bubbleWidth.toFixed(2));
-  label.bubble.setAttribute("height", String(bubbleHeight));
-  label.bubble.setAttribute("rx", "8");
-  label.bubble.setAttribute("ry", "8");
-
-  label.group.classList.add("is-visible");
-};
-
-const getTrafficHoldDuration = () =>
-  TRAFFIC_LABEL_HOLD_RANGE[0] + Math.random() * (TRAFFIC_LABEL_HOLD_RANGE[1] - TRAFFIC_LABEL_HOLD_RANGE[0]);
-
-const updatePacketTransform = (packet, distance) => {
-  const point = packet.path.getPointAtLength(distance);
-  const previousPoint = packet.path.getPointAtLength(Math.max(0, distance - 10));
-  const angle = Math.atan2(point.y - previousPoint.y, point.x - previousPoint.x) * (180 / Math.PI);
-
-  packet.x = point.x;
-  packet.y = point.y;
-  packet.element.setAttribute(
-    "transform",
-    `translate(${point.x.toFixed(2)} ${point.y.toFixed(2)}) rotate(${angle.toFixed(2)})`
-  );
-};
-
-const maybeTriggerTrafficHold = (packet, time, nextDistance) => {
-  if (!trafficState.labelsEnabled || trafficState.activeLabelPacketId !== null) {
-    return null;
-  }
-
-  const wrapped = nextDistance < packet.lastDistance;
-
-  for (const hold of packet.holds) {
-    if (packet.triggeredHolds.get(hold.id) === packet.cycle) {
-      continue;
+    if (title) {
+      title.textContent = task.title;
     }
 
-    const passed =
-      (!wrapped && hold.distance >= packet.lastDistance && hold.distance <= nextDistance) ||
-      (wrapped && (hold.distance >= packet.lastDistance || hold.distance <= nextDistance));
-
-    if (!passed) {
-      continue;
+    if (meta) {
+      meta.textContent = task.meta;
     }
 
-    packet.state = "holding";
-    packet.holdStartedAt = time;
-    packet.holdUntil = time + getTrafficHoldDuration();
-    packet.holdDistance = hold.distance;
-    packet.triggeredHolds.set(hold.id, packet.cycle);
-    const message = hold.messages[Math.floor(Math.random() * hold.messages.length)];
-
-    try {
-      trafficState.activeLabelPacketId = packet.id;
-      showTrafficLabel(hold.node, message);
-    } catch (_error) {
-      packet.state = "moving";
-      packet.holdStartedAt = 0;
-      packet.holdUntil = 0;
-      packet.holdDistance = 0;
-      trafficState.activeLabelPacketId = null;
-      hideTrafficLabel();
-      return null;
+    if (value) {
+      value.textContent = task.value;
     }
 
-    return hold.distance;
-  }
+    if (changed) {
+      row.dataset.taskSignature = signature;
+      row.classList.remove("is-moving");
+      void row.offsetWidth;
+      row.classList.add("is-moving");
 
-  return null;
-};
-
-const stopTrafficAnimation = () => {
-  if (trafficState.frameId) {
-    window.cancelAnimationFrame(trafficState.frameId);
-    trafficState.frameId = 0;
-  }
-
-  trafficState.activeLabelPacketId = null;
-  hideTrafficLabel();
-};
-
-const animateTraffic = (time) => {
-  trafficState.packets.forEach((packet) => {
-    if (packet.state === "holding") {
-      if (time >= packet.holdUntil) {
-        packet.pauseOffsetMs += packet.holdUntil - packet.holdStartedAt;
-        packet.state = "moving";
-        packet.holdStartedAt = 0;
-        packet.holdUntil = 0;
-        trafficState.activeLabelPacketId = null;
-        hideTrafficLabel();
+      if (task.incoming) {
+        row.classList.remove("is-incoming");
+        void row.offsetWidth;
+        row.classList.add("is-incoming");
       } else {
-        updatePacketTransform(packet, packet.holdDistance);
-        packet.lastDistance = packet.holdDistance;
-        return;
+        row.classList.remove("is-incoming");
+      }
+
+      if (task.status === "is-done") {
+        row.setAttribute("aria-label", `${task.title}, done`);
+      } else if (task.value === "Review") {
+        row.setAttribute("aria-label", `${task.title}, review`);
+      } else {
+        row.setAttribute("aria-label", `${task.title}, ${task.value}`);
       }
     }
-
-    const effectiveTime = time + packet.delay - packet.pauseOffsetMs;
-    const normalizedTime = ((effectiveTime % packet.duration) + packet.duration) % packet.duration;
-    const distance = (normalizedTime / packet.duration) * packet.length;
-
-    if (distance < packet.lastDistance) {
-      packet.cycle += 1;
-    }
-
-    const holdDistance = maybeTriggerTrafficHold(packet, time, distance);
-
-    if (holdDistance !== null) {
-      updatePacketTransform(packet, holdDistance);
-      packet.lastDistance = holdDistance;
-      return;
-    }
-
-    updatePacketTransform(packet, distance);
-    packet.lastDistance = distance;
   });
-
-  trafficState.nodes.forEach((node) => {
-    let nextEnergy = node.energy * 0.88;
-
-    for (const packet of trafficState.packets) {
-      const dx = packet.x - node.x;
-      const dy = packet.y - node.y;
-
-      if (dx * dx + dy * dy <= node.thresholdSq) {
-        nextEnergy = 1;
-        break;
-      }
-    }
-
-    node.energy = nextEnergy;
-    node.pulse.setAttribute("r", (2.2 + nextEnergy * 6.2).toFixed(2));
-    node.pulse.style.opacity = (0.08 + nextEnergy * 0.38).toFixed(3);
-    node.core.setAttribute("r", (1.45 + nextEnergy * 0.9).toFixed(2));
-    node.core.style.opacity = (0.2 + nextEnergy * 0.62).toFixed(3);
-  });
-
-  trafficState.frameId = window.requestAnimationFrame(animateTraffic);
 };
 
-const buildTrafficLayer = () => {
-  if (!pageTrafficSvg || !pageTrafficRoutes || !pageTrafficNodes || !pageTrafficPackets) {
-    return;
+const updateApprovalPanel = (state) => {
+  const approvalTitle = workforceApprovalPanel?.querySelector("[data-approval-title]");
+  const approvalCopy = workforceApprovalPanel?.querySelector("[data-approval-copy]");
+  const approvalActions = workforceApprovalPanel?.querySelector("[data-approval-actions]");
+
+  if (approvalTitle) {
+    approvalTitle.textContent = state.approval.title;
   }
 
-  stopTrafficAnimation();
-
-  pageTrafficRoutes.textContent = "";
-  pageTrafficNodes.textContent = "";
-  pageTrafficPackets.textContent = "";
-  trafficState.packets = [];
-  trafficState.nodes = [];
-
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  const reducedMotion = reducedMotionQuery?.matches;
-  const labelsEnabled = !reducedMotion && width > TRAFFIC_LABEL_MIN_WIDTH;
-  const routeLimit = width <= 560 ? 4 : width <= 720 ? 5 : width <= 1080 ? 6 : TRAFFIC_ROUTE_BLUEPRINTS.length;
-  const routeBlueprints = TRAFFIC_ROUTE_BLUEPRINTS.slice(0, routeLimit);
-  const nodeMap = new Map();
-  trafficState.labelsEnabled = labelsEnabled;
-
-  pageTrafficSvg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-
-  if (pageTrafficLabels) {
-    pageTrafficLabels.textContent = "";
-    trafficState.label = null;
+  if (approvalCopy) {
+    approvalCopy.textContent = state.approval.copy;
   }
 
-  routeBlueprints.forEach((route, routeIndex) => {
-    const points = route.points.map(([x, y]) => ({
-      x: snapToTrafficGrid(width * x, width),
-      y: snapToTrafficGrid(height * y, height),
-    }));
-    const pointDistances = [0];
+  if (approvalActions) {
+    approvalActions.innerHTML = `
+      <button type="button">${state.approval.actions[0]}</button>
+      <button type="button">${state.approval.actions[1]}</button>
+    `;
+  }
 
-    for (let index = 1; index < points.length; index += 1) {
-      const dx = points[index].x - points[index - 1].x;
-      const dy = points[index].y - points[index - 1].y;
-      pointDistances[index] = pointDistances[index - 1] + Math.hypot(dx, dy);
-    }
-
-    const d = buildTrafficPath(points);
-    const holdMap = new Map(
-      Array.isArray(route.holds)
-        ? route.holds.map((hold, holdIndex) => [
-            hold.pointIndex,
-            { ...hold, id: `${routeIndex}-${holdIndex}` },
-          ])
-        : []
-    );
-
-    const routePath = createSvgElement("path", {
-      class: "page-traffic__route",
-      d,
-    });
-    routePath.style.setProperty("--route-color", route.color);
-
-    const signalPath = createSvgElement("path", {
-      class: "page-traffic__route-signal",
-      d,
-    });
-    signalPath.style.setProperty("--route-color", route.color);
-    signalPath.style.setProperty("--route-duration", route.signalDuration);
-    signalPath.style.setProperty("--route-delay", route.signalDelay);
-
-    pageTrafficRoutes.append(routePath, signalPath);
-
-    points.forEach((point, pointIndex) => {
-      const key = `${point.x},${point.y}`;
-
-      if (nodeMap.has(key)) {
-        return;
-      }
-
-      const nodeGroup = createSvgElement("g", {
-        transform: `translate(${point.x} ${point.y})`,
-      });
-      nodeGroup.style.setProperty("--node-color", route.color);
-
-      const pulse = createSvgElement("circle", {
-        class: "page-traffic__node-pulse",
-        r: 2.2,
-        filter: "url(#page-traffic-glow)",
-      });
-      const core = createSvgElement("circle", {
-        class: "page-traffic__node-core",
-        r: 1.45,
-      });
-
-      nodeGroup.append(pulse, core);
-      pageTrafficNodes.append(nodeGroup);
-      nodeMap.set(key, {
-        key,
-        x: point.x,
-        y: point.y,
-        color: route.color,
-        pulse,
-        core,
-        energy: 0,
-        thresholdSq: 256,
-        hold: holdMap.get(pointIndex) || null,
-      });
-    });
-
-    if (reducedMotion) {
-      return;
-    }
-
-    route.packets.forEach((packetConfig, packetIndex) => {
-      const packetDelay = packetConfig.delay + routeIndex * 420 + packetIndex * 680;
-      const initialDistance = (((packetDelay % packetConfig.duration) + packetConfig.duration) % packetConfig.duration / packetConfig.duration) * routePath.getTotalLength();
-      const packetGroup = createSvgElement("g", {
-        class: "page-traffic__packet",
-      });
-      packetGroup.style.setProperty("--packet-color", packetConfig.color || route.color);
-
-      const tail = createSvgElement("ellipse", {
-        class: "page-traffic__packet-tail",
-        cx: -(packetConfig.radius * 2.6),
-        cy: 0,
-        rx: packetConfig.radius * 2.5,
-        ry: packetConfig.radius * 0.82,
-        filter: "url(#page-traffic-glow)",
-      });
-      const glow = createSvgElement("circle", {
-        class: "page-traffic__packet-glow",
-        r: packetConfig.radius * 2.25,
-        filter: "url(#page-traffic-glow)",
-      });
-      const core = createSvgElement("circle", {
-        class: "page-traffic__packet-core",
-        r: packetConfig.radius,
-      });
-
-      packetGroup.append(tail, glow, core);
-      pageTrafficPackets.append(packetGroup);
-
-      trafficState.packets.push({
-        id: `${routeIndex}-${packetIndex}`,
-        element: packetGroup,
-        path: routePath,
-        length: routePath.getTotalLength(),
-        duration: packetConfig.duration,
-        delay: packetDelay,
-        pauseOffsetMs: 0,
-        state: "moving",
-        holdStartedAt: 0,
-        holdUntil: 0,
-        holdDistance: 0,
-        cycle: 0,
-        lastDistance: initialDistance,
-        triggeredHolds: new Map(),
-        holds: labelsEnabled
-          ? Array.from(holdMap.values())
-              .map((hold) => {
-                const node = nodeMap.get(`${points[hold.pointIndex].x},${points[hold.pointIndex].y}`);
-
-                if (!node) {
-                  return null;
-                }
-
-                return {
-                  id: hold.id,
-                  distance: pointDistances[hold.pointIndex],
-                  messages: hold.messages,
-                  node,
-                };
-              })
-              .filter(Boolean)
-          : [],
-        x: 0,
-        y: 0,
-      });
-    });
-  });
-
-  trafficState.nodes = Array.from(nodeMap.values());
-
-  if (!reducedMotion && trafficState.packets.length) {
-    trafficState.frameId = window.requestAnimationFrame(animateTraffic);
+  if (workforceApprovalPanel) {
+    workforceApprovalPanel.classList.remove("is-updating");
+    void workforceApprovalPanel.offsetWidth;
+    workforceApprovalPanel.classList.add("is-updating");
   }
 };
 
-const scheduleTrafficBuild = () => {
-  window.clearTimeout(trafficState.resizeTimeout);
-  trafficState.resizeTimeout = window.setTimeout(buildTrafficLayer, 140);
+const closeMenu = () => {
+  menuToggle?.classList.remove("is-active");
+  menuToggle?.setAttribute("aria-expanded", "false");
+  siteNav?.classList.remove("is-open");
+  document.body.classList.remove("menu-open");
 };
 
-// Mobile menu toggle
-if (mobileMenuToggle && siteNav && siteHeader) {
-  const setMobileMenuState = (isOpen) => {
-    siteHeader.classList.toggle("is-menu-open", isOpen);
-    mobileMenuToggle.classList.toggle("is-active", isOpen);
-    mobileMenuToggle.setAttribute("aria-expanded", String(isOpen));
-  };
-
-  const closeMobileMenu = () => {
-    setMobileMenuState(false);
-  };
-
-  mobileMenuToggle.addEventListener("click", () => {
-    const isOpen = !siteHeader.classList.contains("is-menu-open");
-    setMobileMenuState(isOpen);
-  });
-
-  // Close menu when clicking a link
-  siteHeader.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      if (window.innerWidth <= 940) {
-        closeMobileMenu();
-      }
-    });
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 940) {
-      closeMobileMenu();
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeMobileMenu();
-    }
-  });
-
-  document.addEventListener("click", (event) => {
-    if (!siteHeader.contains(event.target) && siteHeader.classList.contains("is-menu-open")) {
-      closeMobileMenu();
-    }
-  });
-}
-
-// Mouse glow and card effects
-document.addEventListener("mousemove", (e) => {
-  if (mouseGlow) {
-    mouseGlow.style.opacity = "1";
-    mouseGlow.style.left = `${e.clientX}px`;
-    mouseGlow.style.top = `${e.clientY}px`;
-  }
-
-  // Subtle aura parallax
-  auras.forEach((aura, index) => {
-    const speed = (index + 1) * 20;
-    const x = (window.innerWidth - e.pageX * speed) / 100;
-    const y = (window.innerHeight - e.pageY * speed) / 100;
-    aura.style.transform = `translate(${x}px, ${y}px)`;
-  });
+menuToggle?.addEventListener("click", () => {
+  const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+  menuToggle.classList.toggle("is-active", !isOpen);
+  menuToggle.setAttribute("aria-expanded", String(!isOpen));
+  siteNav?.classList.toggle("is-open", !isOpen);
+  document.body.classList.toggle("menu-open", !isOpen);
 });
 
-document.addEventListener("mouseleave", () => {
-  if (mouseGlow) {
-    mouseGlow.style.opacity = "0";
+siteNav?.addEventListener("click", (event) => {
+  if (event.target.closest("a")) {
+    closeMenu();
   }
 });
 
-const createIntegrationPill = ({ name, accent, svg }) => {
-  const pill = document.createElement("span");
-  pill.className = "hero-integration-pill";
-  pill.style.setProperty("--pill-accent", accent);
-
-  const icon = document.createElement("span");
-  icon.className = "hero-integration-pill__icon";
-  icon.setAttribute("aria-hidden", "true");
-  icon.innerHTML = svg;
-
-  const label = document.createElement("span");
-  label.className = "hero-integration-pill__label";
-  label.textContent = name;
-
-  pill.append(icon, label);
-  return pill;
-};
-
-integrationCatalogRows.forEach((items, rowIndex) => {
-  const track = document.querySelector(`[data-integration-row="${rowIndex}"]`);
-  const clone = document.querySelector(`[data-integration-row-clone="${rowIndex}"]`);
-
-  if (!track || !clone) {
-    return;
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 820) {
+    closeMenu();
   }
-
-  items.forEach((item) => {
-    track.append(createIntegrationPill(item));
-    clone.append(createIntegrationPill(item));
-  });
 });
 
-buildTrafficLayer();
-window.requestAnimationFrame(buildGithubStarPhysics);
-window.addEventListener("resize", scheduleTrafficBuild);
-window.addEventListener("resize", scheduleGithubStarBuild);
-
-if (typeof window.ResizeObserver === "function" && githubButton) {
-  const githubButtonResizeObserver = new window.ResizeObserver(() => {
-    scheduleGithubStarBuild();
-  });
-
-  githubButtonResizeObserver.observe(githubButton);
-}
-
-window.addEventListener("load", scheduleGithubStarBuild, { once: true });
-
-const handleReducedMotionChange = () => {
-  buildTrafficLayer();
-  buildGithubStarPhysics();
+const updateHeader = () => {
+  header?.classList.toggle("is-scrolled", window.scrollY > 12);
 };
 
-if (typeof reducedMotionQuery?.addEventListener === "function") {
-  reducedMotionQuery.addEventListener("change", handleReducedMotionChange);
-} else if (typeof reducedMotionQuery?.addListener === "function") {
-  reducedMotionQuery.addListener(handleReducedMotionChange);
-}
+updateHeader();
+window.addEventListener("scroll", updateHeader, { passive: true });
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
         entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0,
-    rootMargin: "0px 0px 24% 0px",
+        observer.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "0px 0px -8%", threshold: 0.12 }
+  );
+
+  revealElements.forEach((element) => revealObserver.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("is-visible"));
+}
+
+const openDemo = () => {
+  if (!demoDialog || !videoWrap) {
+    window.open("https://www.youtube.com/watch?v=MP8-CB2wjWk", "_blank", "noopener,noreferrer");
+    return;
   }
-);
 
-revealElements.forEach((element) => revealObserver.observe(element));
-
-updateInstallCommand();
-
-const setActiveTab = (target) => {
-  quickstartTabs.forEach((tab) => {
-    const isActive = tab.dataset.tabTarget === target;
-    tab.classList.toggle("is-active", isActive);
-    tab.setAttribute("aria-selected", String(isActive));
-  });
-
-  quickstartPanels.forEach((panel) => {
-    const isActive = panel.dataset.tabPanel === target;
-    panel.classList.toggle("is-active", isActive);
-    panel.hidden = !isActive;
-  });
+  videoWrap.innerHTML = `
+    <iframe
+      src="https://www.youtube.com/embed/MP8-CB2wjWk?autoplay=1&rel=0&modestbranding=1"
+      title="AgentOS product demo"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+    ></iframe>
+  `;
+  demoDialog.showModal();
+  document.body.classList.add("dialog-open");
 };
 
-quickstartTabs.forEach((tab) => {
+const closeDemo = () => {
+  if (!demoDialog) {
+    return;
+  }
+
+  demoDialog.close();
+  document.body.classList.remove("dialog-open");
+  if (videoWrap) {
+    videoWrap.innerHTML = "";
+  }
+};
+
+demoOpenButtons.forEach((button) => button.addEventListener("click", openDemo));
+demoCloseButton?.addEventListener("click", closeDemo);
+demoDialog?.addEventListener("click", (event) => {
+  if (event.target === demoDialog) {
+    closeDemo();
+  }
+});
+demoDialog?.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  closeDemo();
+});
+
+controlTabs.forEach((tab) => {
   tab.addEventListener("click", () => {
-    setActiveTab(tab.dataset.tabTarget);
+    const key = tab.dataset.controlTab;
+    const copy = CONTROL_COPY[key];
+
+    controlTabs.forEach((candidate) => {
+      const isSelected = candidate === tab;
+      candidate.classList.toggle("is-active", isSelected);
+      candidate.setAttribute("aria-selected", String(isSelected));
+    });
+
+    if (copy && controlEyebrow && controlTitle) {
+      controlEyebrow.textContent = copy[0];
+      controlTitle.textContent = copy[1];
+    }
+
+    renderControlView(key);
   });
 });
 
-copyButtons.forEach((button) => {
-  button.addEventListener("click", async () => {
-    const targetId = button.dataset.copyTarget;
-    const target = document.getElementById(targetId);
+if (controlTabs.length) {
+  const activeTab = Array.from(controlTabs).find((tab) => tab.classList.contains("is-active"));
+  renderControlView(activeTab?.dataset.controlTab || "workspaces");
+}
 
-    if (!target) {
-      return;
+const renderWorkforceState = (state) => {
+  if (!workforceTeamPanel || !workforceTaskPanel || !workforceApprovalPanel) {
+    return;
+  }
+
+  if (workforceTeamFeed) {
+    workforceTeamFeed.textContent = state.feed;
+  }
+
+  if (workforceWorkTitle) {
+    workforceWorkTitle.textContent = state.workTitle;
+  }
+
+  if (workforceLiveLabel) {
+    const liveCopy = workforceLiveLabel.querySelector("[data-live-copy]");
+    if (liveCopy) {
+      liveCopy.textContent = state.liveLabel;
     }
+  }
 
-    try {
-      await navigator.clipboard.writeText(target.textContent.trim());
-      const previousText = button.textContent;
-      button.textContent = "Copied";
-      button.classList.add("is-copied");
+  updateDepartmentRows(workforceTeamList, state.departments);
+  updateTaskRows(workforceWorkList, state.tasks);
+  updateApprovalPanel(state);
+};
 
-      window.setTimeout(() => {
-        button.textContent = previousText;
-        button.classList.remove("is-copied");
-      }, 1400);
-    } catch (_error) {
-      button.textContent = "Failed";
-      window.setTimeout(() => {
-        button.textContent = "Copy";
-      }, 1400);
+let workforceTeamStateIndex = 0;
+let workforceTaskStateIndex = 0;
+let workforceTeamTimerId;
+let workforceTaskTimerId;
+const WORKFORCE_TEAM_ROTATE_MS = 3400;
+const WORKFORCE_TASK_ROTATE_MS = 2200;
+
+const advanceTeamState = () => {
+  workforceTeamStateIndex = (workforceTeamStateIndex + 1) % WORKFORCE_STATES.length;
+  const state = WORKFORCE_STATES[workforceTeamStateIndex];
+  if (workforceTeamFeed) {
+    workforceTeamFeed.textContent = state.feed;
+  }
+  updateDepartmentRows(workforceTeamList, state.departments);
+};
+
+const advanceTaskState = () => {
+  workforceTaskStateIndex = (workforceTaskStateIndex + 1) % WORKFORCE_STATES.length;
+  const state = WORKFORCE_STATES[workforceTaskStateIndex];
+  if (workforceWorkTitle) {
+    workforceWorkTitle.textContent = state.workTitle;
+  }
+  if (workforceLiveLabel) {
+    const liveCopy = workforceLiveLabel.querySelector("[data-live-copy]");
+    if (liveCopy) {
+      liveCopy.textContent = state.liveLabel;
     }
-  });
-});
+  }
+  updateTaskRows(workforceWorkList, state.tasks);
+  updateApprovalPanel(state);
+};
+
+if (workforceTeamPanel && workforceTaskPanel && workforceApprovalPanel) {
+  renderWorkforceState(WORKFORCE_STATES[0]);
+
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    workforceTeamTimerId = window.setInterval(advanceTeamState, WORKFORCE_TEAM_ROTATE_MS);
+    workforceTaskTimerId = window.setInterval(advanceTaskState, WORKFORCE_TASK_ROTATE_MS);
+  }
+}
+
+if (processSteps.length) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    processSteps.forEach((step, index) => {
+      step.classList.toggle("is-complete", index < 0);
+      step.classList.toggle("is-loading", index === 0);
+      step.classList.toggle("is-next", index === 1);
+      const count = step.querySelector("[data-process-count]");
+      const state = step.querySelector("[data-process-state]");
+      if (count) {
+        count.textContent = String(index + 1).padStart(2, "0");
+      }
+      if (state) {
+        state.textContent = index === 0 ? "Loading" : index === 1 ? "Next" : "Queued";
+      }
+      step.style.setProperty("--process-progress", index === 0 ? "72%" : "0%");
+    });
+  } else {
+    processStepIndex = 0;
+    queueNextProcessStep();
+  }
+}
 
 if (year) {
   year.textContent = String(new Date().getFullYear());

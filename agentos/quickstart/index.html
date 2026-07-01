@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <title>AgentOS Quickstart | Install AgentOS and Open Mission Control | SapienX</title>
+    <title>Install AgentOS | Quickstart</title>
     <meta
       name="description"
-      content="Install AgentOS, verify the runtime, and then use AgentOS Mission Control as the human operating layer on top."
+      content="Install AgentOS in one command. A fast, minimalist quickstart for running AI agents like a company."
     />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="SapienX" />
@@ -18,23 +18,23 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="SapienX" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="AgentOS Quickstart | SapienX" />
+    <meta property="og:title" content="Install AgentOS | Quickstart" />
     <meta
       property="og:description"
-      content="Install AgentOS, verify the runtime, and then use AgentOS Mission Control on top of it."
+      content="Install AgentOS in one command. A fast, minimalist quickstart for running AI agents like a company."
     />
     <meta property="og:url" content="https://sapienx.app/agentos/quickstart/" />
     <meta property="og:image" content="https://sapienx.app/agentos/banner.jpeg" />
-    <meta property="og:image:alt" content="AgentOS mission control interface banner" />
+    <meta property="og:image:alt" content="AgentOS install quickstart preview" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AgentOS Quickstart | SapienX" />
+    <meta name="twitter:title" content="Install AgentOS | Quickstart" />
     <meta
       name="twitter:description"
-      content="Install AgentOS, verify the runtime, and then open AgentOS Mission Control."
+      content="Install AgentOS in one command. A minimalist quickstart for running AI agents like a company."
     />
     <meta name="twitter:image" content="https://sapienx.app/agentos/banner.jpeg" />
-    <meta name="twitter:image:alt" content="AgentOS mission control interface banner" />
+    <meta name="twitter:image:alt" content="AgentOS install quickstart preview" />
 
     <link rel="icon" type="image/webp" sizes="512x512" href="/agentos/assets/agentlogo.webp" />
     <link rel="icon" type="image/png" sizes="32x32" href="/agentos/favicon-32.png" />
@@ -44,45 +44,10 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "AgentOS",
-            "item": "https://sapienx.app/agentos/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Quickstart",
-            "item": "https://sapienx.app/agentos/quickstart/"
-          }
-        ]
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What is the fastest way to install AgentOS?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Use the home page one-liner if you want the platform to be detected automatically. If you prefer explicit commands, use the Unix shell command on macOS or Linux and the PowerShell command on Windows. Then open AgentOS Mission Control locally."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How do I verify the runtime underneath AgentOS?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Run agentos doctor, then launch Mission Control with agentos start --open to confirm the local stack is ready."
-              }
-            }
-        ]
+        "@type": "WebPage",
+        "name": "Install AgentOS | Quickstart",
+        "url": "https://sapienx.app/agentos/quickstart/",
+        "description": "Install AgentOS in one command and start running AI agents like a company."
       }
     </script>
     <script>
@@ -92,210 +57,372 @@
           const theme = storedTheme || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
           document.documentElement.dataset.theme = theme === "light" ? "light" : "dark";
           document.documentElement.style.colorScheme = theme === "light" ? "light" : "dark";
+          document.documentElement.classList.add("quickstart-html");
         } catch {
           document.documentElement.dataset.theme = "dark";
+          document.documentElement.classList.add("quickstart-html");
         }
       })();
     </script>
   </head>
 
-  <body>
+  <body class="quickstart-page">
     <a class="skip-link" href="#content">Skip to content</a>
 
-    <header class="support-header">
-      <div class="container support-header__inner">
-        <a class="brand" href="/agentos/" aria-label="AgentOS home">
-          <video class="brand__logo" autoplay loop muted playsinline preload="metadata" poster="/agentos/assets/agentlogo.webp" aria-hidden="true">
+    <header class="qs-header">
+      <div class="container qs-header__inner">
+        <a class="qs-brand" href="/agentos/" aria-label="AgentOS home">
+          <video class="qs-brand__logo" autoplay loop muted playsinline preload="metadata" poster="/agentos/assets/agentlogo.webp" aria-hidden="true">
             <source src="/agentos/assets/logo.webm" type="video/webm" />
           </video>
-          <span class="brand__copy">
-            <strong><span>Agent</span><span class="brand__os">OS</span></strong>
-            <span>by SapienX</span>
+          <span class="qs-brand__text">
+            <strong><span>Agent</span><span class="qs-brand__os">OS</span></strong>
           </span>
         </a>
 
-        <nav class="support-nav" aria-label="AgentOS">
-          <a href="/agentos/faq/">FAQ</a>
-          <a href="/agentos/openclaw/">Built on OpenClaw</a>
-          <a href="/agentos/compare/openclaw-vs-agentos/">Compare</a>
-          <a href="/agentos/use-cases/ai-operations/">Use cases</a>
+        <nav class="qs-nav" aria-label="Quickstart navigation">
+          <a href="#features">Features</a>
+          <a href="#use-cases">Use Cases</a>
+          <a href="#guide">Docs</a>
+          <a href="#footer">Changelog</a>
+          <a href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noopener noreferrer">GitHub</a>
         </nav>
 
-        <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" data-theme-toggle>
-          <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2"></path>
-            <path d="M12 20v2"></path>
-            <path d="m4.93 4.93 1.41 1.41"></path>
-            <path d="m17.66 17.66 1.41 1.41"></path>
-            <path d="M2 12h2"></path>
-            <path d="M20 12h2"></path>
-            <path d="m6.34 17.66-1.41 1.41"></path>
-            <path d="m19.07 4.93-1.41 1.41"></path>
-          </svg>
-          <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M20.99 12.65A8.5 8.5 0 1 1 11.35 3a6.5 6.5 0 0 0 9.64 9.65Z"></path>
-          </svg>
-          <span class="theme-toggle__label" data-theme-toggle-label>Dark</span>
-        </button>
+        <div class="qs-header__actions">
+          <button class="theme-toggle qs-theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" data-theme-toggle>
+            <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="m17.66 17.66 1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="m6.34 17.66-1.41 1.41"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+            <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.99 12.65A8.5 8.5 0 1 1 11.35 3a6.5 6.5 0 0 0 9.64 9.65Z"></path>
+            </svg>
+            <span class="theme-toggle__label" data-theme-toggle-label>Dark</span>
+          </button>
+          <a class="qs-github" href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.21.68-.47v-1.67c-2.77.6-3.35-1.17-3.35-1.17-.45-1.12-1.1-1.42-1.1-1.42-.9-.62.07-.61.07-.61 1 .08 1.53 1.02 1.53 1.02.89 1.53 2.34 1.09 2.91.84.09-.65.35-1.1.63-1.35-2.2-.25-4.52-1.1-4.52-4.9 0-1.08.38-1.96 1.02-2.65-.1-.25-.44-1.27.1-2.63 0 0 .84-.27 2.75 1.01a9.53 9.53 0 0 1 5 0c1.9-1.28 2.75-1.01 2.75-1.01.54 1.36.2 2.38.1 2.63.64.69 1.02 1.57 1.02 2.65 0 3.81-2.33 4.65-4.55 4.9.36.31.68.93.68 1.88v2.79c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/>
+            </svg>
+            GitHub
+          </a>
+          <button class="qs-menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="qs-nav-panel" data-quickstart-menu>
+            <svg class="qs-menu-toggle__icon qs-menu-toggle__icon--bars" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg class="qs-menu-toggle__icon qs-menu-toggle__icon--close" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 5l14 14"></path>
+              <path d="M19 5 5 19"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="qs-nav-panel" id="qs-nav-panel" hidden data-quickstart-nav>
+        <div class="container qs-nav-panel__inner">
+          <a href="#features">Features</a>
+          <a href="#use-cases">Use Cases</a>
+          <a href="#guide">Docs</a>
+          <a href="#footer">Changelog</a>
+          <a href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
       </div>
     </header>
 
-    <main id="content" class="support-main">
-      <div class="container">
-        <nav class="breadcrumbs" aria-label="Breadcrumb">
-          <ol>
-            <li><a href="/agentos/">AgentOS</a></li>
-            <li><span aria-current="page">Quickstart</span></li>
-          </ol>
-        </nav>
-
-        <section class="support-hero">
-          <span class="eyebrow">Quickstart</span>
-          <h1>Install AgentOS. Open Mission Control.</h1>
-          <p>
-            Pick the workflow that matches your environment. The home page one-liner now auto-detects Windows versus
-            Unix-like shells; this page keeps the explicit commands and links in one place.
-          </p>
-          <div class="cta-row" role="group" aria-label="Primary actions">
-            <a class="button button--primary" href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noopener noreferrer"
-              >Open repository</a
-            >
-            <a class="button button--secondary" href="/agentos/openclaw/">How it works</a>
-            <a class="button button--ghost" href="/agentos/faq/">FAQ</a>
-          </div>
-        </section>
-
-        <div class="support-content">
-          <section class="section-card" aria-labelledby="qs-fast-title">
-            <h2 id="qs-fast-title">Fastest path (Unix one-liner)</h2>
-            <p>Use the shell installer on macOS or Linux. The home page one-liner will route Windows users to PowerShell.</p>
-            <pre><code>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</code></pre>
-            <div class="pill-row" aria-label="Next commands">
-              <span class="pill"><code>agentos start --open</code></span>
-              <span class="pill"><code>agentos doctor</code></span>
-            </div>
-            <div class="callout">
-              Once AgentOS is installed, use it as the human control surface: create one workspace per project and keep
-              tasks scoped to concrete deliverables.
-            </div>
-          </section>
-
-          <section class="section-card" aria-labelledby="qs-macos-title">
-            <h2 id="qs-macos-title">macOS</h2>
-            <p>The shell installer is the same command used by the Unix one-liner.</p>
-            <pre><code>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</code></pre>
-            <div class="pill-row" aria-label="Next commands">
-              <span class="pill"><code>agentos start --open</code></span>
-              <span class="pill"><code>agentos doctor</code></span>
-            </div>
-          </section>
-
-          <section class="section-card" aria-labelledby="qs-linux-title">
-            <h2 id="qs-linux-title">Linux</h2>
-            <p>The shell installer is the same command used by macOS.</p>
-            <pre><code>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</code></pre>
-            <div class="pill-row" aria-label="Next commands">
-              <span class="pill"><code>agentos start --open</code></span>
-              <span class="pill"><code>agentos doctor</code></span>
-            </div>
-          </section>
-
-          <section class="section-card" aria-labelledby="qs-pnpm-title">
-            <h2 id="qs-pnpm-title">Alternate install (pnpm)</h2>
-            <p>Best when you want the documented package workflow for AgentOS.</p>
-            <pre><code>pnpm add -g @sapienx/agentos</code></pre>
-            <div class="pill-row" aria-label="Next commands">
-              <span class="pill"><code>agentos start --open</code></span>
-              <span class="pill"><code>agentos doctor</code></span>
-            </div>
-          </section>
-
-          <section class="section-card" aria-labelledby="qs-windows-title">
-            <h2 id="qs-windows-title">Windows PowerShell</h2>
-            <p>Use the Windows install path documented in the AgentOS repository README.</p>
-            <pre><code>iwr https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.ps1 | iex</code></pre>
-            <div class="pill-row" aria-label="Next commands">
-              <span class="pill"><code>agentos start --open</code></span>
-              <span class="pill"><code>agentos doctor</code></span>
-            </div>
-            <div class="callout">
-              If you need a pinned release or uninstall steps, follow the links and details in the repository README.
-            </div>
-          </section>
-
-          <section class="section-card" aria-labelledby="qs-source-title">
-            <h2 id="qs-source-title">Builders (website source)</h2>
-            <p>Clone this repository if you want to edit the AgentOS marketing site or extend the page cluster.</p>
-            <pre><code>git clone https://github.com/SapienXai/AgentOS.git
-cd AgentOS
-pnpm install
-pnpm dev</code></pre>
-            <div class="callout">
-              AgentOS stays aligned with OpenClaw runtime truth. If you are debugging deeper behavior, check the
-              OpenClaw gateway status underneath.
-            </div>
-          </section>
-
-          <section class="section-card" aria-labelledby="qs-verify-title">
-          <h2 id="qs-verify-title">Verify the operating stack</h2>
-            <p>Use the local checks to confirm AgentOS is ready.</p>
-            <ul>
-              <li><span class="kpi">Runtime health</span>: run <code>agentos doctor</code> for local checks.</li>
-              <li><span class="kpi">Launch state</span>: open Mission Control with <code>agentos start --open</code>.</li>
-              <li><span class="kpi">First workspace</span>: create a workspace that points to real files and a real deliverable, then assign one task with an explicit output.</li>
-            </ul>
-          </section>
-
-          <section class="section-card" aria-labelledby="qs-faq-title">
-            <h2 id="qs-faq-title">Quickstart FAQ</h2>
-            <details>
-              <summary>What is the fastest way to install AgentOS?</summary>
-              <p>
-                Use the documented install path that matches your platform. On macOS or Linux, use the installer
-                one-liner; on Windows, use the PowerShell command from the repository README. Then open AgentOS
-                Mission Control locally.
-              </p>
-            </details>
-            <details>
-              <summary>How do I verify the runtime underneath AgentOS?</summary>
-              <p>
-                Start with <code>agentos doctor</code>, then launch Mission Control with <code>agentos start --open</code>.
-                If you need deeper truth about orchestration, check the OpenClaw gateway/session state underneath.
-              </p>
-            </details>
-          </section>
-
-          <section class="section-card" aria-labelledby="qs-related-title">
-            <h2 id="qs-related-title">Related pages</h2>
-            <p>Understand the architecture and choose the right operational surface for your workflow.</p>
-            <div class="related" aria-label="Related AgentOS pages">
-              <a href="/agentos/openclaw/"><span>Built on OpenClaw</span><small>What AgentOS adds above the runtime</small></a>
-              <a href="/agentos/features/workspace-agent-task-wizards/"
-                ><span>Workspace, agent, task wizards</span><small>Guided creation and structure</small></a
-              >
-              <a href="/agentos/use-cases/solo-founder/"
-                ><span>Solo founder</span><small>Coordinate multiple projects with one operating layer</small></a
-              >
-            </div>
-          </section>
+    <main id="content" class="qs-main">
+      <section class="qs-hero container">
+        <div class="qs-hero__badge">
+          <span class="qs-hero__badge-icon">⚡</span>
+          <span>One-liner Install</span>
         </div>
-      </div>
+        <h1>Install <span>AgentOS</span></h1>
+        <p>
+          The AI operating layer for running agents like a company.
+          <br />
+          Install in seconds. Run everywhere.
+        </p>
+      </section>
+
+      <section class="qs-shell container" id="guide" aria-labelledby="guide-title">
+        <article class="qs-terminal" aria-labelledby="guide-title">
+          <div class="qs-terminal__head">
+            <div class="qs-terminal__dots" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div>
+              <h2 id="guide-title">Terminal</h2>
+              <p>One-liner install. That’s it.</p>
+            </div>
+            <button class="qs-copy" type="button" data-copy-button aria-live="polite">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h11v11H9z"></path><path d="M4 4h11v11H4z"></path></svg>
+              <span data-copy-label>Copy</span>
+            </button>
+          </div>
+
+          <div class="qs-tabs" role="tablist" aria-label="Installation platform">
+            <button class="qs-tab is-active" type="button" role="tab" aria-selected="true" data-os-tab="mac">macOS / Linux</button>
+            <button class="qs-tab" type="button" role="tab" aria-selected="false" data-os-tab="windows">Windows</button>
+            <button class="qs-tab" type="button" role="tab" aria-selected="false" data-os-tab="npm">npm</button>
+            <button class="qs-tab" type="button" role="tab" aria-selected="false" data-os-tab="source">Source</button>
+          </div>
+
+          <pre class="qs-command" data-command-block><code><span class="qs-command__prompt">$</span> <span data-command-text>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</span></code></pre>
+
+          <div class="qs-terminal__meta" data-command-meta>
+            <p>Works on macOS, Linux, and WSL.</p>
+            <p>Requires: Node.js 18+</p>
+          </div>
+
+          <footer class="qs-runbook" aria-labelledby="runbook-title">
+            <div class="qs-runbook__head">
+              <span class="qs-runbook__kicker">Launch and verify</span>
+              <h3 id="runbook-title">Run your first local AgentOS session.</h3>
+            </div>
+            <div class="qs-runbook__commands">
+              <pre><code>agentos start --open</code></pre>
+              <pre><code>agentos doctor</code></pre>
+            </div>
+          </footer>
+        </article>
+      </section>
+
+      <section class="qs-features container" id="features" aria-labelledby="features-title">
+        <div class="qs-section-head">
+          <h2 id="features-title">Why it feels fast</h2>
+        </div>
+
+        <div class="qs-feature-grid">
+          <article class="qs-feature-card">
+            <div class="qs-feature-card__icon qs-feature-card__icon--red" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M13.5 2 5 13h6l-1.5 9L19 11h-6L13.5 2Z" />
+              </svg>
+            </div>
+            <h3>One Command</h3>
+            <p>Install AgentOS in seconds with a single command.</p>
+          </article>
+          <article class="qs-feature-card">
+            <div class="qs-feature-card__icon qs-feature-card__icon--violet" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18" />
+                <path d="M12 3a15 15 0 0 1 0 18" />
+                <path d="M12 3a15 15 0 0 0 0 18" />
+              </svg>
+            </div>
+            <h3>Cross Platform</h3>
+            <p>Runs on macOS, Linux, and Windows (WSL) out of the box.</p>
+          </article>
+          <article class="qs-feature-card">
+            <div class="qs-feature-card__icon qs-feature-card__icon--slate" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M20 12a8 8 0 0 0-14.9-4" />
+                <path d="M4 4v5h5" />
+                <path d="M4 12a8 8 0 0 0 14.9 4" />
+                <path d="M20 20v-5h-5" />
+              </svg>
+            </div>
+            <h3>Auto Updates</h3>
+            <p>Get the latest features and improvements automatically.</p>
+          </article>
+          <article class="qs-feature-card">
+            <div class="qs-feature-card__icon qs-feature-card__icon--mint" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3 20 6v6c0 4.9-3.2 8.7-8 11-4.8-2.3-8-6.1-8-11V6l8-3Z" />
+                <path d="M9.5 12.5 11.4 14.4 15.5 10.3" />
+              </svg>
+            </div>
+            <h3>Safe &amp; Secure</h3>
+            <p>Open source, transparent, and built with security in mind.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="qs-installed container" id="use-cases" aria-labelledby="installed-title">
+        <div class="qs-section-head qs-section-head--compact">
+          <h2 id="installed-title">What’s Installed?</h2>
+        </div>
+
+        <div class="qs-installed-grid">
+          <article class="qs-installed-card">
+            <div class="qs-installed-card__icon">&gt;_</div>
+            <h3>AgentOS CLI</h3>
+            <p>Command-line interface for managing your agents.</p>
+          </article>
+          <article class="qs-installed-card">
+            <div class="qs-installed-card__icon qs-installed-card__icon--red">⦿</div>
+            <h3>OpenClaw Kernel</h3>
+            <p>The agent orchestration kernel under the hood.</p>
+          </article>
+          <article class="qs-installed-card">
+            <div class="qs-installed-card__icon qs-installed-card__icon--rose">▶</div>
+            <h3>Runtime Engine</h3>
+            <p>Execution environment for running agents.</p>
+          </article>
+          <article class="qs-installed-card">
+            <div class="qs-installed-card__icon qs-installed-card__icon--gold">↓</div>
+            <h3>Auto Updater</h3>
+            <p>Keeps everything up to date seamlessly.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="qs-cta container" aria-labelledby="cta-title">
+        <h2 id="cta-title">Ready to run your first agent?</h2>
+        <div class="qs-cta__actions">
+          <a class="qs-button qs-button--primary" href="/agentos/">Get Started</a>
+          <a class="qs-button qs-button--secondary" href="/agentos/openclaw/">View Documentation</a>
+        </div>
+        <p>Join teams shipping AI operations with a cleaner control plane.</p>
+      </section>
     </main>
 
-    <footer class="support-footer">
-      <div class="container support-footer__inner">
-        <p class="support-footer__note">
-          AgentOS is the human operating layer built on top of OpenClaw. OpenClaw remains the orchestration backend.
-        </p>
-        <nav class="support-footer__links" aria-label="Footer links">
-          <a href="/agentos/">Overview</a>
-          <a href="/agentos/faq/">FAQ</a>
-          <a href="/agentos/compare/openclaw-vs-agentos/">Compare</a>
-          <a href="https://openclaw.ai/" target="_blank" rel="noopener noreferrer">OpenClaw</a>
-        </nav>
+    <footer class="qs-footer" id="footer">
+      <div class="container qs-footer__inner">
+        <div class="qs-footer__brand">
+          <a class="qs-brand qs-brand--footer" href="/agentos/" aria-label="AgentOS home">
+            <video class="qs-brand__logo" autoplay loop muted playsinline preload="metadata" poster="/agentos/assets/agentlogo.webp" aria-hidden="true">
+              <source src="/agentos/assets/logo.webm" type="video/webm" />
+            </video>
+            <span class="qs-brand__text">
+              <strong><span>Agent</span><span class="qs-brand__os">OS</span></strong>
+            </span>
+          </a>
+          <p>Run agents like a company.<br />Built on top of OpenClaw.</p>
+        </div>
+
+        <div class="qs-footer__cols">
+          <div>
+            <h3>Product</h3>
+            <a href="/agentos/#workforce">Workforce</a>
+            <a href="/agentos/#platform">Platform</a>
+            <a href="/agentos/openclaw/">OpenClaw</a>
+          </div>
+          <div>
+            <h3>Resources</h3>
+            <a href="/agentos/quickstart/">Quickstart</a>
+            <a href="/agentos/faq/">FAQ</a>
+            <a href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+          <div>
+            <h3>Company</h3>
+            <a href="/agentos/use-cases/agency/">Use cases</a>
+            <a href="/agentos/compare/openclaw-vs-agentos/">Compare</a>
+            <a href="/agentos/features/runtime-visibility/">Runtime visibility</a>
+          </div>
+        </div>
+
+        <a class="qs-star" href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noopener noreferrer">
+          <span class="qs-star__icon">✦</span>
+          <span>
+            Star on GitHub
+            <small>12.5k ★</small>
+          </span>
+        </a>
       </div>
     </footer>
+
     <script src="/agentos/theme.js"></script>
+    <script>
+      (() => {
+        const commands = {
+          mac: {
+            text: 'curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash',
+            meta: ['Works on macOS, Linux, and WSL.', 'Requires: Node.js 18+'],
+          },
+          windows: {
+            text: 'iwr https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.ps1 | iex',
+            meta: ['Works in PowerShell and WSL.', 'Requires: Node.js 18+'],
+          },
+          npm: {
+            text: 'pnpm add -g @sapienx/agentos',
+            meta: ['Installs the AgentOS CLI globally.', 'Then run: agentos start --open'],
+          },
+          source: {
+            text: 'git clone https://github.com/SapienXai/AgentOS.git && cd AgentOS && pnpm install && pnpm dev',
+            meta: ['Clone, install, and launch from source.', 'Best for local development.'],
+          },
+        };
+
+        const tabs = Array.from(document.querySelectorAll('[data-os-tab]'));
+        const commandText = document.querySelector('[data-command-text]');
+        const metaNodes = Array.from(document.querySelectorAll('[data-command-meta] p'));
+        const copyButton = document.querySelector('[data-copy-button]');
+        const copyLabel = document.querySelector('[data-copy-label]');
+        const menuButton = document.querySelector('[data-quickstart-menu]');
+        const navPanel = document.querySelector('#qs-nav-panel');
+
+        const setTab = (key) => {
+          const state = commands[key] || commands.mac;
+          commandText.textContent = state.text;
+          metaNodes[0].textContent = state.meta[0];
+          metaNodes[1].textContent = state.meta[1];
+
+          tabs.forEach((tab) => {
+            const active = tab.dataset.osTab === key;
+            tab.classList.toggle('is-active', active);
+            tab.setAttribute('aria-selected', String(active));
+          });
+        };
+
+        const closeMenu = () => {
+          if (!menuButton || !navPanel) return;
+          menuButton.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('qs-nav-open');
+          navPanel.hidden = true;
+        };
+
+        tabs.forEach((tab) => {
+          tab.addEventListener('click', () => setTab(tab.dataset.osTab));
+        });
+
+        menuButton?.addEventListener('click', () => {
+          if (!navPanel) return;
+          const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+          menuButton.setAttribute('aria-expanded', String(!isOpen));
+          menuButton.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+          document.body.classList.toggle('qs-nav-open', !isOpen);
+          navPanel.hidden = isOpen;
+        });
+
+        navPanel?.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            if (window.matchMedia('(max-width: 680px)').matches) {
+              closeMenu();
+            }
+          });
+        });
+
+        window.addEventListener('resize', () => {
+          if (!window.matchMedia('(max-width: 680px)').matches) {
+            closeMenu();
+          }
+        });
+
+        copyButton?.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(commandText.textContent.trim());
+            copyLabel.textContent = 'Copied';
+            copyButton.classList.add('is-copied');
+            window.setTimeout(() => {
+              copyLabel.textContent = 'Copy';
+              copyButton.classList.remove('is-copied');
+            }, 1400);
+          } catch {
+            copyLabel.textContent = 'Copy failed';
+            window.setTimeout(() => {
+              copyLabel.textContent = 'Copy';
+            }, 1400);
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
