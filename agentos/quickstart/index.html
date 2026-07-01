@@ -152,42 +152,87 @@
         <article class="qs-terminal" aria-labelledby="guide-title">
           <div class="qs-terminal__head">
             <div class="qs-terminal__dots" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
+              <span class="qs-terminal__dot--red"></span>
+              <span class="qs-terminal__dot--yellow"></span>
+              <span class="qs-terminal__dot--green"></span>
             </div>
             <div>
               <h2 id="guide-title">Terminal</h2>
               <p>One-liner install. That’s it.</p>
             </div>
-            <button class="qs-copy" type="button" data-copy-button aria-live="polite">
+          </div>
+
+          <div class="qs-tabs" role="tablist" aria-label="Installation platform">
+            <button class="qs-tab is-active" type="button" role="tab" aria-selected="true" data-os-tab="mac">
+              <span class="qs-tab__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M16.4 2.5c-.2 1.3-.8 2.4-1.7 3.2-.9.9-2 1.4-3.1 1.3.1-1.2.7-2.3 1.6-3.1.9-.8 2-1.4 3.2-1.4Z"></path><path d="M19.2 17.5c-.5 1.1-.8 1.6-1.5 2.6-1 1.4-2.5 3.2-4.3 3.2-1.6 0-2-1-4.1-1-2.1 0-2.6 1-4.1 1-1.8 0-3.1-1.6-4.1-3-2.8-4.1-3.1-8.9-1.4-11.4 1.2-1.8 3-2.8 4.8-2.8 1.9 0 3.1 1 4.6 1 1.5 0 2.4-1 4.6-1 1.6 0 3.4.9 4.6 2.4-4 2.2-3.3 7.9.9 9Z"></path></svg>
+              </span>
+              macOS / Linux
+            </button>
+            <button class="qs-tab" type="button" role="tab" aria-selected="false" data-os-tab="windows">
+              <span class="qs-tab__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M3 4.5 10.8 3.4v8H3V4.5Z"></path><path d="M12.2 3.2 21 2v9.4h-8.8V3.2Z"></path><path d="M3 12.6h7.8v8L3 19.5v-6.9Z"></path><path d="M12.2 12.6H21V22l-8.8-1.2v-8.2Z"></path></svg>
+              </span>
+              Windows
+            </button>
+            <button class="qs-tab" type="button" role="tab" aria-selected="false" data-os-tab="npm">
+              <span class="qs-tab__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"></rect><path d="M8 9l3 3-3 3"></path><path d="M13 16h4"></path></svg>
+              </span>
+              npm
+            </button>
+            <button class="qs-tab" type="button" role="tab" aria-selected="false" data-os-tab="source">
+              <span class="qs-tab__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m9 6-5 6 5 6"></path><path d="m15 6 5 6-5 6"></path></svg>
+              </span>
+              Source
+            </button>
+          </div>
+
+          <div class="qs-command" data-command-block>
+            <code><span class="qs-command__prompt">$</span> <span data-command-text>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</span></code>
+            <button class="qs-copy qs-copy--primary" type="button" data-copy-button data-copy-target="command" aria-live="polite">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h11v11H9z"></path><path d="M4 4h11v11H4z"></path></svg>
               <span data-copy-label>Copy</span>
             </button>
           </div>
 
-          <div class="qs-tabs" role="tablist" aria-label="Installation platform">
-            <button class="qs-tab is-active" type="button" role="tab" aria-selected="true" data-os-tab="mac">macOS / Linux</button>
-            <button class="qs-tab" type="button" role="tab" aria-selected="false" data-os-tab="windows">Windows</button>
-            <button class="qs-tab" type="button" role="tab" aria-selected="false" data-os-tab="npm">npm</button>
-            <button class="qs-tab" type="button" role="tab" aria-selected="false" data-os-tab="source">Source</button>
-          </div>
-
-          <pre class="qs-command" data-command-block><code><span class="qs-command__prompt">$</span> <span data-command-text>curl -fsSL https://raw.githubusercontent.com/SapienXai/AgentOS/main/install.sh | bash</span></code></pre>
-
           <div class="qs-terminal__meta" data-command-meta>
-            <p>Works on macOS, Linux, and WSL.</p>
-            <p>Requires: Node.js 18+</p>
+            <p><span class="qs-meta-icon" aria-hidden="true">✓</span><span data-command-meta-primary>Works on macOS, Linux, and WSL.</span></p>
+            <p><span class="qs-meta-icon qs-meta-icon--hex" aria-hidden="true"></span><span data-command-meta-secondary>Requires: Node.js 18+</span></p>
           </div>
 
           <footer class="qs-runbook" aria-labelledby="runbook-title">
             <div class="qs-runbook__head">
               <span class="qs-runbook__kicker">Launch and verify</span>
-              <h3 id="runbook-title">Run your first local AgentOS session.</h3>
+              <h3 id="runbook-title">
+                <span class="qs-runbook__rocket" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M13.5 4.5c2.15-.85 4.12-.9 5.75-.62.28 1.63.23 3.6-.62 5.75-.78 1.95-2.28 3.9-4.5 5.82l-3.58-3.58c1.92-2.22 3.87-3.72 5.82-4.5Z"></path>
+                    <path d="m10.55 11.87-3.43.48-2.25 2.25 3.55 1.02"></path>
+                    <path d="m12.13 13.45-.48 3.43-2.25 2.25-1.02-3.55"></path>
+                    <path d="M15.35 8.65h.01"></path>
+                    <path d="M5.4 18.6l-1.8 1.8"></path>
+                  </svg>
+                </span>
+                Run your first local AgentOS session.
+              </h3>
             </div>
             <div class="qs-runbook__commands">
-              <pre><code>agentos start --open</code></pre>
-              <pre><code>agentos doctor</code></pre>
+              <div class="qs-run-command">
+                <span class="qs-run-command__icon" aria-hidden="true">&gt;_</span>
+                <code>agentos start --open</code>
+                <button class="qs-copy-icon" type="button" data-copy-value="agentos start --open" aria-label="Copy agentos start command">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h11v11H9z"></path><path d="M4 4h11v11H4z"></path></svg>
+                </button>
+              </div>
+              <div class="qs-run-command">
+                <span class="qs-run-command__icon" aria-hidden="true">&gt;_</span>
+                <code>agentos doctor</code>
+                <button class="qs-copy-icon" type="button" data-copy-value="agentos doctor" aria-label="Copy agentos doctor command">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h11v11H9z"></path><path d="M4 4h11v11H4z"></path></svg>
+                </button>
+              </div>
             </div>
           </footer>
         </article>
@@ -353,9 +398,13 @@
 
         const tabs = Array.from(document.querySelectorAll('[data-os-tab]'));
         const commandText = document.querySelector('[data-command-text]');
-        const metaNodes = Array.from(document.querySelectorAll('[data-command-meta] p'));
+        const metaNodes = [
+          document.querySelector('[data-command-meta-primary]'),
+          document.querySelector('[data-command-meta-secondary]'),
+        ];
         const copyButton = document.querySelector('[data-copy-button]');
         const copyLabel = document.querySelector('[data-copy-label]');
+        const copyValueButtons = Array.from(document.querySelectorAll('[data-copy-value]'));
         const menuButton = document.querySelector('[data-quickstart-menu]');
         const navPanel = document.querySelector('#qs-nav-panel');
 
@@ -421,6 +470,23 @@
               copyLabel.textContent = 'Copy';
             }, 1400);
           }
+        });
+
+        copyValueButtons.forEach((button) => {
+          button.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(button.dataset.copyValue || '');
+              button.classList.add('is-copied');
+              window.setTimeout(() => {
+                button.classList.remove('is-copied');
+              }, 1200);
+            } catch {
+              button.classList.add('is-failed');
+              window.setTimeout(() => {
+                button.classList.remove('is-failed');
+              }, 1200);
+            }
+          });
         });
       })();
     </script>
