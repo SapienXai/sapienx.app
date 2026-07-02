@@ -453,6 +453,23 @@ button {
   text-align: center;
 }
 
+.hero-title {
+  min-height: 1.8em;
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 360ms ease, transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.hero-title.is-changing {
+  transform: translateY(0.12em);
+  opacity: 0;
+}
+
+.hero-title-line {
+  display: block;
+}
+
 .header-hero > p:not(.foundation-line),
 .header-hero .hero-actions,
 .header-hero .foundation-line {

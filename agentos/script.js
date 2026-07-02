@@ -24,6 +24,14 @@ const workforceWorkList = document.querySelector("[data-work-list]");
 const workforceApprovalTitle = document.querySelector("[data-approval-title]");
 const workforceApprovalCopy = document.querySelector("[data-approval-copy]");
 const workforceApprovalActions = document.querySelector("[data-approval-actions]");
+const heroTitle = document.querySelector("[data-hero-title]");
+const heroTitleLines = heroTitle ? Array.from(heroTitle.querySelectorAll("[data-hero-title-line]")) : [];
+
+const HERO_TITLES = [
+  ["Run AI Agents", "Like a Company"],
+  ["Build Your", "AI Workforce"],
+  ["Manage Agents", "Like Employees"],
+];
 
 const CONTROL_COPY = {
   workspaces: ["Workspace operations", "Everything in motion"],
@@ -691,6 +699,35 @@ const closeMenu = () => {
   siteNav?.classList.remove("is-open");
   document.body.classList.remove("menu-open");
 };
+
+const updateHeroTitle = (titleParts) => {
+  if (!heroTitle || heroTitleLines.length < 2) {
+    return;
+  }
+
+  heroTitleLines.forEach((line, index) => {
+    line.textContent = titleParts[index] || "";
+  });
+  heroTitle.setAttribute("aria-label", titleParts.join(" "));
+};
+
+if (heroTitle && heroTitleLines.length >= 2 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  let heroTitleIndex = 0;
+
+  window.setInterval(() => {
+    if (document.hidden) {
+      return;
+    }
+
+    heroTitleIndex = (heroTitleIndex + 1) % HERO_TITLES.length;
+    heroTitle.classList.add("is-changing");
+
+    window.setTimeout(() => {
+      updateHeroTitle(HERO_TITLES[heroTitleIndex]);
+      heroTitle.classList.remove("is-changing");
+    }, 360);
+  }, 4200);
+}
 
 menuToggle?.addEventListener("click", () => {
   const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
