@@ -972,9 +972,9 @@ body.quickstart-page .qs-hero p {
 
 body.quickstart-page .qs-shell {
   display: grid;
-  gap: 1.15rem;
-  width: min(calc(100% - 4rem), 92rem);
-  max-width: min(calc(100% - 4rem), 92rem);
+  gap: 0.9rem;
+  width: min(calc(100% - 4rem), 76rem);
+  max-width: min(calc(100% - 4rem), 76rem);
   min-width: 0;
   scroll-margin-top: 6.5rem;
 }
@@ -983,9 +983,9 @@ body.quickstart-page .qs-tabs {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
-  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+  margin-top: clamp(1.1rem, 2.2vw, 1.7rem);
   padding: 0;
-  border-radius: 1.45rem 1.45rem 0 0;
+  border-radius: 1.15rem 1.15rem 0 0;
   border: 1px solid rgba(255, 255, 255, 0.11);
   border-bottom: 0;
   background:
@@ -1003,18 +1003,18 @@ body.quickstart-page .qs-tab {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.85rem;
-  min-height: clamp(4.1rem, 5.2vw, 5.05rem);
+  gap: 0.58rem;
+  min-height: clamp(3.1rem, 4.1vw, 3.95rem);
   border: 0;
   border-right: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0;
   background: transparent;
   color: rgba(219, 224, 237, 0.68);
   font: inherit;
-  font-size: clamp(0.92rem, 1.18vw, 1.14rem);
+  font-size: clamp(0.82rem, 1vw, 0.98rem);
   font-weight: 650;
   line-height: 1.15;
-  padding: 0.85rem 1rem;
+  padding: 0.62rem 0.82rem;
   cursor: pointer;
   transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
 }
@@ -1026,8 +1026,8 @@ body.quickstart-page .qs-tab:last-child {
 body.quickstart-page .qs-tab__icon {
   display: inline-grid;
   place-items: center;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.05rem;
+  height: 1.05rem;
   color: currentColor;
   flex: 0 0 auto;
 }
@@ -1061,7 +1061,7 @@ body.quickstart-page .qs-tab.is-active {
 
 body.quickstart-page .qs-terminal {
   border: 1px solid rgba(180, 194, 218, 0.2);
-  border-radius: clamp(1.45rem, 2.8vw, 2rem);
+  border-radius: clamp(1.15rem, 2.1vw, 1.55rem);
   background:
     radial-gradient(circle at 7% 6%, rgba(255, 75, 69, 0.13), transparent 25rem),
     radial-gradient(circle at 94% 12%, rgba(77, 96, 130, 0.22), transparent 28rem),
@@ -1070,7 +1070,7 @@ body.quickstart-page .qs-terminal {
     0 44px 110px rgba(0, 0, 0, 0.46),
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
     inset 0 0 0 1px rgba(255, 75, 69, 0.06);
-  padding: clamp(1.2rem, 2.7vw, 2.4rem);
+  padding: clamp(1rem, 2vw, 1.72rem);
   min-width: 0;
   max-width: 100%;
   overflow: hidden;
@@ -1079,18 +1079,18 @@ body.quickstart-page .qs-terminal {
 body.quickstart-page .qs-terminal__head {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: clamp(0.9rem, 1.7vw, 1.45rem);
+  gap: clamp(0.72rem, 1.25vw, 1rem);
   align-items: center;
 }
 
 body.quickstart-page .qs-terminal__dots {
   display: inline-flex;
-  gap: 0.6rem;
+  gap: 0.45rem;
 }
 
 body.quickstart-page .qs-terminal__dots span {
-  width: clamp(0.72rem, 0.95vw, 0.92rem);
-  height: clamp(0.72rem, 0.95vw, 0.92rem);
+  width: clamp(0.58rem, 0.78vw, 0.74rem);
+  height: clamp(0.58rem, 0.78vw, 0.74rem);
   border-radius: 50%;
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.16);
 }
@@ -1110,24 +1110,24 @@ body.quickstart-page .qs-terminal__dot--green {
 body.quickstart-page .qs-terminal h2 {
   margin: 0;
   font-family: var(--font-body);
-  font-size: clamp(1.28rem, 1.95vw, 1.65rem);
+  font-size: clamp(1.08rem, 1.5vw, 1.32rem);
   letter-spacing: -0.04em;
   color: rgba(246, 248, 255, 0.94);
 }
 
 body.quickstart-page .qs-terminal p {
-  margin: 0.35rem 0 0;
+  margin: 0.18rem 0 0;
   color: rgba(207, 213, 228, 0.78);
-  font-size: clamp(0.86rem, 1.08vw, 1.02rem);
+  font-size: clamp(0.76rem, 0.92vw, 0.88rem);
 }
 
 body.quickstart-page .qs-copy {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  min-height: clamp(2.65rem, 4vw, 3.5rem);
-  padding: 0.62rem clamp(0.82rem, 1.45vw, 1.25rem);
-  border-radius: 1rem;
+  gap: 0.42rem;
+  min-height: clamp(2.25rem, 3vw, 2.85rem);
+  padding: 0.5rem clamp(0.72rem, 1.1vw, 1rem);
+  border-radius: 0.78rem;
   border: 1px solid rgba(255, 75, 69, 0.48);
   background:
     linear-gradient(180deg, rgba(255, 75, 69, 0.13), rgba(255, 75, 69, 0.04)),
@@ -1135,7 +1135,7 @@ body.quickstart-page .qs-copy {
   color: #ff7d75;
   font: inherit;
   font-weight: 800;
-  font-size: clamp(0.82rem, 1.03vw, 0.98rem);
+  font-size: clamp(0.74rem, 0.9vw, 0.86rem);
   cursor: pointer;
   transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
@@ -1149,8 +1149,8 @@ body.quickstart-page .qs-copy:focus-visible {
 }
 
 body.quickstart-page .qs-copy svg {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
@@ -1161,10 +1161,10 @@ body.quickstart-page .qs-copy svg {
 body.quickstart-page .qs-command {
   display: flex;
   align-items: center;
-  gap: clamp(0.75rem, 1.45vw, 1.3rem);
-  margin: clamp(1.1rem, 2vw, 1.55rem) 0 0;
-  padding: clamp(0.85rem, 1.7vw, 1.2rem);
-  border-radius: clamp(0.95rem, 1.8vw, 1.25rem);
+  gap: clamp(0.55rem, 1vw, 0.9rem);
+  margin: clamp(0.82rem, 1.45vw, 1.12rem) 0 0;
+  padding: clamp(0.68rem, 1.25vw, 0.92rem);
+  border-radius: clamp(0.78rem, 1.35vw, 1rem);
   border: 1px solid rgba(255, 75, 69, 0.45);
   background:
     linear-gradient(180deg, rgba(11, 15, 24, 0.86), rgba(6, 9, 16, 0.94)),
@@ -1180,13 +1180,13 @@ body.quickstart-page .qs-command {
 body.quickstart-page .qs-command code {
   display: flex;
   align-items: center;
-  gap: clamp(0.65rem, 1.2vw, 1rem);
+  gap: clamp(0.48rem, 0.9vw, 0.72rem);
   min-width: 0;
   flex: 1 1 auto;
   overflow-x: auto;
   white-space: pre;
-  font-size: clamp(0.82rem, 1.12vw, 1rem);
-  line-height: 1.6;
+  font-size: clamp(0.74rem, 0.98vw, 0.9rem);
+  line-height: 1.45;
 }
 
 body.quickstart-page .qs-command__prompt {
@@ -1199,10 +1199,10 @@ body.quickstart-page .qs-terminal__meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.8rem 1.25rem;
-  margin-top: clamp(0.95rem, 1.9vw, 1.45rem);
+  gap: 0.62rem 1rem;
+  margin-top: clamp(0.72rem, 1.35vw, 1rem);
   color: rgba(191, 197, 211, 0.8);
-  font-size: clamp(0.8rem, 0.98vw, 0.95rem);
+  font-size: clamp(0.72rem, 0.84vw, 0.82rem);
 }
 
 body.quickstart-page .qs-terminal__meta p {
@@ -1243,8 +1243,8 @@ body.quickstart-page .qs-meta-icon--hex::before {
 }
 
 body.quickstart-page .qs-runbook {
-  margin-top: clamp(1rem, 1.9vw, 1.5rem);
-  padding-top: clamp(1rem, 2vw, 1.5rem);
+  margin-top: clamp(0.82rem, 1.45vw, 1.08rem);
+  padding-top: clamp(0.78rem, 1.45vw, 1.05rem);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -1253,7 +1253,7 @@ body.quickstart-page .qs-runbook__head {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: clamp(0.8rem, 1.5vw, 1rem);
+  margin-bottom: clamp(0.62rem, 1.05vw, 0.78rem);
 }
 
 body.quickstart-page .qs-runbook__kicker {
@@ -1296,35 +1296,35 @@ body.quickstart-page .qs-runbook__rocket svg {
 body.quickstart-page .qs-runbook__commands {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(0.7rem, 1.45vw, 1.1rem);
+  gap: clamp(0.55rem, 1vw, 0.82rem);
 }
 
 body.quickstart-page .qs-run-command {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: clamp(0.62rem, 1.15vw, 0.9rem);
-  min-height: clamp(3.6rem, 4.3vw, 4.45rem);
-  border-radius: clamp(0.9rem, 1.45vw, 1.05rem);
+  gap: clamp(0.48rem, 0.82vw, 0.68rem);
+  min-height: clamp(2.85rem, 3.4vw, 3.45rem);
+  border-radius: clamp(0.72rem, 1.1vw, 0.88rem);
   border: 1px solid rgba(255, 255, 255, 0.12);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.028)),
     rgba(8, 11, 18, 0.78);
-  padding: 0.72rem clamp(0.78rem, 1.35vw, 1rem);
+  padding: 0.55rem clamp(0.64rem, 1vw, 0.82rem);
   color: rgba(247, 249, 255, 0.95);
 }
 
 body.quickstart-page .qs-run-command__icon {
   display: inline-grid;
   place-items: center;
-  width: 2.1rem;
-  height: 2.1rem;
+  width: 1.72rem;
+  height: 1.72rem;
   border-radius: 0.48rem;
   border: 1px solid rgba(255, 125, 117, 0.32);
   background: rgba(255, 75, 69, 0.06);
   color: #ff756e;
   font-family: var(--font-mono);
-  font-size: 0.88rem;
+  font-size: 0.72rem;
   font-weight: 800;
 }
 
@@ -1332,14 +1332,14 @@ body.quickstart-page .qs-run-command code {
   min-width: 0;
   overflow-x: auto;
   white-space: pre;
-  font-size: clamp(0.82rem, 1.05vw, 0.98rem);
+  font-size: clamp(0.74rem, 0.9vw, 0.86rem);
 }
 
 body.quickstart-page .qs-copy-icon {
   display: inline-grid;
   place-items: center;
-  width: 1.9rem;
-  height: 1.9rem;
+  width: 1.6rem;
+  height: 1.6rem;
   border: 0;
   border-radius: 0.55rem;
   background: transparent;
@@ -1768,52 +1768,90 @@ html[data-theme="light"] body.quickstart-page .qs-menu-toggle {
 
 html[data-theme="light"] body.quickstart-page .qs-command {
   background:
-    linear-gradient(180deg, rgba(11, 15, 24, 0.86), rgba(6, 9, 16, 0.94)),
-    radial-gradient(circle at 4% 50%, rgba(255, 75, 69, 0.12), transparent 16rem);
-  border-color: rgba(255, 75, 69, 0.45);
-  color: #f2f4f8;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(249, 247, 243, 0.96)),
+    radial-gradient(circle at 4% 50%, rgba(255, 75, 69, 0.08), transparent 14rem);
+  border-color: rgba(255, 75, 69, 0.28);
+  color: #151b27;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    0 18px 42px rgba(53, 61, 76, 0.08);
 }
 
 html[data-theme="light"] body.quickstart-page .qs-terminal {
   background:
-    radial-gradient(circle at 7% 6%, rgba(255, 75, 69, 0.13), transparent 25rem),
-    radial-gradient(circle at 94% 12%, rgba(77, 96, 130, 0.22), transparent 28rem),
-    linear-gradient(145deg, rgba(20, 23, 32, 0.92), rgba(5, 8, 14, 0.98) 46%, rgba(4, 7, 11, 0.98));
-  border-color: rgba(80, 93, 116, 0.34);
+    radial-gradient(circle at 7% 6%, rgba(255, 75, 69, 0.09), transparent 21rem),
+    radial-gradient(circle at 94% 12%, rgba(70, 91, 124, 0.1), transparent 24rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(251, 248, 242, 0.98) 48%, rgba(246, 243, 237, 0.96));
+  border-color: rgba(39, 48, 64, 0.16);
+  box-shadow:
+    0 34px 82px -52px rgba(34, 42, 58, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 0 0 1px rgba(255, 75, 69, 0.04);
 }
 
 html[data-theme="light"] body.quickstart-page .qs-tabs {
   background:
-    linear-gradient(180deg, rgba(22, 26, 36, 0.72), rgba(11, 14, 22, 0.84)),
-    radial-gradient(circle at 8% 0%, rgba(255, 75, 69, 0.18), transparent 36%);
-  border-color: rgba(255, 255, 255, 0.11);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(246, 243, 237, 0.88)),
+    radial-gradient(circle at 8% 0%, rgba(255, 75, 69, 0.1), transparent 36%);
+  border-color: rgba(39, 48, 64, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
 }
 
 html[data-theme="light"] body.quickstart-page .qs-terminal h2 {
-  color: rgba(246, 248, 255, 0.94);
+  color: #111827;
 }
 
 html[data-theme="light"] body.quickstart-page .qs-terminal p,
 html[data-theme="light"] body.quickstart-page .qs-terminal__meta,
 html[data-theme="light"] body.quickstart-page .qs-terminal__meta p,
 html[data-theme="light"] body.quickstart-page .qs-runbook h3 {
-  color: rgba(207, 213, 228, 0.78);
+  color: #64748b;
 }
 
 html[data-theme="light"] body.quickstart-page .qs-copy {
-  border-color: rgba(255, 75, 69, 0.48);
+  border-color: rgba(255, 75, 69, 0.3);
   background:
-    linear-gradient(180deg, rgba(255, 75, 69, 0.13), rgba(255, 75, 69, 0.04)),
-    rgba(255, 255, 255, 0.025);
-  color: #ff7d75;
+    linear-gradient(180deg, rgba(255, 75, 69, 0.1), rgba(255, 75, 69, 0.035)),
+    rgba(255, 255, 255, 0.74);
+  color: #cf2e2a;
 }
 
 html[data-theme="light"] body.quickstart-page .qs-run-command {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.028)),
-    rgba(8, 11, 18, 0.78);
-  border-color: rgba(255, 255, 255, 0.12);
-  color: rgba(247, 249, 255, 0.95);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(247, 245, 241, 0.9)),
+    rgba(255, 255, 255, 0.7);
+  border-color: rgba(39, 48, 64, 0.12);
+  color: #111827;
+  box-shadow: 0 12px 32px rgba(34, 42, 58, 0.06);
+}
+
+html[data-theme="light"] body.quickstart-page .qs-runbook {
+  border-top-color: rgba(39, 48, 64, 0.1);
+}
+
+html[data-theme="light"] body.quickstart-page .qs-run-command__icon {
+  background: rgba(255, 75, 69, 0.08);
+  border-color: rgba(255, 75, 69, 0.24);
+  color: #d43734;
+}
+
+html[data-theme="light"] body.quickstart-page .qs-copy-icon {
+  color: #475569;
+}
+
+html[data-theme="light"] body.quickstart-page .qs-copy-icon:hover,
+html[data-theme="light"] body.quickstart-page .qs-copy-icon:focus-visible,
+html[data-theme="light"] body.quickstart-page .qs-copy-icon.is-copied {
+  color: #d43734;
+  background: rgba(255, 75, 69, 0.08);
+}
+
+html[data-theme="light"] body.quickstart-page .qs-terminal__meta p + p {
+  border-left-color: rgba(39, 48, 64, 0.12);
+}
+
+html[data-theme="light"] body.quickstart-page .qs-meta-icon--hex::before {
+  border-color: rgba(71, 85, 105, 0.72);
 }
 
 html[data-theme="light"] body.quickstart-page .qs-terminal__dots span,
@@ -1896,9 +1934,15 @@ html[data-theme="light"] body.quickstart-page .qs-footer {
 
   body.quickstart-page .qs-tabs {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.4rem;
+    gap: 0.3rem;
     border-radius: 1.1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+  }
+
+  body.quickstart-page .qs-tab {
+    min-height: 3rem;
+    padding: 0.55rem 0.6rem;
+    font-size: 0.78rem;
   }
 
   body.quickstart-page .qs-terminal__head {
@@ -1956,13 +2000,13 @@ html[data-theme="light"] body.quickstart-page .qs-footer {
   }
 
   body.quickstart-page .qs-terminal {
-    padding: 1rem;
+    padding: 0.78rem;
   }
 
   body.quickstart-page .qs-command {
     display: grid;
-    gap: 0.9rem;
-    padding: 1rem;
+    gap: 0.7rem;
+    padding: 0.78rem;
   }
 
   body.quickstart-page .qs-terminal__meta {
@@ -1977,7 +2021,7 @@ html[data-theme="light"] body.quickstart-page .qs-footer {
 
   body.quickstart-page .qs-copy {
     justify-self: start;
-    min-height: 2.85rem;
+    min-height: 2.38rem;
   }
 
   body.quickstart-page .qs-runbook__head {
