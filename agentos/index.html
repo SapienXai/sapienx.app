@@ -109,11 +109,12 @@
         </div>
       </div>
       <div class="container header-hero hero-copy reveal">
+        <p class="hero-kicker"><span aria-hidden="true"></span> The human control layer for OpenClaw</p>
         <h1 class="hero-title" data-hero-title aria-label="Run AI Agents Like a Company">
           <span class="hero-title-line" data-hero-title-line>Run AI Agents</span>
           <span class="hero-title-line" data-hero-title-line>Like a Company</span>
         </h1>
-        <p>Build your AI workforce, assign real work, connect tools, train agents with context, and manage autonomy from one powerful workspace.</p>
+        <p>Build your AI workforce, assign real work, connect tools, train agents with context, and keep human control over every important decision.</p>
         <div class="hero-actions">
           <a class="button button-primary button-large" href="/agentos/quickstart/">
             Start Building
@@ -123,6 +124,11 @@
             View Demo
             <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4Z"/></svg>
           </button>
+        </div>
+        <div class="hero-proof" aria-label="AgentOS product capabilities">
+          <span><i aria-hidden="true"></i> Live runtime visibility</span>
+          <span><i aria-hidden="true"></i> Human approval gates</span>
+          <span><i aria-hidden="true"></i> Context-aware agents</span>
         </div>
         <div class="hero-badges" aria-label="AgentOS social proof links">
           <a class="hero-badge" href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noreferrer">
@@ -145,10 +151,11 @@
     <main id="main-content">
       <section class="hero" id="top">
         <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-signal-field" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="container hero-inner">
-          <div class="product-frame hero-product" aria-label="AgentOS workforce control plane preview">
+          <div class="product-frame hero-product" aria-label="AgentOS workforce control plane preview" data-preview-surface>
             <div class="product-topbar">
-              <div class="product-brand"><span class="product-brand-mark">A</span><strong>AgentOS</strong></div>
+              <div class="product-brand"><span class="product-brand-mark">A</span><strong>AgentOS</strong><span class="preview-mode">Interactive preview</span></div>
               <div class="workspace-switcher"><span class="workspace-avatar">N</span> Northstar Workspace <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg></div>
               <div class="window-actions"><span></span><span></span><span></span></div>
             </div>
@@ -167,7 +174,7 @@
               <div class="product-main">
                 <div class="product-heading">
                   <div><span class="ui-kicker">Company overview</span><h2>Good morning, Alex.</h2></div>
-                  <button class="mini-button" type="button">+ New task</button>
+                  <button class="mini-button" type="button" data-preview-action="New task created in the sample workspace.">+ New task</button>
                 </div>
                 <div class="signal-strip">
                   <div><span>Live tasks</span><strong>12</strong><small class="trend">+3 today</small></div>
@@ -224,9 +231,9 @@
                         <div><strong>0</strong><span>sessions</span></div>
                       </div>
                       <div class="hero-agent-card__actions">
-                        <button type="button"><span class="hero-agent-card__icon">◔</span>Message</button>
-                        <button type="button" class="is-focus"><span class="hero-agent-card__icon">⌖</span>Focus</button>
-                        <button type="button" class="is-task"><span class="hero-agent-card__icon">➤</span>Create Task</button>
+                        <button type="button" data-preview-action="Secure message thread opened with Atlas."><span class="hero-agent-card__icon">◔</span>Message</button>
+                        <button type="button" class="is-focus" data-preview-action="Atlas is now the focused agent in this preview."><span class="hero-agent-card__icon">⌖</span>Focus</button>
+                        <button type="button" class="is-task" data-preview-action="A new Atlas task was added to the sample queue."><span class="hero-agent-card__icon">➤</span>Create Task</button>
                       </div>
                     </div>
                     <div class="hero-agent-card__footer">
@@ -260,9 +267,10 @@
                   <section class="dashboard-panel network-panel network-panel--approval approval-panel" data-workforce-approval>
                     <span class="approval-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></span>
                     <div><span class="ui-kicker">Approval request</span><h3 data-approval-title>Publish launch campaign?</h3><p data-approval-copy>Growth Agent is ready to publish across 3 connected accounts.</p></div>
-                    <div class="approval-actions" data-approval-actions><button type="button">Review</button><button type="button">Approve</button></div>
+                    <div class="approval-actions" data-approval-actions><button type="button" data-preview-action="Approval details opened in the sample workspace.">Review</button><button type="button" data-preview-action="Approval confirmed in the sample workspace.">Approve</button></div>
                   </section>
                 </div>
+                <p class="preview-feedback" aria-live="polite" data-preview-status>Interactive sample workspace — explore a safe simulation of live agent operations.</p>
               </div>
             </div>
           </div>

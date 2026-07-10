@@ -24,14 +24,9 @@ const workforceWorkList = document.querySelector("[data-work-list]");
 const workforceApprovalTitle = document.querySelector("[data-approval-title]");
 const workforceApprovalCopy = document.querySelector("[data-approval-copy]");
 const workforceApprovalActions = document.querySelector("[data-approval-actions]");
-const heroTitle = document.querySelector("[data-hero-title]");
-const heroTitleLines = heroTitle ? Array.from(heroTitle.querySelectorAll("[data-hero-title-line]")) : [];
-
-const HERO_TITLES = [
-  ["Run AI Agents", "Like a Company"],
-  ["Build Your", "AI Workforce"],
-  ["Manage Agents", "Like Employees"],
-];
+const previewSurface = document.querySelector("[data-preview-surface]");
+const previewStatus = document.querySelector("[data-preview-status]");
+const compactAgentVideos = document.querySelectorAll(".hero-agent-card--compact .hero-agent-card__video");
 
 const CONTROL_COPY = {
   workspaces: ["Workspace operations", "Everything in motion"],
@@ -681,8 +676,8 @@ const updateApprovalPanel = (state) => {
 
   if (approvalActions) {
     approvalActions.innerHTML = `
-      <button type="button">${state.approval.actions[0]}</button>
-      <button type="button">${state.approval.actions[1]}</button>
+      <button type="button" data-preview-action="${state.approval.actions[0]} opened in the sample workspace.">${state.approval.actions[0]}</button>
+      <button type="button" data-preview-action="${state.approval.actions[1]} confirmed in the sample workspace.">${state.approval.actions[1]}</button>
     `;
   }
 
@@ -700,33 +695,63 @@ const closeMenu = () => {
   document.body.classList.remove("menu-open");
 };
 
-const updateHeroTitle = (titleParts) => {
-  if (!heroTitle || heroTitleLines.length < 2) {
+let previewFeedbackTimerId;
+
+const showPreviewFeedback = (message) => {
+  if (!previewStatus) {
     return;
   }
 
-  heroTitleLines.forEach((line, index) => {
-    line.textContent = titleParts[index] || "";
-  });
-  heroTitle.setAttribute("aria-label", titleParts.join(" "));
+  previewStatus.textContent = message;
+  previewSurface?.classList.remove("is-preview-active");
+  void previewSurface?.offsetWidth;
+  previewSurface?.classList.add("is-preview-active");
+
+  window.clearTimeout(previewFeedbackTimerId);
+  previewFeedbackTimerId = window.setTimeout(() => {
+    previewSurface?.classList.remove("is-preview-active");
+  }, 1300);
 };
 
-if (heroTitle && heroTitleLines.length >= 2 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  let heroTitleIndex = 0;
+previewSurface?.addEventListener("click", (event) => {
+  if (!(event.target instanceof Element)) {
+    return;
+  }
 
-  window.setInterval(() => {
-    if (document.hidden) {
-      return;
-    }
+  const action = event.target.closest("[data-preview-action]");
 
-    heroTitleIndex = (heroTitleIndex + 1) % HERO_TITLES.length;
-    heroTitle.classList.add("is-changing");
+  if (!(action instanceof HTMLButtonElement)) {
+    return;
+  }
 
-    window.setTimeout(() => {
-      updateHeroTitle(HERO_TITLES[heroTitleIndex]);
-      heroTitle.classList.remove("is-changing");
-    }, 360);
-  }, 4200);
+  showPreviewFeedback(action.dataset.previewAction || "Sample workspace updated.");
+});
+
+if (compactAgentVideos.length) {
+  compactAgentVideos.forEach((video) => video.pause());
+
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+
+          if (!(video instanceof HTMLVideoElement)) {
+            return;
+          }
+
+          if (entry.isIntersecting) {
+            void video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { rootMargin: "180px 0px", threshold: 0.05 }
+    );
+
+    compactAgentVideos.forEach((video) => videoObserver.observe(video));
+  }
 }
 
 menuToggle?.addEventListener("click", () => {
