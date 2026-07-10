@@ -1,6 +1,7 @@
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector(".site-nav");
+const navSectionLinks = siteNav ? Array.from(siteNav.querySelectorAll('a[href^="#"]')) : [];
 const revealElements = document.querySelectorAll(".reveal");
 const year = document.querySelector("#year");
 const demoDialog = document.querySelector("[data-demo-dialog]");
@@ -27,6 +28,8 @@ const workforceApprovalActions = document.querySelector("[data-approval-actions]
 const previewSurface = document.querySelector("[data-preview-surface]");
 const previewStatus = document.querySelector("[data-preview-status]");
 const compactAgentVideos = document.querySelectorAll(".hero-agent-card--compact .hero-agent-card__video");
+const heroSignalField = document.querySelector("[data-agentic-signal-field]");
+const heroAgentMotions = document.querySelectorAll("[data-agent-motion]");
 
 const CONTROL_COPY = {
   workspaces: ["Workspace operations", "Everything in motion"],
@@ -691,11 +694,13 @@ const updateApprovalPanel = (state) => {
 const closeMenu = () => {
   menuToggle?.classList.remove("is-active");
   menuToggle?.setAttribute("aria-expanded", "false");
+  menuToggle?.setAttribute("aria-label", "Open navigation");
   siteNav?.classList.remove("is-open");
   document.body.classList.remove("menu-open");
 };
 
 let previewFeedbackTimerId;
+let agenticSignalTimerId;
 
 const showPreviewFeedback = (message) => {
   if (!previewStatus) {
@@ -706,11 +711,22 @@ const showPreviewFeedback = (message) => {
   previewSurface?.classList.remove("is-preview-active");
   void previewSurface?.offsetWidth;
   previewSurface?.classList.add("is-preview-active");
+  heroSignalField?.classList.remove("is-reactive");
+  void heroSignalField?.offsetWidth;
+  heroSignalField?.classList.add("is-reactive");
+  heroAgentMotions.forEach((motion) => motion.setAttribute("dur", "2.8s"));
 
   window.clearTimeout(previewFeedbackTimerId);
+  window.clearTimeout(agenticSignalTimerId);
   previewFeedbackTimerId = window.setTimeout(() => {
     previewSurface?.classList.remove("is-preview-active");
   }, 1300);
+  agenticSignalTimerId = window.setTimeout(() => {
+    heroSignalField?.classList.remove("is-reactive");
+    heroAgentMotions.forEach((motion) => {
+      motion.setAttribute("dur", motion.dataset.defaultDuration || "10s");
+    });
+  }, 1500);
 };
 
 previewSurface?.addEventListener("click", (event) => {
@@ -758,6 +774,7 @@ menuToggle?.addEventListener("click", () => {
   const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
   menuToggle.classList.toggle("is-active", !isOpen);
   menuToggle.setAttribute("aria-expanded", String(!isOpen));
+  menuToggle.setAttribute("aria-label", isOpen ? "Open navigation" : "Close navigation");
   siteNav?.classList.toggle("is-open", !isOpen);
   document.body.classList.toggle("menu-open", !isOpen);
 });
@@ -780,6 +797,31 @@ const updateHeader = () => {
 
 updateHeader();
 window.addEventListener("scroll", updateHeader, { passive: true });
+
+if (navSectionLinks.length && "IntersectionObserver" in window) {
+  const sections = navSectionLinks
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter((section) => section instanceof HTMLElement);
+
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      const activeEntry = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
+
+      if (!activeEntry?.target.id) {
+        return;
+      }
+
+      navSectionLinks.forEach((link) => {
+        link.classList.toggle("is-active", link.getAttribute("href") === `#${activeEntry.target.id}`);
+      });
+    },
+    { rootMargin: "-22% 0px -68%", threshold: [0.1, 0.3, 0.55] }
+  );
+
+  sections.forEach((section) => navObserver.observe(section));
+}
 
 if ("IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver(

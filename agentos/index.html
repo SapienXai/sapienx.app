@@ -94,6 +94,7 @@
           <a href="#platform">Platform</a>
           <a href="#how-it-works">How it works</a>
           <a href="#openclaw">OpenClaw</a>
+          <a class="nav-mobile-cta" href="/agentos/quickstart/">Start Building <span aria-hidden="true">→</span></a>
         </nav>
 
         <div class="header-actions">
@@ -103,14 +104,59 @@
             <span class="sr-only" data-theme-toggle-label>Dark</span>
           </button>
           <a class="button button-primary header-cta" href="/agentos/quickstart/">Start Building</a>
-          <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="site-navigation" aria-expanded="false">
+          <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="site-navigation" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
         </div>
       </div>
-      <div class="container header-hero hero-copy reveal">
+    </header>
+
+    <section class="container header-hero hero-copy reveal" aria-labelledby="agentos-hero-title">
+        <div class="hero-signal-field" aria-hidden="true" data-agentic-signal-field>
+          <svg class="hero-signal-routes" viewBox="0 0 1440 720" preserveAspectRatio="none">
+            <path class="hero-signal-route hero-signal-route--command" d="M-60 196 C190 148 276 310 506 262 S806 116 1000 226 S1274 410 1500 266" />
+            <path class="hero-signal-route hero-signal-route--approval" d="M-80 518 C166 406 300 570 516 498 S806 412 952 518 S1234 650 1510 496" />
+            <path class="hero-signal-route hero-signal-route--context" d="M116 86 C334 194 450 96 620 166 S888 282 1038 158 S1268 90 1450 164" />
+            <g class="hero-signal-agent hero-signal-agent--command">
+              <circle class="hero-signal-agent__aura" r="29" />
+              <rect class="hero-signal-agent__body" x="-15" y="-13" width="30" height="26" rx="8" />
+              <path class="hero-signal-agent__antenna" d="M0 -13V-21" />
+              <circle class="hero-signal-agent__antenna-dot" cx="0" cy="-23" r="3" />
+              <circle class="hero-signal-agent__eye" cx="-5.4" cy="-2" r="2.25" /><circle class="hero-signal-agent__eye" cx="5.4" cy="-2" r="2.25" />
+              <path class="hero-signal-agent__smile" d="M-5 5h10" />
+              <animateMotion data-agent-motion data-default-duration="10s" dur="10s" repeatCount="indefinite" rotate="auto" path="M-60 196 C190 148 276 310 506 262 S806 116 1000 226 S1274 410 1500 266" />
+            </g>
+            <g class="hero-signal-agent hero-signal-agent--context">
+              <circle class="hero-signal-agent__aura" r="29" />
+              <rect class="hero-signal-agent__body" x="-15" y="-13" width="30" height="26" rx="8" />
+              <path class="hero-signal-agent__antenna" d="M0 -13V-21" />
+              <circle class="hero-signal-agent__antenna-dot" cx="0" cy="-23" r="3" />
+              <circle class="hero-signal-agent__eye" cx="-5.4" cy="-2" r="2.25" /><circle class="hero-signal-agent__eye" cx="5.4" cy="-2" r="2.25" />
+              <path class="hero-signal-agent__smile" d="M-5 5h10" />
+              <animateMotion data-agent-motion data-default-duration="13s" dur="13s" begin="-4s" repeatCount="indefinite" rotate="auto" path="M116 86 C334 194 450 96 620 166 S888 282 1038 158 S1268 90 1450 164" />
+            </g>
+            <g class="hero-signal-agent hero-signal-agent--approval">
+              <circle class="hero-signal-agent__aura" r="29" />
+              <rect class="hero-signal-agent__body" x="-15" y="-13" width="30" height="26" rx="8" />
+              <path class="hero-signal-agent__antenna" d="M0 -13V-21" />
+              <circle class="hero-signal-agent__antenna-dot" cx="0" cy="-23" r="3" />
+              <circle class="hero-signal-agent__eye" cx="-5.4" cy="-2" r="2.25" /><circle class="hero-signal-agent__eye" cx="5.4" cy="-2" r="2.25" />
+              <path class="hero-signal-agent__smile" d="M-5 5h10" />
+              <animateMotion data-agent-motion data-default-duration="15s" dur="15s" begin="-8s" repeatCount="indefinite" rotate="auto" path="M-80 518 C166 406 300 570 516 498 S806 412 952 518 S1234 650 1510 496" />
+            </g>
+          </svg>
+          <span class="hero-signal-node hero-signal-node--command"></span>
+          <span class="hero-signal-node hero-signal-node--context"></span>
+          <span class="hero-signal-node hero-signal-node--approval"></span>
+          <span class="hero-signal-packet hero-signal-packet--one"></span>
+          <span class="hero-signal-packet hero-signal-packet--two"></span>
+          <span class="hero-signal-packet hero-signal-packet--three"></span>
+          <span class="hero-context-fragment hero-context-fragment--one">brief → research</span>
+          <span class="hero-context-fragment hero-context-fragment--two">tool connected</span>
+          <span class="hero-context-fragment hero-context-fragment--three">approval gate</span>
+        </div>
         <p class="hero-kicker"><span aria-hidden="true"></span> The human control layer for OpenClaw</p>
-        <h1 class="hero-title" data-hero-title aria-label="Run AI Agents Like a Company">
+        <h1 class="hero-title" id="agentos-hero-title" data-hero-title aria-label="Run AI Agents Like a Company">
           <span class="hero-title-line" data-hero-title-line>Run AI Agents</span>
           <span class="hero-title-line" data-hero-title-line>Like a Company</span>
         </h1>
@@ -145,13 +191,11 @@
           </a>
         </div>
         <p class="foundation-line"><span></span> Built on top of OpenClaw, the agent orchestration kernel.</p>
-      </div>
-    </header>
+    </section>
 
     <main id="main-content">
       <section class="hero" id="top">
         <div class="hero-glow" aria-hidden="true"></div>
-        <div class="hero-signal-field" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="container hero-inner">
           <div class="product-frame hero-product" aria-label="AgentOS workforce control plane preview" data-preview-surface>
             <div class="product-topbar">
@@ -623,16 +667,26 @@
     </main>
 
     <footer class="site-footer">
+      <div class="footer-signal" aria-label="AgentOS operating model">
+        <div class="container footer-signal__inner">
+          <span class="footer-signal__eyebrow"><i aria-hidden="true"></i> AgentOS operating model</span>
+          <p>Human control above. Agent execution below.</p>
+          <span class="footer-signal__status">OpenClaw-native <b aria-hidden="true">↗</b></span>
+        </div>
+      </div>
       <div class="container footer-grid">
         <div class="footer-brand">
           <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><video autoplay loop muted playsinline preload="metadata" poster="/agentos/assets/agentlogo.webp"><source src="/agentos/assets/logo.webm" type="video/webm" /></video></span><span class="brand-name">Agent<span>OS</span></span></a>
-          <p>The operating system for<br />your AI workforce.</p>
+          <p>The operating system for your AI workforce — built to make agentic work visible, governable, and safe.</p>
+          <a class="footer-build-link" href="/agentos/quickstart/">Build your first workforce <span aria-hidden="true">→</span></a>
         </div>
-        <div class="footer-column"><h3>Product</h3><a href="#workforce">Workforce</a><a href="#platform">Control plane</a><a href="/agentos/features/runtime-visibility/">Runtime</a><a href="/agentos/features/approval-layer/">Approvals</a></div>
-        <div class="footer-column"><h3>Resources</h3><a href="/agentos/quickstart/">Quickstart</a><a href="/agentos/openclaw/">OpenClaw</a><a href="/agentos/faq/">FAQ</a><a href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noreferrer">GitHub</a></div>
-        <div class="footer-column"><h3>Company</h3><a href="https://sapienx.app/">SapienX</a><a href="https://x.com/sapienapp" target="_blank" rel="noreferrer">X / Twitter</a><a href="https://t.me/sapienapp" target="_blank" rel="noreferrer">Community</a></div>
+        <div class="footer-link-groups">
+          <details class="footer-column footer-group" open><summary>Product</summary><a href="#workforce">Workforce</a><a href="#platform">Control plane</a><a href="/agentos/features/runtime-visibility/">Runtime</a><a href="/agentos/features/approval-layer/">Approvals</a></details>
+          <details class="footer-column footer-group" open><summary>Resources</summary><a href="/agentos/quickstart/">Quickstart</a><a href="/agentos/openclaw/">OpenClaw</a><a href="/agentos/faq/">FAQ</a><a href="https://github.com/SapienXai/AgentOS" target="_blank" rel="noreferrer">GitHub</a></details>
+          <details class="footer-column footer-group" open><summary>Company</summary><a href="https://sapienx.app/">SapienX</a><a href="https://x.com/sapienapp" target="_blank" rel="noreferrer">X / Twitter</a><a href="https://t.me/sapienapp" target="_blank" rel="noreferrer">Community</a></details>
+        </div>
       </div>
-      <div class="container footer-bottom"><span>&copy; <span id="year"></span> SapienX. All rights reserved.</span><span>Built on OpenClaw.</span></div>
+      <div class="container footer-bottom"><span>&copy; <span id="year"></span> SapienX. All rights reserved.</span><span class="footer-bottom__runtime"><i aria-hidden="true"></i> Built on OpenClaw</span></div>
     </footer>
   </div>
 
